@@ -1,10 +1,14 @@
 import React from 'react';
 
-import { Layout } from './components';
+import { FeaturedMovie, Layout } from './components';
 
 const App = () => {
   return (
     <Layout drawBehindHeader={true}>
+      <FeaturedMovie
+        title="Featured movie"
+        synopsis="This is a really cool movie."
+      />
       <section>
         <p>
           Edit <code>src/App.js</code> and save to reload.{' '}
