@@ -11,7 +11,7 @@ const Item = ({ duration, isNew, tags, title }) => {
         <span key={index} style={styles.tag}>
           {tag}
           {index !== tags.length - 1 && (
-            <span class={styles.tagSeparator}> &bull; </span>
+            <span className={styles.tagSeparator}> &bull; </span>
           )}
         </span>
       ))
