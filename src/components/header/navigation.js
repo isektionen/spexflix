@@ -10,12 +10,12 @@ const Navigation = () => (
           href="/"
           className={[styles.navLink, styles.navLinkActive].join(' ')}
         >
-          Hem
+          Home
         </a>
       </li>
       <li className={styles.navItem}>
         <a href="/" className={styles.navLink}>
-          Nytt hos oss
+          New movies
         </a>
       </li>
     </ul>
