@@ -2,6 +2,7 @@ $white: rgb(255, 255, 255);
 $gray: rgb(128, 128, 128);
 $black: rgb(0, 0, 0);
 $red: rgb(229, 9, 20);
+$green: rgb(89, 168, 15);
 
 $textColor: $white;
 $backgroundColor: $black;
@@ -10,7 +11,15 @@ $logotypeColor: $red;
 $linkColor: $gray;
 $linkHoverColor: $white;
 
-$placeholderBackgroundColor: $gray;
+$placeholderBackgroundColor: rgba(100, 100, 100, 0.95);
 
 $fontSize: 1.4vw;
 $lineHeight: #{fontSize} * 1.2;
+
+$sideMargin: 60px;
+
+$horizontalScrollerItemWidth: 28vmin;
+$horizontalScrollerItemHeight: 16vmin;
+$horizontalScrollerItemScaleFactor: 2;
+
+$horizontalScrollerItemGrowthWidth: $horizontalScrollerItemWidth * $horizontalScrollerItemScaleFactor - $horizontalScrollerItemWidth;

@@ -1,0 +1,69 @@
+@import "../../config/variables.scss";
+
+.movieItem {
+  --details-opacity: 0;
+  --details-transition-duration: 0.2s;
+  --details-transition-delay: 0s;
+  flex: 0 0 $horizontalScrollerItemWidth;
+  height: $horizontalScrollerItemHeight;
+  background-color: $placeholderBackgroundColor;
+  margin-right: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: all 0.3s ease-in-out;
+  z-index: 10;
+}
+
+.movieItem:hover {
+  --details-opacity: 1;
+  --details-transition-duration: 0.3s;
+  --details-transition-delay: 0.2s;
+  flex-basis: $horizontalScrollerItemWidth * $horizontalScrollerItemScaleFactor;
+  height: $horizontalScrollerItemHeight * $horizontalScrollerItemScaleFactor;
+}
+
+.movieItem:first-child:hover {
+  margin-left: calc(#{$horizontalScrollerItemGrowthWidth} / 2);
+}
+
+.details {
+  transition: opacity var(--details-transition-duration) ease-in-out;
+  transition-delay: var(--details-transition-delay);
+  opacity: var(--details-opacity);
+}
+
+%details-common {
+  margin: 0.3em 0 0 0;
+}
+
+.title {
+  @extend %details-common;
+  font-weight: bold;
+}
+
+.duration {
+  @extend %details-common;
+  font-size: 0.8em;
+}
+
+.isNew {
+  color: $green;
+  font-weight: bold;
+  margin-right: 0.5em;
+}
+
+.tags {
+  @extend %details-common;
+  font-size: 0.8em;
+  display: block;
+}
+
+.tags:empty::before {
+  content: "\A0";
+}
+
+.tagSeparator {
+  color: $gray;
+}
