@@ -1,0 +1,14 @@
+$white: rgb(255, 255, 255);
+$gray: rgb(128, 128, 128);
+$black: rgb(0, 0, 0);
+$red: rgb(229, 9, 20);
+
+$textColor: $white;
+$backgroundColor: $black;
+$logotypeColor: $red;
+
+$linkColor: $gray;
+$linkHoverColor: $white;
+
+$fontSize: calc(10px + 1vmin);
+$lineHeight: #{fontSize} * 1.2;

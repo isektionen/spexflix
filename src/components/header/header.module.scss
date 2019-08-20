@@ -1,0 +1,14 @@
+.header {
+  height: 68px;
+  padding: 0 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
