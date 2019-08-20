@@ -4,7 +4,7 @@ import { Layout } from './components';
 
 const App = () => {
   return (
-    <Layout>
+    <Layout drawBehindHeader={true}>
       <section>
         <p>
           Edit <code>src/App.js</code> and save to reload.{' '}
