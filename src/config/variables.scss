@@ -1,0 +1,30 @@
+$white: rgb(255, 255, 255);
+$gray: rgb(128, 128, 128);
+$black: rgb(20, 20, 20);
+$red: rgb(229, 9, 20);
+$green: rgb(89, 168, 15);
+
+$textColor: $white;
+$backgroundColor: $black;
+$logotypeColor: $red;
+
+$linkColor: $gray;
+$linkHoverColor: $white;
+
+$placeholderBackgroundColor: rgba(100, 100, 100, 0.95);
+
+$fontSize: 1.4vw;
+$lineHeight: #{fontSize} * 1.2;
+
+$sideMargin: 60px;
+
+$buttonTextColor: $white;
+$buttonTextColorHover: $black;
+$buttonBackgroundColor: rgba(0, 0, 0, 0.2);
+$buttonBackgroundColorHover: $white;
+
+$horizontalScrollerItemWidth: 19vmin;
+$horizontalScrollerItemHeight: 11vmin;
+$horizontalScrollerItemScaleFactor: 2;
+
+$horizontalScrollerItemGrowthWidth: $horizontalScrollerItemWidth * $horizontalScrollerItemScaleFactor - $horizontalScrollerItemWidth;

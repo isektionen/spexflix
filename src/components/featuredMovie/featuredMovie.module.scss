@@ -1,0 +1,34 @@
+@import "../../config/variables.scss";
+
+.featuredMovie {
+  height: 80vmin;
+  max-height: 100vw / 19 * 9;
+  background-color: $placeholderBackgroundColor;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: -80px;
+}
+
+.movieDetails {
+  margin-left: 60px;
+  max-width: 50vw;
+}
+
+.title {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.buttons > * {
+  margin-right: 10px;
+}
+
+.synopsis {
+  font-size: 1.2em;
+}

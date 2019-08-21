@@ -1,0 +1,44 @@
+@import "../../config/variables.scss";
+
+.horizontalMovieScroller {
+  height: $horizontalScrollerItemHeight * $horizontalScrollerItemScaleFactor + 3;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  position: relative;
+  margin-top: -7vmin;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.title {
+  font-weight: bold;
+  position: absolute;
+  top: 3vmin;
+  left: $sideMargin;
+  margin: 0;
+  padding: 0;
+}
+
+.scroller {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  margin: 0 0 0 $sideMargin;
+  transition: all 0.30s ease-in-out;
+}
+
+.scroller:hover {
+  margin-left: calc(#{$sideMargin} - #{$horizontalScrollerItemGrowthWidth} / 2);
+}
+
+.rightMargin {
+
+  flex: 0 0 $sideMargin;
+  height: 1px;
+}
