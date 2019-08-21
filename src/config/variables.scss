@@ -18,6 +18,11 @@ $lineHeight: #{fontSize} * 1.2;
 
 $sideMargin: 60px;
 
+$buttonTextColor: $white;
+$buttonTextColorHover: $black;
+$buttonBackgroundColor: rgba(0, 0, 0, 0.2);
+$buttonBackgroundColorHover: $white;
+
 $horizontalScrollerItemWidth: 28vmin;
 $horizontalScrollerItemHeight: 16vmin;
 $horizontalScrollerItemScaleFactor: 2;

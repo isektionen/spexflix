@@ -1,0 +1,27 @@
+@import "../../config/variables.scss";
+
+.button {
+  color: $buttonTextColor;
+  background-color: $buttonBackgroundColor;
+  font-size: 0.9em;
+  font-weight: bold;
+  border-radius: 2px;
+  padding: 0.7em 2em;
+}
+
+.button:hover {
+  color: $buttonTextColorHover;
+  background-color: $buttonBackgroundColorHover;
+  cursor: pointer;
+}
+
+.buttonGrower {
+  @extend .button;
+  transition: transform 0.1s ease;
+  transition-delay: 0.2s;
+}
+
+.buttonGrower:hover {
+  @extend .button:hover;
+  transform: scale(1.1);
+}

@@ -20,6 +20,15 @@
   font-weight: bold;
 }
 
+.buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.buttons > * {
+  margin-right: 10px;
+}
+
 .synopsis {
   font-size: 1.2em;
 }
