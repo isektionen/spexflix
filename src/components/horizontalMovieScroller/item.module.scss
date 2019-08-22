@@ -3,8 +3,11 @@
 .movieItem {
   --details-opacity: 0;
   --details-transition-duration: 0.2s;
-  --details-transition-delay: 0s;
-  flex: 0 0 $horizontalScrollerItemWidth;
+  --details-transition-delay: 0.1s;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: $horizontalScrollerItemWidth;
+  max-width: $horizontalScrollerItemWidth;
   height: $horizontalScrollerItemHeight;
   background-color: $placeholderBackgroundColor;
   background-position: center;
@@ -15,14 +18,16 @@
   flex-direction: column;
   justify-content: flex-end;
   transition: all 0.3s ease-in-out;
+  transition-delay: 0.1s;
   z-index: 10;
 }
 
 .movieItem:hover {
   --details-opacity: 1;
   --details-transition-duration: 0.3s;
-  --details-transition-delay: 0.2s;
+  --details-transition-delay: 0.3s;
   flex-basis: $horizontalScrollerItemWidth * $horizontalScrollerItemScaleFactor;
+  max-width: $horizontalScrollerItemWidth * $horizontalScrollerItemScaleFactor;
   height: $horizontalScrollerItemHeight * $horizontalScrollerItemScaleFactor;
 }
 
@@ -33,6 +38,7 @@
 .details {
   padding: 10px;
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  white-space: normal;
   transition: opacity var(--details-transition-duration) ease-in-out;
   transition-delay: var(--details-transition-delay);
   opacity: var(--details-opacity);
