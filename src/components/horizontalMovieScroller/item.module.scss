@@ -11,7 +11,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   margin-right: 5px;
-  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -32,6 +31,8 @@
 }
 
 .details {
+  padding: 10px;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
   transition: opacity var(--details-transition-duration) ease-in-out;
   transition-delay: var(--details-transition-delay);
   opacity: var(--details-opacity);
