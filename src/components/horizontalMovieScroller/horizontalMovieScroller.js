@@ -17,6 +17,7 @@ const HorizontalMovieScroller = ({ playlistId, title }) => {
       duration="unknown"
       hasLoaded={playlistItemsHasLoaded}
       tags={item.tags}
+      thumbnails={item.thumbnails}
       title={item.title}
     />
   ));
@@ -24,7 +25,7 @@ const HorizontalMovieScroller = ({ playlistId, title }) => {
   useEffect(() => {
     getPlaylistItems(playlistId).then(items => {
       setPlaylistItems(items);
-      setPlaylistItemsHasLoaded(false);
+      setPlaylistItemsHasLoaded(true);
     });
   }, [playlistId]);
 

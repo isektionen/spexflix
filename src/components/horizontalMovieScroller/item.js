@@ -3,8 +3,14 @@ import PropTypes from 'prop-types';
 
 import styles from './item.module.scss';
 
-const Item = ({ duration, isNew, tags, title }) => {
+const Item = ({ duration, hasLoaded, isNew, tags, thumbnails, title }) => {
   const isNewMarker = isNew ? <span className={styles.isNew}>New</span> : null;
+
+  const backgroundImage = thumbnails
+    ? `linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0)), url(${
+        thumbnails.medium.url
+      })`
+    : null;
 
   const tagComponents = tags
     ? tags.map((tag, index) => (
@@ -18,7 +24,7 @@ const Item = ({ duration, isNew, tags, title }) => {
     : null;
 
   return (
-    <li className={styles.movieItem}>
+    <li className={styles.movieItem} style={{ backgroundImage }}>
       <div className={styles.details}>
         <p className={styles.title}>{title}</p>
         <p className={styles.duration}>

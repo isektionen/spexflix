@@ -7,6 +7,9 @@
   flex: 0 0 $horizontalScrollerItemWidth;
   height: $horizontalScrollerItemHeight;
   background-color: $placeholderBackgroundColor;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   margin-right: 5px;
   padding: 10px;
   display: flex;
