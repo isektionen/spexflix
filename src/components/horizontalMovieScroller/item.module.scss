@@ -3,7 +3,7 @@
 .movieItem {
   --details-opacity: 0;
   --details-transition-duration: 0.2s;
-  --details-transition-delay: 0s;
+  --details-transition-delay: 0.1s;
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: $horizontalScrollerItemWidth;
@@ -18,13 +18,14 @@
   flex-direction: column;
   justify-content: flex-end;
   transition: all 0.3s ease-in-out;
+  transition-delay: 0.1s;
   z-index: 10;
 }
 
 .movieItem:hover {
   --details-opacity: 1;
   --details-transition-duration: 0.3s;
-  --details-transition-delay: 0.2s;
+  --details-transition-delay: 0.3s;
   flex-basis: $horizontalScrollerItemWidth * $horizontalScrollerItemScaleFactor;
   max-width: $horizontalScrollerItemWidth * $horizontalScrollerItemScaleFactor;
   height: $horizontalScrollerItemHeight * $horizontalScrollerItemScaleFactor;
