@@ -4,6 +4,7 @@ import Footer from './footer/footer';
 import Header from './header/header';
 import HorizontalMovieScroller from './horizontalMovieScroller/horizontalMovieScroller';
 import Layout from './layout/layout';
+import Playlists from './playlists/playlists';
 
 export {
   Button,
@@ -12,4 +13,5 @@ export {
   Header,
   HorizontalMovieScroller,
   Layout,
+  Playlists,
 };
