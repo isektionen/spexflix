@@ -4,6 +4,9 @@
   height: 80vmin;
   max-height: 100vw / 19 * 9;
   background-color: $placeholderBackgroundColor;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
