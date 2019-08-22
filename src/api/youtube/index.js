@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-import { playlistsReducer, playlistItemsReducer } from './reducers';
+import {
+  playlistsReducer,
+  playlistItemsReducer,
+  itemsReducer,
+} from './reducers';
 
 let numApiCall = 0;
 const api = axios.create({
@@ -95,4 +99,23 @@ const getPlaylistItems = async playlistId => {
   }
 };
 
-export { getPlaylists, getPlaylistItems };
+const getItems = async ids => {
+  const request = {
+    endpoint: 'videos',
+    params: {
+      part: 'snippet',
+      id: ids,
+    },
+  };
+
+  const response = await callApi(request);
+  console.log(response);
+
+  if (response) {
+    return itemsReducer(response);
+  } else {
+    return [];
+  }
+};
+
+export { getPlaylists, getPlaylistItems, getItems };

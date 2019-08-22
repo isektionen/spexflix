@@ -16,4 +16,13 @@ const playlistItemsReducer = response => {
   });
 };
 
-export { playlistsReducer, playlistItemsReducer };
+const itemsReducer = response => {
+  return response.items.map(item => {
+    return {
+      ...item.snippet,
+      id: item.id,
+    };
+  });
+};
+
+export { playlistsReducer, playlistItemsReducer, itemsReducer };
