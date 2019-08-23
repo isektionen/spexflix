@@ -40,7 +40,6 @@
 
 .scrollerContent:hover {
   margin-left: calc(#{$sideMargin} - #{$horizontalScrollerItemGrowthWidth} / 2);
-
 }
 
 .scrollerContent {
@@ -56,7 +55,6 @@
 }
 
 .rightMargin {
-
   flex: 0 0 $sideMargin;
   height: 1px;
 }
