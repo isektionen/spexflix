@@ -31,11 +31,15 @@ const HorizontalMovieScroller = ({ playlistId, title }) => {
 
   return (
     <div className={styles.horizontalMovieScroller}>
-      <span className={styles.title}>{title}</span>
-      <ul className={styles.scroller}>
-        {itemComponents}
-        <li className={styles.rightMargin} />
-      </ul>
+      <div className={styles.title}>
+        <span>{title}</span>
+      </div>
+      <div className={styles.scroller}>
+        <ul className={styles.scrollerContent}>
+          {itemComponents}
+          <li className={styles.rightMargin} />
+        </ul>
+      </div>
     </div>
   );
 };
