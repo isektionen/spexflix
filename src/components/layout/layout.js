@@ -10,7 +10,10 @@ const Layout = ({ children, drawBehindHeader }) => {
     <div className={styles.layout}>
       <Header drawBehind={drawBehindHeader} />
       <div className={styles.content}>{children}</div>
-      <Footer />
+      <Footer
+        siteName={process.env.REACT_APP_SITE_NAME}
+        copyrightFromYear={process.env.REACT_APP_COPYRIGHT_FROM_YEAR}
+      />
     </div>
   );
 };
