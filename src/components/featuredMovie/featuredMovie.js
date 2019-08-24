@@ -12,9 +12,7 @@ const FeaturedMovie = ({ id }) => {
   const [itemHasLoaded, setItemHasLoaded] = useState(false);
 
   const backgroundImage = itemHasLoaded
-    ? `linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0)), url(${
-        item.thumbnails.medium.url
-      })`
+    ? `url(${item.thumbnails.medium.url})`
     : null;
 
   useEffect(() => {

@@ -9,14 +9,22 @@
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
   margin-bottom: -80px;
 }
 
 .movieDetails {
-  margin-left: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 60px;
   max-width: 50vw;
+  background-image: linear-gradient(to right,
+  rgba(20, 20, 20, 1) 50%,
+  rgba(20, 20, 20, 0) 100%
+  );
 }
 
 .title {
