@@ -1,7 +1,8 @@
 @import "../../config/variables.scss";
 
 .featuredMovie {
-  height: 80vmin;
+  height: 100vh;
+  max-height: calc(100vw / 16 * 9);
   max-height: 100vw / 19 * 9;
   background-color: $placeholderBackgroundColor;
   background-position: center;

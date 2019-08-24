@@ -8,6 +8,7 @@
   flex-shrink: 0;
   flex-basis: $horizontalScrollerItemWidth;
   max-width: $horizontalScrollerItemWidth;
+  min-width: $horizontalScrollerItemWidth;
   height: $horizontalScrollerItemHeight;
   background-color: $placeholderBackgroundColor;
   background-position: center;
@@ -28,6 +29,7 @@
   --details-transition-delay: 0.3s;
   flex-basis: $horizontalScrollerItemWidth * $horizontalScrollerItemScaleFactor;
   max-width: $horizontalScrollerItemWidth * $horizontalScrollerItemScaleFactor;
+  min-width: $horizontalScrollerItemWidth * $horizontalScrollerItemScaleFactor;
   height: $horizontalScrollerItemHeight * $horizontalScrollerItemScaleFactor;
 }
 

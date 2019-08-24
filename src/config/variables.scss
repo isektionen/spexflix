@@ -23,9 +23,8 @@ $buttonTextColorHover: $black;
 $buttonBackgroundColor: rgba(0, 0, 0, 0.2);
 $buttonBackgroundColorHover: $white;
 
-$horizontalScrollerItemWidth: 23vmin;
-$horizontalScrollerItemHeight: 13vmin;
+$horizontalScrollerItemWidth: 30vmin;
+$horizontalScrollerItemHeight: 17vmin;
 $horizontalScrollerItemScaleFactor: 2;
 
 $horizontalScrollerItemGrowthWidth: $horizontalScrollerItemWidth * $horizontalScrollerItemScaleFactor - $horizontalScrollerItemWidth;
-$horizontalScrollerItemGrowthDelay: 1000
