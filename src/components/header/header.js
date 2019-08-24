@@ -6,8 +6,6 @@ import Navigation from './navigation';
 
 import styles from './header.module.scss';
 
-import config from '../../config/config';
-
 const Header = ({ drawBehind }) => {
   const [scrollY, setScrollY] = useState(window.scrollY);
 
@@ -35,7 +33,7 @@ const Header = ({ drawBehind }) => {
   return (
     <header className={headerClass}>
       <div className={styles.left}>
-        <Logotype text={config.title} />
+        <Logotype text={process.env.REACT_APP_SITE_NAME} />
         <Navigation />
       </div>
     </header>
