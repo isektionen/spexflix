@@ -1,7 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Teko:600&display=swap');
 @import "../../config/variables.scss";
 
+$distance: 100;
+
 .logotype {
-  font-size: 2em;
-  font-weight: bold;
-  color: $logotypeColor;
+  display: flex;
+  flex-direction: row;
+
+  div {
+    perspective: 100px;
+    perspective-origin: 50% 0;
+
+    span {
+      font-family: 'Teko', sans-serif;
+      font-size: 2em;
+      line-height: 1;
+      color: $logotypeColor;
+      display: block;
+      transform-origin: 50% 0;
+    }
+  }
 }
