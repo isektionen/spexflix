@@ -13,7 +13,9 @@ const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      <span>&copy; {copyrightYears} YouFlix</span>
+      <span>
+        &copy; {copyrightYears} {config.title}
+      </span>
     </footer>
   );
 };
