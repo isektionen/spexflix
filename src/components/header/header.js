@@ -35,7 +35,7 @@ const Header = ({ drawBehind }) => {
   return (
     <header className={headerClass}>
       <div className={styles.left}>
-        <Logotype text={config.title.toUpperCase()} />
+        <Logotype text={config.title} />
         <Navigation />
       </div>
     </header>
