@@ -10,6 +10,7 @@
 ## Environment variables
 
 | Name | Description |
+| --- | --- |
 | `REACT_APP_SITE_NAME` | Site name |
 | `REACT_APP_COPYRIGHT_YEAR_FROM`| Starting year for copyright |
 | `REACT_APP_YOUTUBE_API_KEY` | Google Cloud API Key with `YouTube Data API v3` enabled. Learn how to create your own [here](https://cloud.google.com/docs/authentication/api-keys#creating_an_api_key) |
