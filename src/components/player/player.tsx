@@ -1,12 +1,19 @@
 import React from 'react';
 
+import { Icon } from '../../components';
+
 import styles from './player.module.scss';
 
 export interface Props {
   id: string;
+  play: CallableFunction;
 }
 
-const Player = ({ id }: Props) => {
+const Player = ({ id, play }: Props) => {
+  const handleReturnButtonClick = () => {
+    play(undefined);
+  };
+
   return (
     <div className={styles.player}>
       <iframe
@@ -19,6 +26,11 @@ const Player = ({ id }: Props) => {
           '?autoplay=1&modestbranding=1&rel=0'
         }
       ></iframe>
+      <div className={styles.overlay}>
+        <div className={styles.returnButton} onClick={handleReturnButtonClick}>
+          <Icon name="arrowLeft" />
+        </div>
+      </div>
     </div>
   );
 };
