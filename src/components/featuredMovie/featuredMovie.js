@@ -1,26 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Button } from '../../components';
 
-import { getItems } from '../../api/youtube';
-
 import styles from './featuredMovie.module.scss';
 
-const FeaturedMovie = ({ id }) => {
-  const [item, setItem] = useState([]);
-  const [itemHasLoaded, setItemHasLoaded] = useState(false);
-
-  const backgroundImage = itemHasLoaded
-    ? `url(${item.thumbnails.medium.url})`
-    : null;
-
-  useEffect(() => {
-    getItems(id).then(items => {
-      setItem(items[0]);
-      setItemHasLoaded(true);
-    });
-  }, [id]);
+const FeaturedMovie = ({ item }) => {
+  const backgroundImage = `url(${item.thumbnails.medium.url})`;
 
   return (
     <section
@@ -42,7 +28,7 @@ const FeaturedMovie = ({ id }) => {
 };
 
 FeaturedMovie.propTypes = {
-  id: PropTypes.string.isRequired,
+  item: PropTypes.object.isRequired,
 };
 
 export default FeaturedMovie;
