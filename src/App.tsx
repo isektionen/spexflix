@@ -50,19 +50,21 @@ const App = () => {
     fetchData();
   }, []);
 
-  const content = playerMovieId ? (
-    <Player id={playerMovieId} />
-  ) : dataHasLoaded ? (
+  const content = dataHasLoaded ? (
+    <>
     <Layout
       siteName={siteName}
       copyrightFromYear={copyrightFromYear}
       drawBehindHeader={featuredMovie ? true : false}
+        disabled={playerMovieId ? true : false}
     >
       {featuredMovie && <FeaturedMovie item={featuredMovie} play={play} />}
       {playlists && (
         <Playlists playlists={playlists} items={movies} play={play} />
       )}
     </Layout>
+      {playerMovieId && <Player id={playerMovieId} play={play} />}
+    </>
   ) : (
     <Layout
       siteName={siteName}
