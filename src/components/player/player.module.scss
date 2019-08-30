@@ -20,9 +20,11 @@
     padding: 14px;
     opacity: 0;
     transition: opacity 0.3s ease;
+    transition-delay: 3s;
 
     &:hover {
       opacity: 1;
+      transition-delay: 0s;
     }
 
     .returnButton {
