@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import styles from './item.module.scss';
 
@@ -38,17 +37,6 @@ const Item = ({ duration, isNew, tags, thumbnails, title }: Movie) => {
       </div>
     </li>
   );
-};
-
-Item.propTypes = {
-  duration: PropTypes.string.isRequired,
-  new: PropTypes.bool,
-  tags: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired,
-};
-
-Item.defaultProps = {
-  isNew: false,
 };
 
 export default Item;
