@@ -1,10 +1,23 @@
 import React from 'react';
 
+import { Icon } from '../../components';
+
 import styles from './item.module.scss';
 
 import { Movie } from '../../types';
+export interface Props extends Movie {
+  play: CallableFunction;
+}
 
-const Item = ({ duration, isNew, tags, thumbnails, title }: Movie) => {
+const Item = ({
+  duration,
+  id,
+  isNew,
+  tags,
+  thumbnails,
+  title,
+  play,
+}: Props) => {
   const isNewMarker = isNew ? <span className={styles.isNew}>New</span> : null;
 
   /** @type {React.CSSProperties} */
@@ -26,8 +39,13 @@ const Item = ({ duration, isNew, tags, thumbnails, title }: Movie) => {
     : null;
 
   return (
-    <li className={styles.movieItem} style={backgroundImageStyles}>
+    <li
+      className={styles.movieItem}
+      style={backgroundImageStyles}
+      onClick={() => play(id)}
+    >
       <div className={styles.details}>
+        <Icon name="play" className={styles.playIcon} />
         <p className={styles.title}>{title}</p>
         <p className={styles.duration}>
           {isNewMarker}

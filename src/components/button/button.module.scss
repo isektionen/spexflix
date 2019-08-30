@@ -6,7 +6,24 @@
   font-size: 0.9em;
   font-weight: bold;
   border-radius: 2px;
-  padding: 0.5em 2em;
+  padding: 0.1em 2em;
+  height: 2.2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  svg {
+    margin-right: 0.3em;
+  }
+
+  svg path {
+    fill: $buttonTextColor
+  }
+
+  &:hover svg path {
+    fill: $buttonTextColorHover;
+  }
 }
 
 .button:hover {

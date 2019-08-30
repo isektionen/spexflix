@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { FeaturedMovie, Layout, Playlists } from './components';
+import { FeaturedMovie, Layout, Player, Playlists } from './components';
 import { getPlaylists, getPlaylistItems } from './api/youtube';
 
 import { Playlist, Movie } from './types';
@@ -8,6 +8,9 @@ import { Playlist, Movie } from './types';
 const App = () => {
   const [playlists, setPlaylists] = useState<Playlist[]>([]);
   const [movies, setMovies] = useState<Movie[]>([]);
+  const [playerMovieId, setPlayerMovieId] = useState<string | undefined>(
+    undefined,
+  );
   const [featuredMovie, setFeaturedMovie] = useState<Movie | undefined>(
     undefined,
   );
@@ -19,6 +22,10 @@ const App = () => {
   const copyrightFromYear = process.env.REACT_APP_COPYRIGHT_FROM_YEAR
     ? Number(process.env.REACT_APP_COPYRIGHT_FROM_YEAR)
     : new Date().getFullYear();
+
+  const play: CallableFunction = (id: string) => {
+    setPlayerMovieId(id);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,14 +50,18 @@ const App = () => {
     fetchData();
   }, []);
 
-  const content = dataHasLoaded ? (
+  const content = playerMovieId ? (
+    <Player id={playerMovieId} />
+  ) : dataHasLoaded ? (
     <Layout
       siteName={siteName}
       copyrightFromYear={copyrightFromYear}
       drawBehindHeader={featuredMovie ? true : false}
     >
-      {featuredMovie && <FeaturedMovie item={featuredMovie} />}
-      {playlists && <Playlists playlists={playlists} items={movies} />}
+      {featuredMovie && <FeaturedMovie item={featuredMovie} play={play} />}
+      {playlists && (
+        <Playlists playlists={playlists} items={movies} play={play} />
+      )}
     </Layout>
   ) : (
     <Layout

@@ -20,6 +20,7 @@
   justify-content: flex-end;
   transition: all 0.3s ease-in-out;
   transition-delay: 0.1s;
+  cursor: pointer;
   z-index: 10;
 }
 
@@ -44,6 +45,16 @@
   transition: opacity var(--details-transition-duration) ease-in-out;
   transition-delay: var(--details-transition-delay);
   opacity: var(--details-opacity);
+
+  .playIcon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid $textColor;
+    border-radius: 50%;
+
+    path {
+      fill: $logotypeColor;
+    }
+  }
 }
 
 %details-common {

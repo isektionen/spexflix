@@ -5,6 +5,16 @@
   justify-content: space-between;
   align-items: stretch;
   min-height: 100vh;
+  opacity: 1;
+  transition: all 0.8s ease;
+}
+
+.layoutDisabled {
+  @extend .layout;
+  transform: scale(1.1);
+  overflow: hidden;
+  opacity: 0.2;
+  transition: all 1.2s ease;
 }
 
 .content {
