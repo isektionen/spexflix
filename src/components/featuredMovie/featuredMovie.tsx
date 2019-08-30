@@ -7,9 +7,10 @@ import styles from './featuredMovie.module.scss';
 import { Movie } from '../../types';
 export interface Props {
   item: Movie;
+  play: CallableFunction;
 }
 
-const FeaturedMovie = ({ item }: Props) => {
+const FeaturedMovie = ({ item, play }: Props) => {
   /** @type {React.CSSProperties} */
   const backgroundImageStyles = item.thumbnails
     ? { backgroundImage: `url(${item.thumbnails.medium.url})` }
@@ -20,8 +21,8 @@ const FeaturedMovie = ({ item }: Props) => {
       <div className={styles.movieDetails}>
         <p className={styles.title}>{item.title}</p>
         <div className={styles.buttons}>
-          <Button grower={true} text="Play" />
-          <Button text="Add to my list" />
+          <Button grower={true} text="Play" action={() => play(item.id)} />
+          <Button text="Add to my list" action={() => {}} />
         </div>
         <p className={styles.synopsis}>{item.description}</p>
       </div>

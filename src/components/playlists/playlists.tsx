@@ -6,9 +6,10 @@ import { Playlist, Movie } from '../../types';
 export interface Props {
   playlists: Playlist[];
   items: Movie[];
+  play: CallableFunction;
 }
 
-const Playlists = ({ playlists, items }: Props) => {
+const Playlists = ({ playlists, items, play }: Props) => {
   const horizontalScrollers = playlists.map((playlist, index) => (
     <HorizontalMovieScroller
       key={index}
@@ -16,6 +17,7 @@ const Playlists = ({ playlists, items }: Props) => {
         return item.playlistId === playlist.id;
       })}
       title={playlist.title}
+      play={play}
     />
   ));
 
