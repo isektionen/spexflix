@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Icon } from '../../components';
+
 import styles from './item.module.scss';
 
 import { Movie } from '../../types';
@@ -43,6 +45,7 @@ const Item = ({
       onClick={() => play(id)}
     >
       <div className={styles.details}>
+        <Icon name="play" className={styles.playIcon} />
         <p className={styles.title}>{title}</p>
         <p className={styles.duration}>
           {isNewMarker}

@@ -21,7 +21,12 @@ const FeaturedMovie = ({ item, play }: Props) => {
       <div className={styles.movieDetails}>
         <p className={styles.title}>{item.title}</p>
         <div className={styles.buttons}>
-          <Button grower={true} text="Play" action={() => play(item.id)} />
+          <Button
+            grower={true}
+            text="Play"
+            icon="play"
+            action={() => play(item.id)}
+          />
           <Button text="Add to my list" action={() => {}} />
         </div>
         <p className={styles.synopsis}>{item.description}</p>

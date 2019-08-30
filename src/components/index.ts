@@ -3,6 +3,7 @@ import FeaturedMovie from './featuredMovie/featuredMovie';
 import Footer from './footer/footer';
 import Header from './header/header';
 import HorizontalMovieScroller from './horizontalMovieScroller/horizontalMovieScroller';
+import Icon from './icon';
 import Layout from './layout/layout';
 import Player from './player/player';
 import Playlists from './playlists/playlists';
@@ -13,6 +14,7 @@ export {
   Footer,
   Header,
   HorizontalMovieScroller,
+  Icon,
   Layout,
   Player,
   Playlists,
