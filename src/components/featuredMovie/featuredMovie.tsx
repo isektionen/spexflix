@@ -1,20 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { Button } from '../../components';
 
 import styles from './featuredMovie.module.scss';
 
-const FeaturedMovie = ({ item }) => {
-  const backgroundImage = `url(${item.thumbnails.medium.url})`;
+import { Movie } from '../../types';
+export interface Props {
+  item: Movie;
+}
+
+const FeaturedMovie = ({ item }: Props) => {
+  /** @type {React.CSSProperties} */
+  const backgroundImageStyles = item.thumbnails
+    ? { backgroundImage: `url(${item.thumbnails.medium.url})` }
+    : undefined;
 
   return (
-    <section
-      className={styles.featuredMovie}
-      style={{
-        backgroundImage,
-      }}
-    >
+    <section className={styles.featuredMovie} style={backgroundImageStyles}>
       <div className={styles.movieDetails}>
         <p className={styles.title}>{item.title}</p>
         <div className={styles.buttons}>
@@ -25,10 +27,6 @@ const FeaturedMovie = ({ item }) => {
       </div>
     </section>
   );
-};
-
-FeaturedMovie.propTypes = {
-  item: PropTypes.object.isRequired,
 };
 
 export default FeaturedMovie;

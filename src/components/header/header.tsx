@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 
 import Logotype from './logotype';
 import Navigation from './navigation';
 
 import styles from './header.module.scss';
 
-const Header = ({ drawBehind }) => {
+export interface Props {
+  drawBehind: boolean;
+  siteName: string;
+}
+
+const Header = ({ drawBehind = false, siteName }: Props) => {
   const [scrollY, setScrollY] = useState(window.scrollY);
 
   const handleScroll = () => {
@@ -19,7 +23,7 @@ const Header = ({ drawBehind }) => {
       window.addEventListener('scroll', () => handleScroll());
 
       return () => {
-        window.removeEventListener('scroll', handleScroll());
+        window.removeEventListener('scroll', () => handleScroll());
       };
     }
   }, [drawBehind]);
@@ -33,19 +37,11 @@ const Header = ({ drawBehind }) => {
   return (
     <header className={headerClass}>
       <div className={styles.left}>
-        <Logotype text={process.env.REACT_APP_SITE_NAME} />
+        <Logotype text={siteName} />
         <Navigation />
       </div>
     </header>
   );
-};
-
-Header.propTypes = {
-  drawBehind: PropTypes.bool,
-};
-
-Header.defaultProps = {
-  drawBehind: false,
 };
 
 export default Header;

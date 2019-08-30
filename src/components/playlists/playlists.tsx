@@ -1,23 +1,25 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { HorizontalMovieScroller } from '../../components';
 
-const Playlists = ({ playlists, items }) => {
+import { Playlist, Movie } from '../../types';
+export interface Props {
+  playlists: Playlist[];
+  items: Movie[];
+}
+
+const Playlists = ({ playlists, items }: Props) => {
   const horizontalScrollers = playlists.map((playlist, index) => (
     <HorizontalMovieScroller
       key={index}
-      items={items[playlist.id]}
+      items={items.filter(item => {
+        return item.playlistId === playlist.id;
+      })}
       title={playlist.title}
     />
   ));
 
   return <section>{horizontalScrollers}</section>;
-};
-
-Playlists.propTypes = {
-  playlists: PropTypes.array.isRequired,
-  items: PropTypes.object.isRequired,
 };
 
 export default Playlists;

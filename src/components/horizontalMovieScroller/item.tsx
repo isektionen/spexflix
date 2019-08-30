@@ -1,16 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import styles from './item.module.scss';
 
-const Item = ({ duration, hasLoaded, isNew, tags, thumbnails, title }) => {
+import { Movie } from '../../types';
+
+const Item = ({ duration, isNew, tags, thumbnails, title }: Movie) => {
   const isNewMarker = isNew ? <span className={styles.isNew}>New</span> : null;
 
-  const backgroundImage = thumbnails ? `url(${thumbnails.medium.url})` : null;
+  /** @type {React.CSSProperties} */
+  const backgroundImageStyles = thumbnails
+    ? {
+        backgroundImage: `url(${thumbnails.medium.url})`,
+      }
+    : undefined;
 
   const tagComponents = tags
     ? tags.map((tag, index) => (
-        <span key={index} style={styles.tag}>
+        <span key={index} className={styles.tag}>
           {tag}
           {index !== tags.length - 1 && (
             <span className={styles.tagSeparator}> &bull; </span>
@@ -20,7 +26,7 @@ const Item = ({ duration, hasLoaded, isNew, tags, thumbnails, title }) => {
     : null;
 
   return (
-    <li className={styles.movieItem} style={{ backgroundImage }}>
+    <li className={styles.movieItem} style={backgroundImageStyles}>
       <div className={styles.details}>
         <p className={styles.title}>{title}</p>
         <p className={styles.duration}>
@@ -31,17 +37,6 @@ const Item = ({ duration, hasLoaded, isNew, tags, thumbnails, title }) => {
       </div>
     </li>
   );
-};
-
-Item.propTypes = {
-  duration: PropTypes.string.isRequired,
-  new: PropTypes.bool,
-  tags: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired,
-};
-
-Item.defaultProps = {
-  isNew: false,
 };
 
 export default Item;
