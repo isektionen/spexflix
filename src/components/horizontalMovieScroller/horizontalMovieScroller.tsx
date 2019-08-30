@@ -5,12 +5,19 @@ import Item from './item';
 
 import styles from './horizontalMovieScroller.module.scss';
 
-const HorizontalMovieScroller = ({ items, title }) => {
+import { Movie } from '../../types';
+export interface Props {
+  items: Movie[];
+  title: string;
+}
+
+const HorizontalMovieScroller = ({ items, title }: Props) => {
   const itemComponents = items
-    ? items.map((item, index) => (
+    ? items.map((item: Movie, index: number) => (
         <Item
           key={index}
-          duration="unknown"
+          id={item.id}
+          duration={0}
           tags={item.tags}
           thumbnails={item.thumbnails}
           title={item.title}
@@ -31,11 +38,6 @@ const HorizontalMovieScroller = ({ items, title }) => {
       </div>
     </div>
   );
-};
-
-HorizontalMovieScroller.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.object).isRequired,
-  title: PropTypes.string.isRequired,
 };
 
 export default HorizontalMovieScroller;

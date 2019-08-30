@@ -1,9 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import styles from './footer.module.scss';
 
-const Footer = ({ siteName, copyrightFromYear }) => {
+export interface Props {
+  siteName: string;
+  copyrightFromYear: number;
+}
+
+const Footer = ({ siteName, copyrightFromYear }: Props) => {
   const year = new Date().getFullYear();
   const copyrightYears =
     copyrightFromYear === year ? year : copyrightFromYear + '-' + year;
@@ -15,16 +19,6 @@ const Footer = ({ siteName, copyrightFromYear }) => {
       </span>
     </footer>
   );
-};
-
-Footer.propTypes = {
-  siteName: PropTypes.string,
-  copyrightFromYear: PropTypes.number,
-};
-
-Footer.defaultProps = {
-  siteName: 'YouFlix',
-  copyrightFromYear: new Date().getFullYear(),
 };
 
 export default Footer;

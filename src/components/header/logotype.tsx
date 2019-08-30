@@ -1,9 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import styles from './logotype.module.scss';
 
-const Logotype = ({ text }) => {
+export interface Props {
+  text: string;
+}
+
+const Logotype = ({ text }: Props) => {
   const letters = text.toUpperCase().split('');
   const maxOffset = Math.floor(letters.length / 2);
   const slope = 10;
@@ -23,10 +26,6 @@ const Logotype = ({ text }) => {
   });
 
   return <div className={styles.logotype}>{letterComponents}</div>;
-};
-
-Logotype.propTypes = {
-  text: PropTypes.string,
 };
 
 export default Logotype;
