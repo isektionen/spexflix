@@ -13,7 +13,7 @@ export interface Props {
 const FeaturedMovie = ({ item, play }: Props) => {
   /** @type {React.CSSProperties} */
   const backgroundImageStyles = item.thumbnails
-    ? { backgroundImage: `url(${item.thumbnails.medium.url})` }
+    ? { backgroundImage: `url(${item.thumbnails.high.url})` }
     : undefined;
 
   return (
