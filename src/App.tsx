@@ -16,8 +16,8 @@ const App = () => {
   );
   const [dataHasLoaded, setDataHasLoaded] = useState(false);
 
-  const siteName = process.env.REACT_APP_SITE_NAME
-    ? process.env.REACT_APP_SITE_NAME
+  const siteTitle = process.env.REACT_APP_SITE_TITLE
+    ? process.env.REACT_APP_SITE_TITLE
     : 'Youflix';
   const copyrightFromYear = process.env.REACT_APP_COPYRIGHT_FROM_YEAR
     ? Number(process.env.REACT_APP_COPYRIGHT_FROM_YEAR)
@@ -52,22 +52,22 @@ const App = () => {
 
   const content = dataHasLoaded ? (
     <>
-    <Layout
-      siteName={siteName}
-      copyrightFromYear={copyrightFromYear}
-      drawBehindHeader={featuredMovie ? true : false}
+      <Layout
+        siteTitle={siteTitle}
+        copyrightFromYear={copyrightFromYear}
+        drawBehindHeader={featuredMovie ? true : false}
         disabled={playerMovieId ? true : false}
-    >
-      {featuredMovie && <FeaturedMovie item={featuredMovie} play={play} />}
-      {playlists && (
-        <Playlists playlists={playlists} items={movies} play={play} />
-      )}
-    </Layout>
+      >
+        {featuredMovie && <FeaturedMovie item={featuredMovie} play={play} />}
+        {playlists && (
+          <Playlists playlists={playlists} items={movies} play={play} />
+        )}
+      </Layout>
       {playerMovieId && <Player id={playerMovieId} play={play} />}
     </>
   ) : (
     <Layout
-      siteName={siteName}
+      siteTitle={siteTitle}
       copyrightFromYear={copyrightFromYear}
       drawBehindHeader={false}
     >
