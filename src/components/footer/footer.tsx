@@ -3,11 +3,11 @@ import React from 'react';
 import styles from './footer.module.scss';
 
 export interface Props {
-  siteTitle: string;
+  publisher: string;
   copyrightFromYear: number;
 }
 
-const Footer = ({ siteTitle, copyrightFromYear }: Props) => {
+const Footer = ({ publisher, copyrightFromYear }: Props) => {
   const year = new Date().getFullYear();
   const copyrightYears =
     copyrightFromYear === year ? year : copyrightFromYear + '-' + year;
@@ -15,7 +15,7 @@ const Footer = ({ siteTitle, copyrightFromYear }: Props) => {
   return (
     <footer className={styles.footer}>
       <span>
-        &copy; {copyrightYears} {siteTitle}
+        &copy; {copyrightYears} {publisher}
       </span>
     </footer>
   );

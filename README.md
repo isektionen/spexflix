@@ -13,6 +13,7 @@
 | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `REACT_APP_SITE_TITLE`                     | Title of site                                                                                                                                                           |
 | `REACT_APP_SITE_DESCRIPTION`               | A short descriptive text of the site. Used in META description.                                                                                                         |
+| `REACT_APP_PUBLISHER`                      | Name of the content publisher.                                                                                                                                          |
 | `REACT_APP_COPYRIGHT_YEAR_FROM`            | Starting year for copyright                                                                                                                                             |
 | `REACT_APP_YOUTUBE_API_KEY`                | Google Cloud API Key with `YouTube Data API v3` enabled. Learn how to create your own [here](https://cloud.google.com/docs/authentication/api-keys#creating_an_api_key) |
 | `REACT_APP_YOUTUBE_CHANNEL_ID`             | YouTube channel to fetch public playlists from                                                                                                                          |

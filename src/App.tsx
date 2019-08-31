@@ -19,6 +19,9 @@ const App = () => {
   const siteTitle = process.env.REACT_APP_SITE_TITLE
     ? process.env.REACT_APP_SITE_TITLE
     : 'Youflix';
+  const publisher = process.env.REACT_APP_PUBLISHER
+    ? process.env.REACT_APP_PUBLISHER
+    : 'Youflix';
   const copyrightFromYear = process.env.REACT_APP_COPYRIGHT_FROM_YEAR
     ? Number(process.env.REACT_APP_COPYRIGHT_FROM_YEAR)
     : new Date().getFullYear();
@@ -54,6 +57,7 @@ const App = () => {
     <>
       <Layout
         siteTitle={siteTitle}
+        publisher={publisher}
         copyrightFromYear={copyrightFromYear}
         drawBehindHeader={featuredMovie ? true : false}
         disabled={playerMovieId ? true : false}
@@ -68,6 +72,7 @@ const App = () => {
   ) : (
     <Layout
       siteTitle={siteTitle}
+      publisher={publisher}
       copyrightFromYear={copyrightFromYear}
       drawBehindHeader={false}
     >

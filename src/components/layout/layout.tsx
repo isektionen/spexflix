@@ -8,12 +8,14 @@ export interface Props {
   children: React.ReactNode;
   drawBehindHeader: boolean;
   siteTitle: string;
+  publisher: string;
   copyrightFromYear: number;
   disabled?: boolean;
 }
 
 const Layout = ({
   siteTitle,
+  publisher,
   copyrightFromYear,
   children,
   drawBehindHeader = true,
@@ -23,7 +25,7 @@ const Layout = ({
     <div className={disabled ? styles.layoutDisabled : styles.layout}>
       <Header siteTitle={siteTitle} drawBehind={drawBehindHeader} />
       <div className={styles.content}>{children}</div>
-      <Footer siteTitle={siteTitle} copyrightFromYear={copyrightFromYear} />
+      <Footer publisher={publisher} copyrightFromYear={copyrightFromYear} />
     </div>
   );
 };
