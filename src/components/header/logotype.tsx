@@ -18,9 +18,11 @@ const Logotype = ({ text }: Props) => {
 
     return (
       <div>
-        <span style={{ transform: `rotateY(${angle}deg) scaleY(${scale})` }}>
-          {letter}
-        </span>
+        <a href="/">
+          <span style={{ transform: `rotateY(${angle}deg) scaleY(${scale})` }}>
+            {letter}
+          </span>
+        </a>
       </div>
     );
   });
