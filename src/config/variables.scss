@@ -13,10 +13,10 @@ $linkHoverColor: $white;
 
 $placeholderBackgroundColor: rgba(100, 100, 100, 0.95);
 
-$fontSize: 1.4vw;
-$lineHeight: #{fontSize} * 1.2;
+$fontSize: calc(.7vw + .7vh + .3vmin);
+$lineHeight: 1.5;
 
-$sideMargin: 60px;
+$sideMargin: 55px;
 
 $buttonTextColor: $white;
 $buttonTextColorHover: $black;
@@ -25,6 +25,6 @@ $buttonBackgroundColorHover: $white;
 
 $horizontalScrollerItemWidth: 30vmin;
 $horizontalScrollerItemHeight: 17vmin;
-$horizontalScrollerItemScaleFactor: 2;
+$horizontalScrollerItemScaleFactor: 1.8;
 
 $horizontalScrollerItemGrowthWidth: $horizontalScrollerItemWidth * $horizontalScrollerItemScaleFactor - $horizontalScrollerItemWidth;

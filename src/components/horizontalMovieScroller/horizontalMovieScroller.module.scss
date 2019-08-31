@@ -8,7 +8,10 @@
   align-items: center;
   padding: 0;
   position: relative;
-  margin-top: -$horizontalScrollerItemHeight / 3;
+
+  &:not(:first-child) {
+    margin-top: -$horizontalScrollerItemHeight / 3;
+  }
 }
 
 .title {
@@ -16,7 +19,7 @@
   position: absolute;
   top: 0;
   left: $sideMargin;
-  height: $horizontalScrollerItemHeight / 2.2;
+  height: ($horizontalScrollerItemHeight * $horizontalScrollerItemScaleFactor - $horizontalScrollerItemHeight) / 2;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -25,7 +28,7 @@
 }
 
 .title > span {
-  line-height: 2;
+  margin-bottom: 0.7em;
 }
 
 .scroller {

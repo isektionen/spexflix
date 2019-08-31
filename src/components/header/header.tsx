@@ -7,10 +7,10 @@ import styles from './header.module.scss';
 
 export interface Props {
   drawBehind: boolean;
-  siteName: string;
+  siteTitle: string;
 }
 
-const Header = ({ drawBehind = false, siteName }: Props) => {
+const Header = ({ drawBehind = false, siteTitle }: Props) => {
   const [scrollY, setScrollY] = useState(window.scrollY);
 
   const handleScroll = () => {
@@ -37,7 +37,7 @@ const Header = ({ drawBehind = false, siteName }: Props) => {
   return (
     <header className={headerClass}>
       <div className={styles.left}>
-        <Logotype text={siteName} />
+        <Logotype text={siteTitle} />
         <Navigation />
       </div>
     </header>

@@ -7,13 +7,15 @@ import styles from './layout.module.scss';
 export interface Props {
   children: React.ReactNode;
   drawBehindHeader: boolean;
-  siteName: string;
+  siteTitle: string;
+  publisher: string;
   copyrightFromYear: number;
   disabled?: boolean;
 }
 
 const Layout = ({
-  siteName,
+  siteTitle,
+  publisher,
   copyrightFromYear,
   children,
   drawBehindHeader = true,
@@ -21,9 +23,9 @@ const Layout = ({
 }: Props) => {
   return (
     <div className={disabled ? styles.layoutDisabled : styles.layout}>
-      <Header siteName={siteName} drawBehind={drawBehindHeader} />
+      <Header siteTitle={siteTitle} drawBehind={drawBehindHeader} />
       <div className={styles.content}>{children}</div>
-      <Footer siteName={siteName} copyrightFromYear={copyrightFromYear} />
+      <Footer publisher={publisher} copyrightFromYear={copyrightFromYear} />
     </div>
   );
 };

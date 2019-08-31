@@ -12,7 +12,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: stretch;
-  margin-bottom: -80px;
+  margin-bottom: -$horizontalScrollerItemHeight * $horizontalScrollerItemScaleFactor / 3.5;
 }
 
 .movieDetails {
