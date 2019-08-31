@@ -8,7 +8,10 @@
   align-items: center;
   padding: 0;
   position: relative;
-  margin-top: -$horizontalScrollerItemHeight / 3;
+
+  &:not(:first-child) {
+    margin-top: -$horizontalScrollerItemHeight / 3;
+  }
 }
 
 .title {
