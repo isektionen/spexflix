@@ -3,7 +3,7 @@
 ## 📋 Get started
 
 1. `git clone https://github.com/vmorsell/react-youflix`
-1. Create the file .env with the desired settings, see [Environment variables](#environment-variables).
+1. Create the file .env with the desired settings, see [Environment variables](#-environment-variables).
 1. `yarn`
 1. `yarn start`
 
