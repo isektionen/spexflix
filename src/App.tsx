@@ -9,9 +9,6 @@ import { Playlist, Movie } from './types';
 const App = () => {
   const [playlists, setPlaylists] = useState<Playlist[]>([]);
   const [movies, setMovies] = useState<Movie[]>([]);
-  const [playerMovieId, setPlayerMovieId] = useState<string | undefined>(
-    undefined,
-  );
   const [featuredMovie, setFeaturedMovie] = useState<Movie | undefined>(
     undefined,
   );
