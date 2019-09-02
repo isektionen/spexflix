@@ -1,23 +1,13 @@
 import React from 'react';
+import { Link } from '@reach/router';
 
 import { Icon } from '../../components';
 
 import styles from './item.module.scss';
 
 import { Movie } from '../../types';
-export interface Props extends Movie {
-  play: CallableFunction;
-}
 
-const Item = ({
-  duration,
-  id,
-  isNew,
-  tags,
-  thumbnails,
-  title,
-  play,
-}: Props) => {
+const Item = ({ duration, id, isNew, tags, thumbnails, title }: Movie) => {
   const isNewMarker = isNew ? <span className={styles.isNew}>New</span> : null;
 
   /** @type {React.CSSProperties} */
@@ -39,21 +29,19 @@ const Item = ({
     : null;
 
   return (
-    <li
-      className={styles.movieItem}
-      style={backgroundImageStyles}
-      onClick={() => play(id)}
-    >
-      <div className={styles.details}>
-        <Icon name="play" className={styles.playIcon} />
-        <p className={styles.title}>{title}</p>
-        <p className={styles.duration}>
-          {isNewMarker}
-          {duration}
-        </p>
-        <p className={styles.tags}>{tagComponents}</p>
-      </div>
-    </li>
+    <Link to={'/player/' + id} className={styles.movieItem}>
+      <li style={backgroundImageStyles}>
+        <div className={styles.details}>
+          <Icon name="play" className={styles.playIcon} />
+          <p className={styles.title}>{title}</p>
+          <p className={styles.duration}>
+            {isNewMarker}
+            {duration}
+          </p>
+          <p className={styles.tags}>{tagComponents}</p>
+        </div>
+      </li>
+    </Link>
   );
 };
 

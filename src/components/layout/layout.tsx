@@ -10,7 +10,6 @@ export interface Props {
   siteTitle: string;
   publisher: string;
   copyrightFromYear: number;
-  disabled?: boolean;
 }
 
 const Layout = ({
@@ -19,10 +18,9 @@ const Layout = ({
   copyrightFromYear,
   children,
   drawBehindHeader = true,
-  disabled = false,
 }: Props) => {
   return (
-    <div className={disabled ? styles.layoutDisabled : styles.layout}>
+    <div className={styles.layout}>
       <Header siteTitle={siteTitle} drawBehind={drawBehindHeader} />
       <div className={styles.content}>{children}</div>
       <Footer publisher={publisher} copyrightFromYear={copyrightFromYear} />

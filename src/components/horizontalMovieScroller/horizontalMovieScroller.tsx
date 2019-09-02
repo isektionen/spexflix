@@ -8,10 +8,9 @@ import { Movie } from '../../types';
 export interface Props {
   items: Movie[];
   title: string;
-  play: CallableFunction;
 }
 
-const HorizontalMovieScroller = ({ items, title, play }: Props) => {
+const HorizontalMovieScroller = ({ items, title }: Props) => {
   const itemComponents = items
     ? items.map((item: Movie, index: number) => (
         <Item
@@ -21,7 +20,6 @@ const HorizontalMovieScroller = ({ items, title, play }: Props) => {
           tags={item.tags}
           thumbnails={item.thumbnails}
           title={item.title}
-          play={play}
         />
       ))
     : null;

@@ -1,19 +1,15 @@
 import React from 'react';
+import { Link } from '@reach/router';
 
 import { Icon } from '../../components';
 
 import styles from './player.module.scss';
 
-export interface Props {
+type Props = {
   id: string;
-  play: CallableFunction;
-}
+};
 
-const Player = ({ id, play }: Props) => {
-  const handleReturnButtonClick = () => {
-    play(undefined);
-  };
-
+const Player = ({ id }: Props) => {
   return (
     <div className={styles.player}>
       <iframe
@@ -27,9 +23,11 @@ const Player = ({ id, play }: Props) => {
         }
       ></iframe>
       <div className={styles.overlay}>
-        <div className={styles.returnButton} onClick={handleReturnButtonClick}>
-          <Icon name="arrowLeft" />
-        </div>
+        <Link to="/">
+          <div className={styles.returnButton}>
+            <Icon name="arrowLeft" />
+          </div>
+        </Link>
       </div>
     </div>
   );

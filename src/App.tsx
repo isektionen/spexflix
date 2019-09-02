@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Router, RouteComponentProps } from '@reach/router';
 
 import { FeaturedMovie, Layout, Player, Playlists } from './components';
 import { getPlaylists, getPlaylistItems } from './api/youtube';
@@ -26,10 +27,6 @@ const App = () => {
     ? Number(process.env.REACT_APP_COPYRIGHT_FROM_YEAR)
     : new Date().getFullYear();
 
-  const play: CallableFunction = (id: string) => {
-    setPlayerMovieId(id);
-  };
-
   useEffect(() => {
     const fetchData = async () => {
       let playlists: Playlist[] = await getPlaylists();
@@ -53,34 +50,38 @@ const App = () => {
     fetchData();
   }, []);
 
-  const content = dataHasLoaded ? (
-    <>
+  const HomeScreen = (props: RouteComponentProps) =>
+    dataHasLoaded ? (
       <Layout
         siteTitle={siteTitle}
         publisher={publisher}
         copyrightFromYear={copyrightFromYear}
         drawBehindHeader={featuredMovie ? true : false}
-        disabled={playerMovieId ? true : false}
       >
-        {featuredMovie && <FeaturedMovie item={featuredMovie} play={play} />}
-        {playlists && (
-          <Playlists playlists={playlists} items={movies} play={play} />
-        )}
+        {featuredMovie && <FeaturedMovie item={featuredMovie} />}
+        {playlists && <Playlists playlists={playlists} items={movies} />}
       </Layout>
-      {playerMovieId && <Player id={playerMovieId} play={play} />}
-    </>
-  ) : (
-    <Layout
-      siteTitle={siteTitle}
-      publisher={publisher}
-      copyrightFromYear={copyrightFromYear}
-      drawBehindHeader={false}
-    >
-      <p>Loading</p>
-    </Layout>
-  );
+    ) : (
+      <Layout
+        siteTitle={siteTitle}
+        publisher={publisher}
+        copyrightFromYear={copyrightFromYear}
+        drawBehindHeader={false}
+      >
+        <p>Loading</p>
+      </Layout>
+    );
 
-  return content;
+  const PlayerScreen = (props: RouteComponentProps<{ id: string }>) => {
+    return props.id ? <Player id={props.id} /> : <></>;
+  };
+
+  return (
+    <Router>
+      <HomeScreen path="/" />
+      <PlayerScreen path="/player/:id" />
+    </Router>
+  );
 };
 
 export default App;
