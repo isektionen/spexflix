@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from '@reach/router';
 
 import styles from './navigation.module.scss';
 
@@ -6,17 +7,14 @@ const Navigation = () => (
   <nav className={styles.navigation}>
     <ul className={styles.navList}>
       <li className={styles.navItem}>
-        <a
-          href="/"
-          className={[styles.navLink, styles.navLinkActive].join(' ')}
-        >
+        <Link to="/" className={styles.navLinkActive}>
           Home
-        </a>
+        </Link>
       </li>
       <li className={styles.navItem}>
-        <a href="/" className={styles.navLink}>
+        <Link to="/" className={styles.navLink}>
           New movies
-        </a>
+        </Link>
       </li>
     </ul>
   </nav>
