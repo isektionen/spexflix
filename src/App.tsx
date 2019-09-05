@@ -5,6 +5,7 @@ import { getPlaylists, getPlaylistItems } from './api/youtube';
 
 import HomeScreen from './screens/homeScreen';
 import PlayerScreen from './screens/playerScreen';
+import LoadingScreen from './screens/loadingScreen';
 import NotFoundScreen from './screens/notFoundScreen';
 
 import { Playlist, Movie } from './types';
@@ -52,7 +53,7 @@ const App = () => {
       </Router>
     );
   } else {
-    return <></>;
+    return <LoadingScreen />;
   }
 };
 
