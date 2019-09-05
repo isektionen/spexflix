@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Router, RouteComponentProps } from '@reach/router';
+import { Router } from '@reach/router';
 
-import { FeaturedMovie, Layout, Player, Playlists } from './components';
 import { getPlaylists, getPlaylistItems } from './api/youtube';
+
+import HomeScreen from './screens/homeScreen';
+import PlayerScreen from './screens/playerScreen';
 
 import { Playlist, Movie } from './types';
 
@@ -13,16 +15,6 @@ const App = () => {
     undefined,
   );
   const [dataHasLoaded, setDataHasLoaded] = useState(false);
-
-  const siteTitle = process.env.REACT_APP_SITE_TITLE
-    ? process.env.REACT_APP_SITE_TITLE
-    : 'Youflix';
-  const publisher = process.env.REACT_APP_PUBLISHER
-    ? process.env.REACT_APP_PUBLISHER
-    : 'Youflix';
-  const copyrightFromYear = process.env.REACT_APP_COPYRIGHT_FROM_YEAR
-    ? Number(process.env.REACT_APP_COPYRIGHT_FROM_YEAR)
-    : new Date().getFullYear();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,45 +32,26 @@ const App = () => {
         return movie.id === process.env.REACT_APP_YOUTUBE_FEATURED_VIDEO_ID;
       });
       setFeaturedMovie(featuredMovie);
-
-      setDataHasLoaded(true);
     };
 
-    fetchData();
+    fetchData().then(() => setDataHasLoaded(true));
   }, []);
 
-  const HomeScreen = (props: RouteComponentProps) =>
-    dataHasLoaded ? (
-      <Layout
-        siteTitle={siteTitle}
-        publisher={publisher}
-        copyrightFromYear={copyrightFromYear}
-        drawBehindHeader={featuredMovie ? true : false}
-      >
-        {featuredMovie && <FeaturedMovie item={featuredMovie} />}
-        {playlists && <Playlists playlists={playlists} items={movies} />}
-      </Layout>
-    ) : (
-      <Layout
-        siteTitle={siteTitle}
-        publisher={publisher}
-        copyrightFromYear={copyrightFromYear}
-        drawBehindHeader={false}
-      >
-        <p>Loading</p>
-      </Layout>
+  if (dataHasLoaded) {
+    return (
+      <Router>
+        <HomeScreen
+          path="/"
+          playlists={playlists}
+          movies={movies}
+          featuredMovie={featuredMovie}
+        />
+        <PlayerScreen path="/player/:id" />
+      </Router>
     );
-
-  const PlayerScreen = (props: RouteComponentProps<{ id: string }>) => {
-    return props.id ? <Player id={props.id} /> : <></>;
-  };
-
-  return (
-    <Router>
-      <HomeScreen path="/" />
-      <PlayerScreen path="/player/:id" />
-    </Router>
-  );
+  } else {
+    return <></>;
+  }
 };
 
 export default App;
