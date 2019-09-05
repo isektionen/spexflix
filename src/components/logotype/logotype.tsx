@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from '@reach/router';
+
 import styles from './logotype.module.scss';
 
 export interface Props {
@@ -37,7 +39,11 @@ const Logotype = ({ text }: Props) => {
     );
   });
 
-  return <div className={styles.logotype}>{letterComponents}</div>;
+  return (
+    <Link to="/">
+      <div className={styles.logotype}>{letterComponents}</div>
+    </Link>
+  );
 };
 
 export default Logotype;
