@@ -1,7 +1,7 @@
 import React from 'react';
 import { RouteComponentProps } from '@reach/router';
 
-import Logotype from '../../components/header/logotype';
+import { Logotype } from '../../components';
 
 import styles from './loadingScreen.module.scss';
 

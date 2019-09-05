@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import Logotype from './logotype';
+import { Logotype } from '../../components';
 import Navigation from './navigation';
 
 import styles from './header.module.scss';
