@@ -5,6 +5,7 @@ import { getPlaylists, getPlaylistItems } from './api/youtube';
 
 import HomeScreen from './screens/homeScreen';
 import PlayerScreen from './screens/playerScreen';
+import NotFoundScreen from './screens/notFoundScreen';
 
 import { Playlist, Movie } from './types';
 
@@ -47,6 +48,7 @@ const App = () => {
           featuredMovie={featuredMovie}
         />
         <PlayerScreen path="/player/:id" />
+        <NotFoundScreen default />
       </Router>
     );
   } else {
