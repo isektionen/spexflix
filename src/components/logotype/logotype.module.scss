@@ -8,7 +8,7 @@ $distance: 100;
   flex-direction: row;
   cursor: pointer;
 
-  div {
+  .letter {
     perspective: 100px;
     perspective-origin: 50% 0;
 
@@ -19,6 +19,18 @@ $distance: 100;
       color: $logotypeColor;
       display: block;
       transform-origin: 50% 0;
+    }
+  }
+
+  .allButFirstLetter {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    max-width: 100vw;
+    transition: all 1s ease-in;
+
+    &.hidden {
+      max-width: 0;
     }
   }
 }

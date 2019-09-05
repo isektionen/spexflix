@@ -17,6 +17,11 @@ const App = () => {
     undefined,
   );
   const [dataHasLoaded, setDataHasLoaded] = useState(false);
+  const [loadingScreenDismissed, setLoadingScreenDismissed] = useState(false);
+
+  const dismissLoadingScreen = () => {
+    setLoadingScreenDismissed(true);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,7 +44,7 @@ const App = () => {
     fetchData().then(() => setDataHasLoaded(true));
   }, []);
 
-  if (dataHasLoaded) {
+  if (dataHasLoaded && loadingScreenDismissed) {
     return (
       <Router>
         <HomeScreen
@@ -53,7 +58,12 @@ const App = () => {
       </Router>
     );
   } else {
-    return <LoadingScreen />;
+    return (
+      <LoadingScreen
+        dataHasLoaded={dataHasLoaded}
+        dismissLoadingScreen={() => dismissLoadingScreen()}
+      />
+    );
   }
 };
 

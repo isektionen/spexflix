@@ -6,9 +6,10 @@ import styles from './logotype.module.scss';
 
 export interface Props {
   text: string;
+  showOnlyFirstLetter?: boolean;
 }
 
-const Logotype = ({ text }: Props) => {
+const Logotype = ({ text, showOnlyFirstLetter = false }: Props) => {
   const letters = text.toUpperCase().split('');
   const maxOffset = Math.floor(letters.length / 2);
   const slope = 10;
@@ -25,23 +26,28 @@ const Logotype = ({ text }: Props) => {
     const scale = 1 + Math.pow(Math.abs(offset), 2) * 0.01;
 
     return (
-      <div>
-        <a href="/">
-          <span
-            style={{
-              transform: `rotateY(${angle}deg) scaleY(${scale})`,
-            }}
-          >
-            {letter}
-          </span>
-        </a>
+      <div className={styles.letter}>
+        <span
+          style={{
+            transform: `rotateY(${angle}deg) scaleY(${scale})`,
+          }}
+        >
+          {letter}
+        </span>
       </div>
     );
   });
 
+  const notFirstLetterStyles = showOnlyFirstLetter
+    ? [styles.allButFirstLetter, styles.hidden].join(' ')
+    : styles.allButFirstLetter;
+
   return (
     <Link to="/">
-      <div className={styles.logotype}>{letterComponents}</div>
+      <div className={styles.logotype}>
+        {letterComponents[0]}
+        <div className={notFirstLetterStyles}>{letterComponents.slice(1)}</div>
+      </div>
     </Link>
   );
 };
