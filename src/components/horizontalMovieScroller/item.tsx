@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from '@reach/router';
 
+import { PlayerScreenLink } from '../../screens/playerScreen';
 import { Icon } from '../../components';
 
 import styles from './item.module.scss';
@@ -29,7 +29,7 @@ const Item = ({ duration, id, isNew, tags, thumbnails, title }: Movie) => {
     : null;
 
   return (
-    <Link to={'/player/' + id} className={styles.movieItem}>
+    <PlayerScreenLink movieId={id} className={styles.movieItem}>
       <li style={backgroundImageStyles}>
         <div className={styles.details}>
           <Icon name="play" className={styles.playIcon} />
@@ -41,7 +41,7 @@ const Item = ({ duration, id, isNew, tags, thumbnails, title }: Movie) => {
           <p className={styles.tags}>{tagComponents}</p>
         </div>
       </li>
-    </Link>
+    </PlayerScreenLink>
   );
 };
 

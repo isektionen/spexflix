@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Router } from '@reach/router';
+import { Router, Location, navigate } from '@reach/router';
 
 import { getPlaylists, getPlaylistItems } from './api/youtube';
 
@@ -44,18 +44,31 @@ const App = () => {
     fetchData().then(() => setDataHasLoaded(true));
   }, []);
 
+  const Routes = (props: any) => (
+    <Router {...props}>
+      <HomeScreen
+        path="/"
+        playlists={playlists}
+        movies={movies}
+        featuredMovie={featuredMovie}
+      />
+      <PlayerScreen path="/player/:id" />
+      <NotFoundScreen default />
+    </Router>
+  );
   if (dataHasLoaded && loadingScreenDismissed) {
     return (
-      <Router>
-        <HomeScreen
-          path="/"
-          playlists={playlists}
-          movies={movies}
-          featuredMovie={featuredMovie}
-        />
-        <PlayerScreen path="/player/:id" />
-        <NotFoundScreen default />
-      </Router>
+      <Location>
+        {({ location }) => {
+          const { oldLocation } = location.state || {};
+          return (
+            <>
+              <Routes location={oldLocation != null ? oldLocation : location} />
+              {oldLocation != null && <Routes location={location} />}
+            </>
+          );
+        }}
+      </Location>
     );
   } else {
     return (

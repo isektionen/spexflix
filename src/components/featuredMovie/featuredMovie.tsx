@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from '@reach/router';
 
 import { Button } from '../../components';
+import { PlayerScreenLink } from '../../screens/playerScreen';
 
 import styles from './featuredMovie.module.scss';
 
@@ -21,9 +21,9 @@ const FeaturedMovie = ({ item }: Props) => {
       <div className={styles.movieDetails}>
         <p className={styles.title}>{item.title}</p>
         <div className={styles.buttons}>
-          <Link to={'/player/' + item.id}>
+          <PlayerScreenLink movieId={item.id}>
             <Button grower={true} text="Play" icon="play" action={() => {}} />
-          </Link>
+          </PlayerScreenLink>
           <Button text="Add to my list" />
         </div>
         <p className={styles.synopsis}>{item.description}</p>
