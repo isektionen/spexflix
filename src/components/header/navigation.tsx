@@ -11,11 +11,6 @@ const Navigation = () => (
           Home
         </Link>
       </li>
-      <li className={styles.navItem}>
-        <Link to="/" className={styles.navLink}>
-          New movies
-        </Link>
-      </li>
     </ul>
   </nav>
 );
