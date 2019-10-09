@@ -1,4 +1,5 @@
 $white: rgb(255, 255, 255);
+$whiteGray: rgb(229, 229, 229);
 $gray: rgb(128, 128, 128);
 $black: rgb(20, 20, 20);
 $red: rgb(229, 9, 20);
@@ -13,7 +14,7 @@ $linkHoverColor: $white;
 
 $placeholderBackgroundColor: rgba(100, 100, 100, 0.95);
 
-$fontSize: calc(.7vw + .7vh + .3vmin);
+$fontSize: 1.1vw;
 $lineHeight: 1.5;
 
 $sideMargin: 55px;
