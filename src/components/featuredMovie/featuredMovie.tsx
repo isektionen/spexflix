@@ -24,7 +24,6 @@ const FeaturedMovie = ({ item }: Props) => {
           <PlayerScreenLink movieId={item.id}>
             <Button grower={true} text="Play" icon="play" action={() => {}} />
           </PlayerScreenLink>
-          <Button text="Add to my list" />
         </div>
         <p className={styles.synopsis}>{item.description}</p>
       </div>
