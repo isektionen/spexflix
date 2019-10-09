@@ -1,6 +1,6 @@
 @import "../../config/variables.scss";
 
-.movieItem {
+.movieItem li {
   --details-opacity: 0;
   --details-transition-duration: 0.2s;
   --details-transition-delay: 0.1s;
@@ -24,7 +24,7 @@
   z-index: 10;
 }
 
-.movieItem:hover {
+.movieItem li:hover {
   --details-opacity: 1;
   --details-transition-duration: 0.3s;
   --details-transition-delay: 0.3s;
@@ -34,7 +34,7 @@
   height: $horizontalScrollerItemHeight * $horizontalScrollerItemScaleFactor;
 }
 
-.movieItem:first-child:hover {
+.movieItem:first-child li:hover {
   margin-left: calc(#{$horizontalScrollerItemGrowthWidth} / 2);
 }
 

@@ -1,33 +1,26 @@
 import React, { useState, useEffect } from 'react';
+import { Router, Location, navigate } from '@reach/router';
 
-import { FeaturedMovie, Layout, Player, Playlists } from './components';
 import { getPlaylists, getPlaylistItems } from './api/youtube';
+
+import HomeScreen from './screens/homeScreen';
+import PlayerScreen from './screens/playerScreen';
+import LoadingScreen from './screens/loadingScreen';
+import NotFoundScreen from './screens/notFoundScreen';
 
 import { Playlist, Movie } from './types';
 
 const App = () => {
   const [playlists, setPlaylists] = useState<Playlist[]>([]);
   const [movies, setMovies] = useState<Movie[]>([]);
-  const [playerMovieId, setPlayerMovieId] = useState<string | undefined>(
-    undefined,
-  );
   const [featuredMovie, setFeaturedMovie] = useState<Movie | undefined>(
     undefined,
   );
   const [dataHasLoaded, setDataHasLoaded] = useState(false);
+  const [loadingScreenDismissed, setLoadingScreenDismissed] = useState(false);
 
-  const siteTitle = process.env.REACT_APP_SITE_TITLE
-    ? process.env.REACT_APP_SITE_TITLE
-    : 'Youflix';
-  const publisher = process.env.REACT_APP_PUBLISHER
-    ? process.env.REACT_APP_PUBLISHER
-    : 'Youflix';
-  const copyrightFromYear = process.env.REACT_APP_COPYRIGHT_FROM_YEAR
-    ? Number(process.env.REACT_APP_COPYRIGHT_FROM_YEAR)
-    : new Date().getFullYear();
-
-  const play: CallableFunction = (id: string) => {
-    setPlayerMovieId(id);
+  const dismissLoadingScreen = () => {
+    setLoadingScreenDismissed(true);
   };
 
   useEffect(() => {
@@ -46,41 +39,45 @@ const App = () => {
         return movie.id === process.env.REACT_APP_YOUTUBE_FEATURED_VIDEO_ID;
       });
       setFeaturedMovie(featuredMovie);
-
-      setDataHasLoaded(true);
     };
 
-    fetchData();
+    fetchData().then(() => setDataHasLoaded(true));
   }, []);
 
-  const content = dataHasLoaded ? (
-    <>
-      <Layout
-        siteTitle={siteTitle}
-        publisher={publisher}
-        copyrightFromYear={copyrightFromYear}
-        drawBehindHeader={featuredMovie ? true : false}
-        disabled={playerMovieId ? true : false}
-      >
-        {featuredMovie && <FeaturedMovie item={featuredMovie} play={play} />}
-        {playlists && (
-          <Playlists playlists={playlists} items={movies} play={play} />
-        )}
-      </Layout>
-      {playerMovieId && <Player id={playerMovieId} play={play} />}
-    </>
-  ) : (
-    <Layout
-      siteTitle={siteTitle}
-      publisher={publisher}
-      copyrightFromYear={copyrightFromYear}
-      drawBehindHeader={false}
-    >
-      <p>Loading</p>
-    </Layout>
+  const Routes = (props: any) => (
+    <Router {...props}>
+      <HomeScreen
+        path="/"
+        playlists={playlists}
+        movies={movies}
+        featuredMovie={featuredMovie}
+      />
+      <PlayerScreen path="/player/:id" />
+      <NotFoundScreen default />
+    </Router>
   );
-
-  return content;
+  if (dataHasLoaded && loadingScreenDismissed) {
+    return (
+      <Location>
+        {({ location }) => {
+          const { oldLocation } = location.state || {};
+          return (
+            <>
+              <Routes location={oldLocation != null ? oldLocation : location} />
+              {oldLocation != null && <Routes location={location} />}
+            </>
+          );
+        }}
+      </Location>
+    );
+  } else {
+    return (
+      <LoadingScreen
+        dataHasLoaded={dataHasLoaded}
+        dismissLoadingScreen={() => dismissLoadingScreen()}
+      />
+    );
+  }
 };
 
 export default App;

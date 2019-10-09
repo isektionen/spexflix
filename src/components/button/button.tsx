@@ -5,7 +5,7 @@ import { Icon } from '../../components';
 import styles from './button.module.scss';
 
 export interface Props {
-  action: VoidFunction;
+  action?: VoidFunction;
   grower?: boolean;
   text: string;
   icon?: string;
