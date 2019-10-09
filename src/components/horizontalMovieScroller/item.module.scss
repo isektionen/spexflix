@@ -1,5 +1,9 @@
 @import "../../config/variables.scss";
 
+.movieItem {
+  z-index: 10;
+}
+
 .movieItem li {
   --details-opacity: 0;
   --details-transition-duration: 0.2s;
@@ -21,7 +25,6 @@
   transition: all 0.3s ease-in-out;
   transition-delay: 0.1s;
   cursor: pointer;
-  z-index: 10;
 }
 
 .movieItem li:hover {
