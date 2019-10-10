@@ -34,11 +34,6 @@ const Item = ({ duration, id, isNew, tags, thumbnails, title }: Movie) => {
         <div className={styles.details}>
           <Icon name="play" className={styles.playIcon} />
           <p className={styles.title}>{title}</p>
-          <p className={styles.duration}>
-            {isNewMarker}
-            {duration}
-          </p>
-          <p className={styles.tags}>{tagComponents}</p>
         </div>
       </li>
     </PlayerScreenLink>
