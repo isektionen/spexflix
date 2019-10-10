@@ -22,7 +22,7 @@
   padding: 0 60px;
   max-width: 50vw;
   background-image: linear-gradient(to right,
-  rgba(20, 20, 20, 0.6) 50%,
+  rgba(20, 20, 20, 0.3) 50%,
   rgba(20, 20, 20, 0) 100%
   );
 }
@@ -30,6 +30,7 @@
 .title {
   font-size: 2.5em;
   font-weight: bold;
+  text-shadow: rgba(0, 0, 0, 0.3) 2px 2px 4px;
 }
 
 .buttons {
@@ -42,5 +43,7 @@
 }
 
 .synopsis {
-  font-size: 1.2em;
+  font-size: 1.3em;
+  line-height: 1.25;
+  text-shadow: rgba(0, 0, 0, 0.3) 2px 2px 4px;
 }
