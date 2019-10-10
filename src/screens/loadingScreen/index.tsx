@@ -17,7 +17,7 @@ const NotFoundScreen = (props: Props) => {
 
   useEffect(() => {
     if (props.dataHasLoaded) {
-      setTimeout(() => props.dismissLoadingScreen(), 1000);
+      setTimeout(() => props.dismissLoadingScreen(), 500);
     }
   }, [props.dataHasLoaded]);
 
