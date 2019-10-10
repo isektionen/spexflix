@@ -16,23 +16,17 @@ const callApi = async ({ endpoint, params }) => {
   numApiCall++;
   console.log('Api call #' + numApiCall);
 
-  try {
-    const response = await api.get(endpoint, {
-      params: {
-        ...params,
-        key: process.env.REACT_APP_YOUTUBE_API_KEY,
-      },
-    });
+  const response = await api.get(endpoint, {
+    params: {
+      ...params,
+      key: process.env.REACT_APP_YOUTUBE_API_KEY,
+    },
+  });
 
-    if (response.status === 200) {
-      return response.data;
-    } else {
-      throw new Error(response);
-    }
-  } catch (error) {
-    console.log('Found an error');
-    console.log(error);
-    return [];
+  if (response.status === 200) {
+    return response.data;
+  } else {
+    throw new Error(response);
   }
 };
 
