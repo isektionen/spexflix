@@ -1,0 +1,35 @@
+.navigation {
+  margin-left: 60px;
+
+  .navList {
+    display: flex;
+    padding: 0;
+    
+    .navItem {
+      display: block;
+      margin-right: 20px;
+      font-size: 0.9em;
+    
+      .navLink {
+        color: rgb(229, 229, 229);
+        font-weight: normal;
+        transition: color 0.3s ease;
+      
+        &:hover {
+          color: rgb(182, 182, 182);
+        }
+      }
+      
+      .navLinkActive {
+        @extend .navLink;
+        font-weight: bold;
+        color: rgb(255, 255, 255);
+      
+        &:hover {
+          color: rgb(255, 255, 255);
+        }
+      }
+    }
+  }  
+}
+

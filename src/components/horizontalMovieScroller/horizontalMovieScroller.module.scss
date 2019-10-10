@@ -1,0 +1,65 @@
+@import "../../config/variables.scss";
+
+.horizontalMovieScroller {
+  height: $horizontalScrollerItemHeight * $horizontalScrollerItemScaleFactor;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  position: relative;
+
+  &:not(:first-child) {
+    margin-top: -$horizontalScrollerItemHeight / 6;
+  }
+}
+
+.title {
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  left: $sideMargin;
+  height: ($horizontalScrollerItemHeight * $horizontalScrollerItemScaleFactor - $horizontalScrollerItemHeight) / 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+}
+
+.title > span {
+  margin-bottom: 0.7em;
+  font-size: 1.4vw;
+  color: $whiteGray;
+}
+
+.scroller {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  width: 100vw;
+}
+
+.scrollerContent:hover {
+  margin-left: calc(#{$sideMargin} - #{$horizontalScrollerItemGrowthWidth} / 2);
+}
+
+.scrollerContent {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  margin: 0 0 0 $sideMargin;
+  transition: all 0.3s ease-in-out;
+  transition-delay: 0.1s;
+}
+
+.rightMargin {
+  flex: 0 0 $sideMargin;
+  height: 1px;
+}

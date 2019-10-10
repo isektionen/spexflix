@@ -1,0 +1,35 @@
+@import "../../config/variables.scss";
+
+.header {
+  position: sticky;
+  top: 0;
+  background-color: $backgroundColor;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+  height: 68px;
+  padding: 0 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.5s ease;
+  z-index: 100;
+}
+
+.headerFixed {
+  @extend .header;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.headerFixedTransparent {
+  @extend .headerFixed;
+  background-color: transparent;
+}
+
+.left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

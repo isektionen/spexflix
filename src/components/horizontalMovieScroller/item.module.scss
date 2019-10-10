@@ -1,0 +1,95 @@
+@import "../../config/variables.scss";
+
+.movieItem {
+  z-index: 10;
+}
+
+.movieItem li {
+  --details-opacity: 0;
+  --details-transition-duration: 0.2s;
+  --details-transition-delay: 0.1s;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: $horizontalScrollerItemWidth;
+  max-width: $horizontalScrollerItemWidth;
+  min-width: $horizontalScrollerItemWidth;
+  height: $horizontalScrollerItemHeight;
+  background-color: $placeholderBackgroundColor;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-right: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: all 0.3s ease-in-out;
+  transition-delay: 0.1s;
+  cursor: pointer;
+}
+
+.movieItem li:hover {
+  --details-opacity: 1;
+  --details-transition-duration: 0.3s;
+  --details-transition-delay: 0.3s;
+  flex-basis: $horizontalScrollerItemWidth * $horizontalScrollerItemScaleFactor;
+  max-width: $horizontalScrollerItemWidth * $horizontalScrollerItemScaleFactor;
+  min-width: $horizontalScrollerItemWidth * $horizontalScrollerItemScaleFactor;
+  height: $horizontalScrollerItemHeight * $horizontalScrollerItemScaleFactor;
+}
+
+.movieItem:first-child li:hover {
+  margin-left: calc(#{$horizontalScrollerItemGrowthWidth} / 2);
+}
+
+.details {
+  padding: 10px;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  white-space: normal;
+  transition: opacity var(--details-transition-duration) ease-in-out;
+  transition-delay: var(--details-transition-delay);
+  opacity: var(--details-opacity);
+
+  .playIcon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid $textColor;
+    border-radius: 50%;
+
+    path {
+      fill: $logotypeColor;
+    }
+  }
+}
+
+%details-common {
+  margin: 0.3em 0 0 0;
+}
+
+.title {
+  @extend %details-common;
+  font-weight: bold;
+}
+
+.duration {
+  @extend %details-common;
+  font-size: 0.8em;
+}
+
+.isNew {
+  color: $green;
+  font-weight: bold;
+  margin-right: 0.5em;
+}
+
+.tags {
+  @extend %details-common;
+  font-size: 0.8em;
+  display: block;
+}
+
+.tags:empty::before {
+  content: "\A0";
+}
+
+.tagSeparator {
+  color: $gray;
+}

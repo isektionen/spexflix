@@ -1,0 +1,45 @@
+@import "../../config/variables.scss";
+
+.button {
+  color: $buttonTextColor;
+  background-color: $buttonBackgroundColor;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 2px;
+  padding: 0.1em 2em;
+  height: 2.2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  svg {
+    margin-right: 0.3em;
+  }
+
+  svg path {
+    fill: $buttonTextColor
+  }
+
+  &:hover svg path {
+    fill: $buttonTextColorHover;
+  }
+}
+
+.button:hover {
+  color: $buttonTextColorHover;
+  background-color: $buttonBackgroundColorHover;
+  cursor: pointer;
+}
+
+.buttonGrower {
+  @extend .button;
+  transition: transform 0.1s ease;
+  transition-delay: 0;
+}
+
+.buttonGrower:hover {
+  @extend .button:hover;
+  transform: scale(1.05);
+  transition-delay: 0.2s;
+}

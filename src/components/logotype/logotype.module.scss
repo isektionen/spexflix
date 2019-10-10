@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Teko:600&display=swap');
+@import "../../config/variables.scss";
+
+$distance: 100;
+
+.logotype {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+
+  .letter {
+    perspective: 100px;
+    perspective-origin: 50% 0;
+
+    span {
+      font-family: 'Teko', sans-serif;
+      font-size: 2em;
+      line-height: 1;
+      color: $logotypeColor;
+      display: block;
+      transform-origin: 50% 0;
+    }
+  }
+
+  .allButFirstLetter {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    max-width: 100vw;
+    transition: all 1s ease-in;
+
+    &.hidden {
+      max-width: 0;
+    }
+  }
+}
