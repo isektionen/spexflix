@@ -5,9 +5,9 @@
   padding: 1vmin 0;
   display: flex;
   flex-direction: column;
-}
 
-.footer span {
-  color: $gray;
-  font-size: 0.8em;
+  p {
+    color: $gray;
+    font-size: 0.8em;
+  }
 }
