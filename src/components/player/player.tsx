@@ -15,7 +15,7 @@ const Player = ({ id }: Props) => {
       <iframe
         width="100%"
         height="100%"
-        className={styles.iframePlayer}
+        allowFullScreen={true}
         src={
           'https://www.youtube.com/embed/' +
           id +
