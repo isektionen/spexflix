@@ -25,7 +25,7 @@ const Player = ({ id }: Props) => {
       <div className={styles.overlay}>
         <Link to="/">
           <div className={styles.returnButton}>
-            <Icon name="arrowLeft" size={36} />
+            <Icon name="arrowLeft" size={40} />
           </div>
         </Link>
       </div>
