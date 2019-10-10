@@ -6,7 +6,7 @@ import { getPlaylists, getPlaylistItems } from './api/youtube';
 import HomeScreen from './screens/homeScreen';
 import PlayerScreen from './screens/playerScreen';
 import LoadingScreen from './screens/loadingScreen';
-import NotFoundScreen from './screens/notFoundScreen';
+import ErrorScreen from './screens/errorScreen';
 
 import { Playlist, Movie } from './types';
 
@@ -17,6 +17,7 @@ const App = () => {
     undefined,
   );
   const [dataHasLoaded, setDataHasLoaded] = useState(false);
+  const [error, setError] = useState<any>(false);
   const [loadingScreenDismissed, setLoadingScreenDismissed] = useState(false);
 
   const dismissLoadingScreen = () => {
@@ -25,23 +26,29 @@ const App = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      let playlists: Playlist[] = await getPlaylists();
-      setPlaylists(playlists);
+      try {
+        let playlists: Playlist[] = await getPlaylists();
+        setPlaylists(playlists);
 
-      let movies: Movie[] = [];
-      for (const key in playlists) {
-        const items: Movie[] = await getPlaylistItems(playlists[key].id);
-        movies.push(...items);
+        let movies: Movie[] = [];
+        for (const key in playlists) {
+          const items: Movie[] = await getPlaylistItems(playlists[key].id);
+          movies.push(...items);
+        }
+        setMovies(movies);
+
+        const featuredMovie: Movie | undefined = movies.find(movie => {
+          return movie.id === process.env.REACT_APP_YOUTUBE_FEATURED_VIDEO_ID;
+        });
+        setFeaturedMovie(featuredMovie);
+      } catch (error) {
+        setError(error);
       }
-      setMovies(movies);
-
-      const featuredMovie: Movie | undefined = movies.find(movie => {
-        return movie.id === process.env.REACT_APP_YOUTUBE_FEATURED_VIDEO_ID;
-      });
-      setFeaturedMovie(featuredMovie);
     };
 
-    fetchData().then(() => setDataHasLoaded(true));
+    fetchData().then(() => {
+      setDataHasLoaded(true);
+    });
   }, []);
 
   const Routes = (props: any) => (
@@ -53,10 +60,10 @@ const App = () => {
         featuredMovie={featuredMovie}
       />
       <PlayerScreen path="/player/:id" />
-      <NotFoundScreen default />
+      <ErrorScreen default error={{ status: 404 }} />
     </Router>
   );
-  if (dataHasLoaded && loadingScreenDismissed) {
+  if (dataHasLoaded && loadingScreenDismissed && !error) {
     return (
       <Location>
         {({ location }) => {
@@ -70,13 +77,15 @@ const App = () => {
         }}
       </Location>
     );
-  } else {
+  } else if (!loadingScreenDismissed && !error) {
     return (
       <LoadingScreen
         dataHasLoaded={dataHasLoaded}
         dismissLoadingScreen={() => dismissLoadingScreen()}
       />
     );
+  } else {
+    return <ErrorScreen error={error} />;
   }
 };
 
