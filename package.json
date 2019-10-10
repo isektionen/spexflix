@@ -1,6 +1,6 @@
 {
   "name": "react-youflix",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "license": "MIT",
   "dependencies": {
     "@reach/router": "^1.2.1",
