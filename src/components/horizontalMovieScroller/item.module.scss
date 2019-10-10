@@ -43,6 +43,7 @@
 
 .details {
   padding: 10px;
+  padding-bottom: 1.5em;
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
   white-space: normal;
   transition: opacity var(--details-transition-duration) ease-in-out;
