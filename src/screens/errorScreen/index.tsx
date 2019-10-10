@@ -1,5 +1,5 @@
 import React from 'react';
-import { RouteComponentProps } from '@reach/router';
+import { Link, RouteComponentProps } from '@reach/router';
 
 import styles from './errorScreen.module.scss';
 
@@ -28,7 +28,8 @@ const ErrorScreen = (props: Props) => {
         <div className={styles.errorScreen}>
           <h1>Nothing here :(</h1>
           <p>
-            This is embarrassing. Try returning to the <a href="/">homepage</a>.
+            This is embarrassing. Try returning to the{' '}
+            <Link to="/">homepage</Link>.
           </p>
         </div>
       );
