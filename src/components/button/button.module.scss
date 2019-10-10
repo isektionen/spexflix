@@ -3,7 +3,7 @@
 .button {
   color: $buttonTextColor;
   background-color: $buttonBackgroundColor;
-  font-size: 0.9em;
+  font-size: 1em;
   font-weight: bold;
   border-radius: 2px;
   padding: 0.1em 2em;
@@ -40,6 +40,6 @@
 
 .buttonGrower:hover {
   @extend .button:hover;
-  transform: scale(1.1);
+  transform: scale(1.05);
   transition-delay: 0.2s;
 }

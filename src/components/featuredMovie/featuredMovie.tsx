@@ -20,12 +20,12 @@ const FeaturedMovie = ({ item }: Props) => {
     <section className={styles.featuredMovie} style={backgroundImageStyles}>
       <div className={styles.movieDetails}>
         <p className={styles.title}>{item.title}</p>
+        <p className={styles.synopsis}>{item.description}</p>
         <div className={styles.buttons}>
           <PlayerScreenLink movieId={item.id}>
             <Button grower={true} text="Play" icon="play" action={() => {}} />
           </PlayerScreenLink>
         </div>
-        <p className={styles.synopsis}>{item.description}</p>
       </div>
     </section>
   );

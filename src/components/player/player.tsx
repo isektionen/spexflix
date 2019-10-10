@@ -15,7 +15,7 @@ const Player = ({ id }: Props) => {
       <iframe
         width="100%"
         height="100%"
-        className={styles.iframePlayer}
+        allowFullScreen={true}
         src={
           'https://www.youtube.com/embed/' +
           id +
@@ -25,7 +25,7 @@ const Player = ({ id }: Props) => {
       <div className={styles.overlay}>
         <Link to="/">
           <div className={styles.returnButton}>
-            <Icon name="arrowLeft" />
+            <Icon name="arrowLeft" size={40} />
           </div>
         </Link>
       </div>

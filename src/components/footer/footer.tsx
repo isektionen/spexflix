@@ -14,9 +14,16 @@ const Footer = ({ publisher, copyrightFromYear }: Props) => {
 
   return (
     <footer className={styles.footer}>
-      <span>
-        &copy; {copyrightYears} {publisher}
-      </span>
+      <p>
+        YouFlix is made just for fun and is open sourced at{' '}
+        <a href="https://github.com/vmorsell/react-youflix" target="_blank">
+          GitHub
+        </a>
+        .
+      </p>
+      <p>
+        &copy; {copyrightYears} {publisher}.
+      </p>
     </footer>
   );
 };
