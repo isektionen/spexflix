@@ -1,0 +1,24 @@
+@import './variables.scss';
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $textColor;
+  background-color: $backgroundColor;
+}
+
+a {
+  color: $linkColor;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  color: $linkHoverColor;
+}
