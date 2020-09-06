@@ -1,0 +1,46 @@
+@import '../variables.scss';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1em;
+
+  .header {
+    color: $whiteGray;
+    font-weight: bold;
+    font-size: 1.4vw;
+    margin: 0 0 0.7em 0;
+    padding: 0 0 0 $sideMargin;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    width: 100vw;
+    margin: 0;
+    padding-inline-start: $sideMargin;
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      flex-grow: 0;
+      flex-shrink: 0;
+      flex-basis: $playlistScrollerItemWidth;
+      max-width: $playlistScrollerItemWidth;
+      min-width: $playlistScrollerItemWidth;
+      height: $playlistScrollerItemHeight;
+      background-color: $placeholderBackgroundColor;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin-right: 0.2em;
+      cursor: pointer;
+    }
+  }
+}

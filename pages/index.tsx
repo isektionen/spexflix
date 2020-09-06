@@ -53,17 +53,13 @@ export interface HomeProps {
 
 export const Home = ({ playlists, playlistItems }: HomeProps): JSX.Element => (
   <Layout title="YouFlix" copyrightFromYear={2019} publisher="YouFlix">
-    <p>Items start</p>
-    <ul>
-      {playlists.map((playlist) => (
-        <PlaylistScroller
-          key={playlist.id}
-          playlist={playlist}
-          items={playlistItems[playlist.id]}
-        />
-      ))}
-    </ul>
-    <p>Items end</p>
+    {playlists.map((playlist) => (
+      <PlaylistScroller
+        key={playlist.id}
+        playlist={playlist}
+        items={playlistItems[playlist.id]}
+      />
+    ))}
   </Layout>
 )
 

@@ -1,4 +1,4 @@
-//import css from './playlistScroller.module.scss'
+import css from './playlistScroller.module.scss'
 
 export interface PlaylistScrollerProps {
   playlist: YouTube.Playlist
@@ -6,14 +6,20 @@ export interface PlaylistScrollerProps {
 }
 
 const PlaylistScroller = ({ playlist, items }: PlaylistScrollerProps) => (
-  <>
-    <h2>{playlist.snippet.title} wow</h2>
-    <ul>
+  <div className={css.wrapper}>
+    <h2 className={css.header}>{playlist.snippet.title} wow</h2>
+    <ul className={css.list}>
       {items.map((item) => (
-        <li key={item.id}>{item.snippet.title}</li>
+        <li
+          key={item.id}
+          className={css.item}
+          style={{
+            backgroundImage: `url(${item.snippet.thumbnails.medium.url})`,
+          }}
+        ></li>
       ))}
     </ul>
-  </>
+  </div>
 )
 
 export default PlaylistScroller

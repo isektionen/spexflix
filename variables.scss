@@ -24,8 +24,9 @@ $buttonTextColorHover: $black;
 $buttonBackgroundColor: rgba(60, 60, 60, 0.5);
 $buttonBackgroundColorHover: $white;
 
-$horizontalScrollerItemWidth: 30vmin;
-$horizontalScrollerItemHeight: 17vmin;
-$horizontalScrollerItemScaleFactor: 1.8;
+$playlistScrollerItemWidth: 30vmin;
+$playlistScrollerItemHeight: 17vmin;
+$playlistScrollerItemScaleFactor: 1.8;
 
-$horizontalScrollerItemGrowthWidth: $horizontalScrollerItemWidth * $horizontalScrollerItemScaleFactor - $horizontalScrollerItemWidth;
+$playlistScrollerItemGrowthWidth: $playlistScrollerItemWidth *
+  $playlistScrollerItemScaleFactor - $playlistScrollerItemWidth;
