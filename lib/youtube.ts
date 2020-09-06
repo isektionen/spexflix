@@ -12,9 +12,8 @@ const client = axios.create(config)
 
 export interface GetChannelPlaylistsRequest {
   channelId: string
-  parts?: PlaylistPart[]
+  parts?: 'snippet'[]
 }
-type PlaylistPart = 'snippet'
 
 export const getChannelPlaylists = async ({
   channelId,
@@ -36,7 +35,7 @@ export const getChannelPlaylists = async ({
 
 export interface GetUnlistedPlaylistsRequest {
   ids: string[]
-  parts?: PlaylistPart[]
+  parts?: 'snippet'[]
 }
 export const getUnlistedPlaylists = async ({
   ids,
@@ -58,9 +57,8 @@ export const getUnlistedPlaylists = async ({
 
 export interface GetPlaylistItemsRequest {
   playlistId: string
-  parts?: PlaylistItemPart[]
+  parts?: ('snippet' | 'contentDetails')[]
 }
-type PlaylistItemPart = 'snippet' | 'contentDetails'
 
 export const getPlaylistItems = async ({
   playlistId,
@@ -82,9 +80,8 @@ export const getPlaylistItems = async ({
 
 export interface GetVideoRequest {
   ids: string[]
-  parts?: VideoPart[]
+  parts?: ('snippet' | 'contentDetails' | 'statistics' | 'player')[]
 }
-type VideoPart = 'snippet' | 'contentDetails' | 'statistics' | 'player'
 
 export const getVideo = async ({
   ids,
