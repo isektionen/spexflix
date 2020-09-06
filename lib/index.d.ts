@@ -1,12 +1,13 @@
 declare namespace YouTube {
   // Common
-  interface Thumbnails {
-    [size: 'default' | 'medium' | 'high' | 'standard' | 'maxres']: {
+  type Thumbnails = Record<
+    'default' | 'medium' | 'high' | 'standard' | 'maxres',
+    {
       url: string
       width: number
       height: number
     }
-  }
+  >
 
   // Playlists Query
   interface PlaylistsQueryResponse {
