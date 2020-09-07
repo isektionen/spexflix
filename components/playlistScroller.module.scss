@@ -1,10 +1,9 @@
 @import '../variables.scss';
 
-.wrapper {
+.section {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 1em;
 
   .header {
     color: $whiteGray;
@@ -14,37 +13,98 @@
     padding: 0 0 0 $sideMargin;
   }
 
-  .list {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-    margin: 0;
-    padding-inline-start: $sideMargin;
-    scrollbar-width: none;
+  .wrapper {
+    position: relative;
+    overflow: hidden;
 
-    &::-webkit-scrollbar {
-      display: none;
+    &:hover .control {
+      opacity: 1;
     }
 
-    .item {
+    .control {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: $sideMargin;
       display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      flex-grow: 0;
-      flex-shrink: 0;
-      flex-basis: $playlistScrollerItemWidth;
-      max-width: $playlistScrollerItemWidth;
-      min-width: $playlistScrollerItemWidth;
-      height: $playlistScrollerItemHeight;
-      background-color: $placeholderBackgroundColor;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      margin-right: 0.2em;
+      justify-content: center;
+      align-items: center;
+      font-size: 2em;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.3);
+      font-weight: bold;
+      opacity: 0;
       cursor: pointer;
+      transition: all 0.2s ease;
+
+      &.prev {
+        left: 0;
+      }
+
+      &.next {
+        right: 0;
+      }
+
+      &.enabled {
+        display: flex;
+      }
+
+      &.disabled {
+        display: none;
+      }
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      &:hover .chevron {
+        transform: scale(1.2);
+      }
+
+      .chevron {
+        transition: all 0.2s ease;
+      }
+    }
+
+    .scroller {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      white-space: nowrap;
+      margin: 0;
+      padding-inline-start: $sideMargin;
+      scrollbar-width: none;
+      transition: all 0.85s ease;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .item {
+        position: relative;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        flex-grow: 0;
+        flex-shrink: 0;
+        background-color: $placeholderBackgroundColor;
+        margin-right: 10px;
+        cursor: pointer;
+
+        .video {
+          padding-top: 47.36%;
+          width: 100%;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+
+        .details {
+          .title {
+          }
+        }
+      }
     }
   }
 }
