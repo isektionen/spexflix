@@ -23,6 +23,11 @@
     white-space: nowrap;
     margin: 0;
     padding-inline-start: $sideMargin;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     .item {
       display: flex;
