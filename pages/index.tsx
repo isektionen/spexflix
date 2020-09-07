@@ -49,11 +49,16 @@ export const getStaticProps: GetStaticProps = async () => {
     return
   })
 
+  const publisher = process.env.PUBLISHER
+  const copyrightFromYear = process.env.COPYRIGHT_FROM_YEAR
+
   return {
     props: {
       playlists,
       playlistItems,
       featuredItem,
+      publisher,
+      copyrightFromYear,
     },
   }
 }
@@ -64,14 +69,22 @@ export interface HomeProps {
     [id: string]: YouTube.PlaylistItem[]
   }
   featuredItem?: YouTube.PlaylistItem
+  publisher: string
+  copyrightFromYear: number
 }
 
 export const Home = ({
   playlists,
   playlistItems,
   featuredItem,
+  publisher,
+  copyrightFromYear,
 }: HomeProps): JSX.Element => (
-  <Layout title="YouFlix" copyrightFromYear={2019} publisher="YouFlix">
+  <Layout
+    title="YouFlix"
+    copyrightFromYear={copyrightFromYear}
+    publisher={publisher}
+  >
     {featuredItem && <FeaturedVideo item={featuredItem} />}
     {playlists.map((playlist) => (
       <PlaylistScroller
