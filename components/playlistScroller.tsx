@@ -9,7 +9,7 @@ export interface PlaylistScrollerProps {
 
 const PlaylistScroller = ({ playlist, items }: PlaylistScrollerProps) => (
   <div className={css.wrapper}>
-    <h2 className={css.header}>{playlist.snippet.title} wow</h2>
+    <h2 className={css.header}>{playlist.snippet.title}</h2>
     <ul className={css.list}>
       {items.map((item) => (
         <Link
