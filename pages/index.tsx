@@ -2,6 +2,7 @@ import { GetStaticProps } from 'next'
 
 import Layout from '../components/layout'
 import PlaylistScroller from '../components/playlistScroller'
+import FeaturedVideo from '../components/featuredVideo'
 
 import {
   getChannelPlaylists,
@@ -36,10 +37,23 @@ export const getStaticProps: GetStaticProps = async () => {
     playlistItems[res.items[0].snippet.playlistId] = res.items
   })
 
+  let featuredItem
+  playlistItemsResponse.some((list) => {
+    const res = list.items.find(
+      (item) =>
+        item.snippet.resourceId.videoId === process.env.FEATURED_VIDEO_ID
+    )
+    if (res) {
+      featuredItem = res
+    }
+    return
+  })
+
   return {
     props: {
       playlists,
       playlistItems,
+      featuredItem,
     },
   }
 }
@@ -49,10 +63,16 @@ export interface HomeProps {
   playlistItems: {
     [id: string]: YouTube.PlaylistItem[]
   }
+  featuredItem?: YouTube.PlaylistItem
 }
 
-export const Home = ({ playlists, playlistItems }: HomeProps): JSX.Element => (
+export const Home = ({
+  playlists,
+  playlistItems,
+  featuredItem,
+}: HomeProps): JSX.Element => (
   <Layout title="YouFlix" copyrightFromYear={2019} publisher="YouFlix">
+    {featuredItem && <FeaturedVideo item={featuredItem} />}
     {playlists.map((playlist) => (
       <PlaylistScroller
         key={playlist.id}
