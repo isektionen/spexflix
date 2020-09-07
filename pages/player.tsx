@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import Icon from '../components/icon'
 
 import css from './player.module.scss'
 
@@ -19,7 +20,9 @@ export const Player = (): JSX.Element => {
       ></iframe>
       <div className={css.overlay}>
         <Link href="/">
-          <a className={css.backArrow}>&lt;</a>
+          <a className={css.backArrow}>
+            <Icon.Arrow direction="left" fill="#fff" />
+          </a>
         </Link>
       </div>
     </div>
