@@ -38,7 +38,7 @@ const PlaylistScroller = ({ playlist, items }: PlaylistScrollerProps) => {
 
   const [itemIndex, setItemIndex] = useState(0)
   const hasPrev = itemIndex > 0
-  const hasNext = itemIndex + layout.visibleItems < items.length - 1
+  const hasNext = itemIndex + layout.visibleItems < items.length
 
   const handlePrev = () => {
     const tryIndex = itemIndex - layout.visibleItems
