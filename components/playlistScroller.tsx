@@ -29,25 +29,25 @@ const PlaylistScroller = ({ playlist, items }: PlaylistScrollerProps) => {
   const layout = {
     sidePadding: 55,
     itemSpacing: 10,
-    visibleItems: 3,
   }
 
   const padding = 2 * layout.sidePadding
-  const spacing = (layout.visibleItems - 1) * layout.itemSpacing
-  const itemWidth = (width - padding - spacing) / layout.visibleItems
+  const visibleItems = Math.floor((width - padding) / 300)
+  const spacing = (visibleItems - 1) * layout.itemSpacing
+  const itemWidth = (width - padding - spacing) / visibleItems
 
   const [itemIndex, setItemIndex] = useState(0)
   const hasPrev = itemIndex > 0
-  const hasNext = itemIndex + layout.visibleItems < items.length
+  const hasNext = itemIndex + visibleItems < items.length
 
   const handlePrev = () => {
-    const tryIndex = itemIndex - layout.visibleItems
+    const tryIndex = itemIndex - visibleItems
     const lower = 0
     setItemIndex(tryIndex >= lower ? tryIndex : lower)
   }
   const handleNext = () => {
-    const newIndex = itemIndex + layout.visibleItems
-    const upper = items.length - layout.visibleItems
+    const newIndex = itemIndex + visibleItems
+    const upper = items.length - visibleItems
     setItemIndex(newIndex <= upper ? newIndex : upper)
   }
 
