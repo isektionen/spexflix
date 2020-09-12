@@ -1,0 +1,39 @@
+@import '../../variables.scss';
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  .header {
+    color: $whiteGray;
+    font-weight: bold;
+    font-size: 1.4vw;
+    margin: 0 0 0.7em 0;
+    padding: 0 0 0 $sideMargin;
+  }
+
+  .wrapper {
+    position: relative;
+    overflow: hidden;
+
+    &:hover .control {
+      opacity: 1;
+    }
+
+    .scroller {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      white-space: nowrap;
+      margin: 0;
+      padding-inline-start: $sideMargin;
+      scrollbar-width: none;
+      transition: all 0.85s ease;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}
