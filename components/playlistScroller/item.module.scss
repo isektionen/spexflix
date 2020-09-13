@@ -10,9 +10,11 @@
   flex-shrink: 0;
   background-color: $placeholderBackgroundColor;
   margin-right: 10px;
+  border-radius: 4px;
   cursor: pointer;
 
   .video {
+    border-radius: 4px;
     padding-top: 47.36%;
     width: 100%;
     background-position: center;
