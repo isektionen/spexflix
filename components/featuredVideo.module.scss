@@ -37,5 +37,14 @@
       line-height: 1.25;
       text-shadow: rgba(0, 0, 0, 0.3) 2px 2px 4px;
     }
+
+    .buttons {
+      display: flex;
+      flex-direction: row;
+
+      button {
+        margin-right: 0.5em;
+      }
+    }
   }
 }

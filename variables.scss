@@ -19,10 +19,12 @@ $lineHeight: 1.5;
 
 $sideMargin: 55px;
 
-$buttonTextColor: $white;
-$buttonTextColorHover: $black;
-$buttonBackgroundColor: rgba(60, 60, 60, 0.5);
-$buttonBackgroundColorHover: $white;
+$buttonPrimaryTextColor: $black;
+$buttonPrimaryBackgroundColor: $white;
+$buttonPrimaryBackgroundColorHover: rgba(255, 255, 255, 0.7);
+$buttonSecondaryTextColor: $white;
+$buttonSecondaryBackgroundColor: rgba(109, 109, 110, 0.7);
+$buttonSecondaryBackgroundColorHover: rgba(109, 109, 110, 0.5);
 
 $playlistScrollerItemWidth: 30vmin;
 $playlistScrollerItemHeight: 17vmin;
