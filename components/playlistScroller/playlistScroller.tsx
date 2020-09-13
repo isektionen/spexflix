@@ -1,9 +1,32 @@
 import { useState } from 'react'
 import Item from './item'
-import Control from './control'
 import elementWidth from '../../helpers/elementWidth'
+import Icon from '../icon'
 
 import css from './playlistScroller.module.scss'
+
+export interface PlaylistScrollerControl {
+  type: 'next' | 'prev'
+  enabled: boolean
+  handle(): void
+}
+
+const Control = ({ type, enabled, handle }: PlaylistScrollerControl) => {
+  const direction = type === 'prev' ? 'left' : 'right'
+  const classes = [
+    css.control,
+    type === 'next' ? css.next : css.prev,
+    enabled ? css.enabled : css.disabled,
+  ].join(' ')
+
+  return (
+    <div className={classes} onClick={handle}>
+      <div className={css.chevron}>
+        <Icon.Chevron direction={direction} fill="#fff" size={48} />
+      </div>
+    </div>
+  )
+}
 
 export interface PlaylistScrollerProps {
   playlist: YouTube.Playlist
