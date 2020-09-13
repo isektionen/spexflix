@@ -4,12 +4,13 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin-top: 2.4em;
 
   .header {
     color: $whiteGray;
     font-weight: bold;
     font-size: 1.4vw;
-    margin: 0 0 0.7em 0;
+    margin: 0 0 0.4em 0;
     padding: 0 0 0 $sideMargin;
   }
 
