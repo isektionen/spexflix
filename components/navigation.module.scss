@@ -1,5 +1,10 @@
 .navigation {
   margin-left: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-grow: 1;
 
   .navList {
     display: flex;
