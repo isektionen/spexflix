@@ -1,25 +1,27 @@
-# Youflix
+# NextJS Typescript Boilerplate
 
-## 📋 Get started
+Bootstrap a developer-friendly NextJS app configured with:
 
-1. `git clone https://github.com/vmorsell/react-youflix`
-1. Create a file named `.env` in the root and fill out the desired settings. Refer to section [Environment variables](#-environment-variables).
-1. `yarn`
-1. `yarn start`
+- [Typescript](https://www.typescriptlang.org/)
+- Linting with [ESLint](https://eslint.org/)
+- Formatting with [Prettier](https://prettier.io/)
+- Linting, typechecking and formatting on by default using [`husky`](https://github.com/typicode/husky) for commit hooks
+- Testing with [Jest](https://jestjs.io/) and [`react-testing-library`](https://testing-library.com/docs/react-testing-library/intro)
 
-## 🌍 Environment variables
+## Deploy your own
 
-| Name                                       | Description                                                                                                                                                              |
-| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `REACT_APP_SITE_TITLE`                     | Title of site.                                                                                                                                                           |
-| `REACT_APP_SITE_DESCRIPTION`               | A short descriptive text of the site. Used in meta description.                                                                                                          |
-| `REACT_APP_PUBLISHER`                      | Name of the content publisher.                                                                                                                                           |
-| `REACT_APP_COPYRIGHT_YEAR_FROM`            | Starting year for copyright.                                                                                                                                             |
-| `REACT_APP_YOUTUBE_API_KEY`                | Google Cloud API Key with `YouTube Data API v3` enabled. Learn how to create your own [here](https://cloud.google.com/docs/authentication/api-keys#creating_an_api_key). |
-| `REACT_APP_YOUTUBE_CHANNEL_ID`             | YouTube channel to fetch public playlists from.                                                                                                                          |
-| `REACT_APP_YOUTUBE_UNLISTED_PLAYLISTS_IDS` | Comma separated string with ID's of unlisted playlists to include.                                                                                                       |
-| `REACT_APP_YOUTUBE_FEATURED_VIDEO_ID`      | ID of featured video. Must be present in the linked playlists.                                                                                                           |
+Deploy the example using [Vercel](https://vercel.com):
 
-## 🗣 Shoutout
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/vercel/next.js/tree/canary/examples/with-typescript-eslint-jest)
 
-Bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to use
+
+Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+
+```bash
+npx create-next-app --example with-typescript-eslint-jest with-typescript-eslint-jest-app
+# or
+yarn create next-app --example with-typescript-eslint-jest with-typescript-eslint-jest-app
+```
+
+Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).

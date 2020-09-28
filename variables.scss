@@ -1,0 +1,34 @@
+$white: rgb(255, 255, 255);
+$whiteGray: rgb(229, 229, 229);
+$gray: rgb(128, 128, 128);
+$black: rgb(20, 20, 20);
+$red: rgb(229, 9, 20);
+$green: rgb(89, 168, 15);
+
+$textColor: $white;
+$backgroundColor: $black;
+$logotypeColor: $red;
+
+$linkColor: $gray;
+$linkHoverColor: $white;
+
+$placeholderBackgroundColor: rgba(100, 100, 100, 0.95);
+
+$fontSize: 1.1vw;
+$lineHeight: 1.5;
+
+$sideMargin: 55px;
+
+$buttonPrimaryTextColor: $black;
+$buttonPrimaryBackgroundColor: $white;
+$buttonPrimaryBackgroundColorHover: rgba(255, 255, 255, 0.7);
+$buttonSecondaryTextColor: $white;
+$buttonSecondaryBackgroundColor: rgba(109, 109, 110, 0.7);
+$buttonSecondaryBackgroundColorHover: rgba(109, 109, 110, 0.5);
+
+$playlistScrollerItemWidth: 30vmin;
+$playlistScrollerItemHeight: 17vmin;
+$playlistScrollerItemScaleFactor: 1.8;
+
+$playlistScrollerItemGrowthWidth: $playlistScrollerItemWidth *
+  $playlistScrollerItemScaleFactor - $playlistScrollerItemWidth;

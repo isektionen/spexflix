@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer component matches snapshot 1`] = `
+<DocumentFragment>
+  <header
+    class="header"
+  >
+    <a
+      href="/"
+    >
+      <div
+        class="logotype"
+      >
+        <div
+          class="letter"
+        >
+          <span
+            style="transform: rotateY(10deg) scaleY(1.01);"
+          >
+            F
+          </span>
+        </div>
+        <div
+          class="allButFirstLetter"
+        >
+          <div
+            class="letter"
+          >
+            <span
+              style="transform: rotateY(0deg) scaleY(1);"
+            >
+              O
+            </span>
+          </div>
+          <div
+            class="letter"
+          >
+            <span
+              style="transform: rotateY(-10deg) scaleY(1.01);"
+            >
+              O
+            </span>
+          </div>
+        </div>
+      </div>
+    </a>
+    <nav
+      class="navigation"
+    >
+      <ul
+        class="navList"
+      >
+        <li
+          class="navItem"
+        >
+          <a
+            class="navLinkActive"
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+</DocumentFragment>
+`;

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer component matches snapshot 1`] = `
+<DocumentFragment>
+  <nav
+    class="navigation"
+  >
+    <ul
+      class="navList"
+    >
+      <li
+        class="navItem"
+      >
+        <a
+          class="navLinkActive"
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+    </ul>
+  </nav>
+</DocumentFragment>
+`;

@@ -1,0 +1,85 @@
+@import '../../variables.scss';
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 2.4em;
+
+  .header {
+    color: $whiteGray;
+    font-weight: bold;
+    font-size: 1.4vw;
+    margin: 0 0 0.4em 0;
+    padding: 0 0 0 $sideMargin;
+  }
+
+  .wrapper {
+    position: relative;
+    overflow: hidden;
+
+    &:hover .control {
+      opacity: 1;
+    }
+
+    .scroller {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      white-space: nowrap;
+      margin: 0;
+      padding-inline-start: $sideMargin;
+      scrollbar-width: none;
+      transition: all 0.85s ease;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .control {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: $sideMargin;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2em;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.3);
+      font-weight: bold;
+      opacity: 0;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &.prev {
+        left: 0;
+      }
+
+      &.next {
+        right: 0;
+      }
+
+      &.enabled {
+        display: flex;
+      }
+
+      &.disabled {
+        display: none;
+      }
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      &:hover .chevron {
+        transform: scale(1.2);
+      }
+
+      .chevron {
+        transition: all 0.2s ease;
+      }
+    }
+  }
+}
