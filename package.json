@@ -27,6 +27,8 @@
   "dependencies": {
     "axios": "^0.21.1",
     "clsx": "^1.1.1",
+    "graphql": "^15.5.0",
+    "graphql-request": "^3.4.0",
     "next": "latest",
     "react": "^16.14.0",
     "react-dom": "^16.13.1",

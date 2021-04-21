@@ -17,13 +17,11 @@ YouTube movie client with a familiar interface configured with:
 
 ## Environment variables
 
-| Name                             | Description                                                                                                                                                              |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `SITE_TITLE`                     | Title of site.                                                                                                                                                           |
-| `SITE_DESCRIPTION`               | A short descriptive text of the site. Used in meta description.                                                                                                          |
-| `PUBLISHER`                      | Name of the content publisher.                                                                                                                                           |
-| `COPYRIGHT_YEAR_FROM`            | Starting year for copyright.                                                                                                                                             |
-| `YOUTUBE_API_KEY`                | Google Cloud API Key with `YouTube Data API v3` enabled. Learn how to create your own [here](https://cloud.google.com/docs/authentication/api-keys#creating_an_api_key). |
-| `YOUTUBE_CHANNEL_ID`             | YouTube channel to fetch public playlists from. Use [this guide](https://support.google.com/youtube/answer/3250431?hl=en) to find your channel ID.                       |
-| `YOUTUBE_UNLISTED_PLAYLISTS_IDS` | Comma separated string with ID's of unlisted playlists to include.                                                                                                       |
-| `YOUTUBE_FEATURED_VIDEO_ID`      | ID of featured video. Must be present in the linked playlists.                                                                                                           |
+| Name                    | Description                                                     |
+| ----------------------- | --------------------------------------------------------------- |
+| `SITE_TITLE`            | Title of site.                                                  |
+| `SITE_DESCRIPTION`      | A short descriptive text of the site. Used in meta description. |
+| `PUBLISHER`             | Name of the content publisher.                                  |
+| `COPYRIGHT_YEAR_FROM`   | Starting year for copyright.                                    |
+| `GRAPHCMS_API_URL`      | GraphCMS endpoint URL.                                          |
+| `GRAPHCMS_ACCESS_TOKEN` | GraphCMS access token.                                          |
