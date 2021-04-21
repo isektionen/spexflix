@@ -11,9 +11,9 @@ export const getStaticProps: GetStaticProps = async () => {
       {
         shows {
           title
-          slug
           orTitle
           videos {
+            slug
             title
           }
         }
