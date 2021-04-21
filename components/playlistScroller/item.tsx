@@ -3,30 +3,24 @@ import Link from 'next/link'
 import css from './item.module.scss'
 
 export interface PlaylistScrollerItemProps {
-  item: YouTube.PlaylistItem
+  video: any
   width: number
 }
 
-const Item = ({ item, width }: PlaylistScrollerItemProps) => (
+const Item = ({ video, width }: PlaylistScrollerItemProps) => (
   <li className={css.item} style={{ width: width }}>
-    <Link
-      key={item.id}
-      href={{
-        pathname: '/player',
-        query: {
-          id: item.snippet.resourceId.videoId,
-        },
-      }}
-    >
+    <Link href={`video/${video.slug}`}>
       <a>
         <div
           className={css.video}
-          style={{
-            backgroundImage: `url(${item.snippet.thumbnails.medium.url})`,
-          }}
+          style={
+            {
+              /*backgroundImage: `url(${video.thumbnail})`,*/
+            }
+          }
         />
         <div className={css.details} style={{ display: 'none' }}>
-          <p className={css.title}>{item.snippet.title}</p>
+          <p className={css.title}>{video.title}</p>
         </div>
       </a>
     </Link>
