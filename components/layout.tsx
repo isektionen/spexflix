@@ -3,13 +3,13 @@ import Footer from './footer'
 
 export interface LayoutProps {
   title: string
-  copyrightFromYear: number
+  copyrightFromYear: string | number
   publisher: string
   children: React.ReactNode
 }
 
 const Layout = ({
-  title,
+  title = 'YouFlix',
   copyrightFromYear,
   publisher,
   children,
