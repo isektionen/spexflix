@@ -11,11 +11,9 @@ export interface FeaturedVideoProps {
 const FeaturedVideo = ({ show }: FeaturedVideoProps) => (
   <section
     className={css.wrapper}
-    style={
-      {
-        /*backgroundImage: `url(${video.url})`*/
-      }
-    }
+    style={{
+      backgroundImage: `url(${show.image.url})`,
+    }}
   >
     <div className={css.details}>
       <h1 className={css.title}>

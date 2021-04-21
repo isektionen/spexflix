@@ -25,6 +25,9 @@ export const getStaticProps: GetStaticProps = async () => {
           title
           orTitle
           description
+          image {
+            url
+          }
           videos {
             slug
             title
