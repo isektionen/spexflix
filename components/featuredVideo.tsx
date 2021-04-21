@@ -18,9 +18,11 @@ const FeaturedVideo = ({ show }: FeaturedVideoProps) => (
     }
   >
     <div className={css.details}>
-      <p className={css.title}>
-        {show.title} eller {show.orTitle}
-      </p>
+      <h1 className={css.title}>
+        {show.title}
+        <br />
+        <span className={css.orTitle}>eller {show.orTitle}</span>
+      </h1>
       <p className={css.description}>{show.description}</p>
       <div className={css.buttons}>
         <Link href={`video/${show.videos[0].slug}`}>
