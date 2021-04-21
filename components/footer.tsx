@@ -14,20 +14,27 @@ const Footer = ({ publisher, copyrightFromYear }: FooterProps) => {
 
   return (
     <footer className={css.footer}>
-      <p>
-        YouFlix is made just for fun and is open sourced at{' '}
-        <a
-          href="https://github.com/vmorsell/react-youflix"
-          rel="noreferrer"
-          target="_blank"
-        >
-          GitHub
+      <div>
+        <p>
+          YouFlix is made just for fun and is open sourced at{' '}
+          <a
+            href="https://github.com/vmorsell/react-youflix"
+            rel="noreferrer"
+            target="_blank"
+          >
+            GitHub
+          </a>
+          .
+        </p>
+        <p>
+          &copy; {copyrightYears} {publisher}.
+        </p>
+      </div>
+      <div>
+        <a href={`https://vercel.com?utm_source=isektionen&utm_campaign=oss`}>
+          <img src="/powered-by-vercel.svg" alt="Powered by Vercel" />
         </a>
-        .
-      </p>
-      <p>
-        &copy; {copyrightYears} {publisher}.
-      </p>
+      </div>
     </footer>
   )
 }

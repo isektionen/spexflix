@@ -1,5 +1,7 @@
 # YouFlix
 
+[![Powered by Vercel](./public/powered-by-vercel.svg)](https://vercel.com/?utm_source=isektionen&utm_campaign=oss)
+
 YouTube movie client with a familiar interface configured with:
 
 - [Typescript](https://www.typescriptlang.org/)
