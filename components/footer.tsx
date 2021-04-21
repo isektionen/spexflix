@@ -2,7 +2,7 @@ import css from './footer.module.scss'
 
 export interface FooterProps {
   publisher: string
-  copyrightFromYear: number
+  copyrightFromYear: string | number
 }
 
 const Footer = ({ publisher, copyrightFromYear }: FooterProps) => {

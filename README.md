@@ -19,11 +19,11 @@ YouTube movie client with a familiar interface configured with:
 
 ## Environment variables
 
-| Name                    | Description                                                     |
-| ----------------------- | --------------------------------------------------------------- |
-| `SITE_TITLE`            | Title of site.                                                  |
-| `SITE_DESCRIPTION`      | A short descriptive text of the site. Used in meta description. |
-| `PUBLISHER`             | Name of the content publisher.                                  |
-| `COPYRIGHT_YEAR_FROM`   | Starting year for copyright.                                    |
-| `GRAPHCMS_API_URL`      | GraphCMS endpoint URL.                                          |
-| `GRAPHCMS_ACCESS_TOKEN` | GraphCMS access token.                                          |
+| Name                              | Description                                                     |
+| --------------------------------- | --------------------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_TITLE`          | Title of site.                                                  |
+| `NEXT_PUBLIC_SITE_DESCRIPTION`    | A short descriptive text of the site. Used in meta description. |
+| `NEXT_PUBLIC_PUBLISHER`           | Name of the content publisher.                                  |
+| `NEXT_PUBLIC_COPYRIGHT_YEAR_FROM` | Starting year for copyright.                                    |
+| `GRAPHCMS_API_URL`                | GraphCMS endpoint URL.                                          |
+| `GRAPHCMS_ACCESS_TOKEN`           | GraphCMS access token.                                          |

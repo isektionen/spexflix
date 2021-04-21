@@ -21,15 +21,10 @@ export const getStaticProps: GetStaticProps = async () => {
     `
   )
 
-  const publisher = process.env.PUBLISHER
-  const copyrightFromYear = process.env.COPYRIGHT_FROM_YEAR
-
   return {
     props: {
       shows,
       featuredShow: shows.length > 0 ? shows[0] : undefined,
-      publisher,
-      copyrightFromYear,
     },
   }
 }
@@ -37,19 +32,12 @@ export const getStaticProps: GetStaticProps = async () => {
 export interface HomeProps {
   shows: any[]
   featuredShow: any
-  publisher: string
-  copyrightFromYear: number
 }
-export const Home = ({
-  shows,
-  featuredShow,
-  publisher,
-  copyrightFromYear,
-}: HomeProps): JSX.Element => (
+export const Home = ({ shows, featuredShow }: HomeProps): JSX.Element => (
   <Layout
-    title="YouFlix"
-    copyrightFromYear={copyrightFromYear}
-    publisher={publisher}
+    title={process.env.NEXT_PUBLIC_SITE_TITLE}
+    copyrightFromYear={process.env.NEXT_PUBLIC_COPYRIGHT_FROM_YEAR}
+    publisher={process.env.NEXT_PUBLIC_PUBLISHER}
   >
     {featuredShow && <FeaturedVideo show={featuredShow} />}
     {shows.map((s) => (
