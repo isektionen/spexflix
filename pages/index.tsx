@@ -6,12 +6,28 @@ import PlaylistScroller from '../components/playlistScroller'
 import FeaturedVideo from '../components/featuredVideo'
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { shows } = await graphcms.request(
+  const { shows, featured } = await graphcms.request(
     gql`
       {
         shows {
           title
           orTitle
+          videos {
+            slug
+            title
+          }
+        }
+        featured: shows(
+          where: { featured: true }
+          orderBy: date_DESC
+          first: 1
+        ) {
+          title
+          orTitle
+          description
+          image {
+            url
+          }
           videos {
             slug
             title
@@ -24,22 +40,22 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       shows,
-      featuredShow: shows.length > 0 ? shows[0] : undefined,
+      featured: featured.length == 1 ? featured[0] : undefined,
     },
   }
 }
 
 export interface HomeProps {
   shows: any[]
-  featuredShow: any
+  featured: any
 }
-export const Home = ({ shows, featuredShow }: HomeProps): JSX.Element => (
+export const Home = ({ shows, featured }: HomeProps): JSX.Element => (
   <Layout
     title={process.env.NEXT_PUBLIC_SITE_TITLE}
     copyrightFromYear={process.env.NEXT_PUBLIC_COPYRIGHT_FROM_YEAR}
     publisher={process.env.NEXT_PUBLIC_PUBLISHER}
   >
-    {featuredShow && <FeaturedVideo show={featuredShow} />}
+    {featured && <FeaturedVideo show={featured} />}
     {shows.map((s) => (
       <PlaylistScroller key={s.id} show={s} />
     ))}
