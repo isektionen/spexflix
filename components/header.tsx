@@ -7,9 +7,10 @@ import css from './header.module.scss'
 
 export interface HeaderProps {
   title: string
+  categories: string[]
 }
 
-const Header = ({ title }: HeaderProps) => (
+const Header = ({ title, categories }: HeaderProps) => (
   <>
     <Head>
       <title>{title}</title>
@@ -18,7 +19,7 @@ const Header = ({ title }: HeaderProps) => (
     </Head>
     <header className={css.header}>
       <Logotype text={title} />
-      <Navigation />
+      <Navigation categories={categories} />
     </header>
   </>
 )
