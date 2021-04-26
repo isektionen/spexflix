@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { shows, featured, categories } = await graphcms.request(
     gql`
       query CategoryPage($slug: String!) {
-        shows(where: { showCategory: { slug: $slug }, orderBy: date_DESC }) {
+        shows(where: { showCategory: { slug: $slug } }, orderBy: date_DESC) {
           title
           orTitle
           videos {
