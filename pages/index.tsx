@@ -34,10 +34,9 @@ export const getStaticProps: GetStaticProps = async () => {
             title
           }
         }
-        categories: __type(name: "Category") {
-          enumValues {
-            name
-          }
+        categories: showCategories(orderBy: order_ASC) {
+          name
+          slug
         }
       }
     `
@@ -46,8 +45,8 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       shows,
+      categories,
       featured: featured.length > 0 ? featured[0] : null,
-      categories: categories.enumValues.map((c) => c.name),
     },
   }
 }

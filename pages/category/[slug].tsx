@@ -23,8 +23,8 @@ export default ShowTypePage
 export const getStaticProps: GetStaticProps = async (context) => {
   const { shows, featured, categories } = await graphcms.request(
     gql`
-      query CategoryPage($name: Category!) {
-        shows(where: { category: $name }) {
+      query CategoryPage($slug: String!) {
+        shows(where: { showCategory: { slug: $slug } }) {
           title
           orTitle
           videos {
@@ -34,7 +34,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
           }
         }
         featured: shows(
-          where: { category: $name, description_not: "", image: { id_not: "" } }
+          where: {
+            showCategory: { slug: $slug }
+            description_not: ""
+            image: { id_not: "" }
+          }
           orderBy: date_DESC
           first: 1
         ) {
@@ -49,23 +53,22 @@ export const getStaticProps: GetStaticProps = async (context) => {
             title
           }
         }
-        categories: __type(name: "Category") {
-          enumValues {
-            name
-          }
+        categories: showCategories(orderBy: order_ASC) {
+          name
+          slug
         }
       }
     `,
     {
-      name: context.params.name,
+      slug: context.params.slug,
     }
   )
 
   return {
     props: {
       shows,
+      categories,
       featured: featured.length > 0 ? featured[0] : null,
-      categories: categories.enumValues.map((v) => v.name),
     },
   }
 }
@@ -74,19 +77,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const { categories } = await graphcms.request(
     gql`
       {
-        categories: __type(name: "Category") {
-          enumValues {
-            name
-          }
+        categories: showCategories(orderBy: order_ASC) {
+          name
+          slug
         }
       }
     `
   )
 
   return {
-    paths: categories.enumValues.map((v) => ({
+    paths: categories.map((c) => ({
       params: {
-        name: v.name,
+        name: c.name,
+        slug: c.slug,
       },
     })),
     fallback: false,

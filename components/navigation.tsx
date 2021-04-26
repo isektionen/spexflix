@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import css from './navigation.module.scss'
 
 export interface NavigationProps {
-  categories: string[]
+  categories: any[]
 }
 
 const Navigation = ({ categories }: NavigationProps) => {
@@ -20,12 +20,14 @@ const Navigation = ({ categories }: NavigationProps) => {
           </Link>
         </li>
         {categories.map((c) => (
-          <li className={css.navItem} key={c}>
-            <Link href={`/category/${c}`}>
+          <li className={css.navItem} key={c.slug}>
+            <Link href={`/category/${c.slug}`}>
               <a
-                className={router.query?.name === c ? css.navLinkActive : null}
+                className={
+                  router.query?.slug === c.slug ? css.navLinkActive : null
+                }
               >
-                {readable(c)}
+                {c.name}
               </a>
             </Link>
           </li>
@@ -35,9 +37,3 @@ const Navigation = ({ categories }: NavigationProps) => {
   )
 }
 export default Navigation
-
-function readable(v: string): string {
-  v = v.replace('_', ' ')
-  v = v.slice(0, 1).toUpperCase() + v.slice(1)
-  return v
-}

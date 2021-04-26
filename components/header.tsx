@@ -7,7 +7,7 @@ import css from './header.module.scss'
 
 export interface HeaderProps {
   title: string
-  categories: string[]
+  categories: any[]
 }
 
 const Header = ({ title, categories }: HeaderProps) => (

@@ -5,7 +5,7 @@ export interface LayoutProps {
   title: string
   copyrightFromYear: string | number
   publisher: string
-  categories: string[] | undefined
+  categories: any[] | undefined
   children: React.ReactNode
 }
 
