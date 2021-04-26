@@ -18,7 +18,7 @@ export const getStaticProps: GetStaticProps = async () => {
           }
         }
         featured: shows(
-          where: { featured: true }
+          where: { description_not: "", image: { id_not: "" } }
           orderBy: date_DESC
           first: 1
         ) {
