@@ -30,6 +30,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
           videos {
             slug
             title
+            youtubeVideoID
           }
         }
         featured: shows(

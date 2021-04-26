@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { youtubeImageURL } from '../../lib/youtube'
 
 import css from './item.module.scss'
 
@@ -13,11 +14,9 @@ const Item = ({ video, width }: PlaylistScrollerItemProps) => (
       <a>
         <div
           className={css.video}
-          style={
-            {
-              /*backgroundImage: `url(${video.thumbnail})`,*/
-            }
-          }
+          style={{
+            backgroundImage: `url(${youtubeImageURL(video.youtubeVideoID)})`,
+          }}
         />
         <div className={css.details} style={{ display: 'none' }}>
           <p className={css.title}>{video.title}</p>
