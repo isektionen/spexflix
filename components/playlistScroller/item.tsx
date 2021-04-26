@@ -9,7 +9,7 @@ export interface PlaylistScrollerItemProps {
 
 const Item = ({ video, width }: PlaylistScrollerItemProps) => (
   <li className={css.item} style={{ width: width }}>
-    <Link href={`video/${video.slug}`}>
+    <Link href={`/video/${video.slug}`}>
       <a>
         <div
           className={css.video}

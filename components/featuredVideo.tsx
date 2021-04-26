@@ -23,7 +23,7 @@ const FeaturedVideo = ({ show }: FeaturedVideoProps) => (
       </h1>
       <p className={css.description}>{show.description}</p>
       <div className={css.buttons}>
-        <Link href={`video/${show.videos[0].slug}`}>
+        <Link href={`/video/${show.videos[0].slug}`}>
           <a>
             <Button type="primary" icon={<Icon.Play />} text="Spela upp" />
           </a>
