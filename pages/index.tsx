@@ -18,7 +18,7 @@ export const getStaticProps: GetStaticProps = async () => {
           }
         }
         featured: shows(
-          where: { featured: true }
+          where: { description_not: "", image: { id_not: "" } }
           orderBy: date_DESC
           first: 1
         ) {
@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       shows,
-      featured: featured.length == 1 ? featured[0] : undefined,
+      featured: featured.length > 0 ? featured[0] : null,
       categories: categories.enumValues.map((c) => c.name),
     },
   }
