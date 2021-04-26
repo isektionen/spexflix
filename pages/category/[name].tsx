@@ -12,7 +12,7 @@ const ShowTypePage = ({ shows, featured, categories }): JSX.Element => (
     publisher={process.env.NEXT_PUBLIC_PUBLISHER}
     categories={categories}
   >
-    {featured && <FeaturedVideo show={featured} />}
+    {featured.length > 0 && <FeaturedVideo show={featured[0]} />}
     {shows.map((s) => (
       <PlaylistScroller key={s.id} show={s} />
     ))}
@@ -21,12 +21,28 @@ const ShowTypePage = ({ shows, featured, categories }): JSX.Element => (
 export default ShowTypePage
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { shows, categories } = await graphcms.request(
+  const { shows, featured, categories } = await graphcms.request(
     gql`
       query CategoryPage($name: Category!) {
         shows(where: { category: $name }) {
           title
           orTitle
+          videos {
+            slug
+            title
+          }
+        }
+        featured: shows(
+          where: { category: $name, description_not: "", image: { id_not: "" } }
+          orderBy: date_DESC
+          first: 1
+        ) {
+          title
+          orTitle
+          description
+          image {
+            url
+          }
           videos {
             slug
             title
@@ -47,6 +63,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       shows,
+      featured,
       categories: categories.enumValues.map((v) => v.name),
     },
   }
