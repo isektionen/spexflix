@@ -64,7 +64,10 @@ const PlaylistScroller = ({ show }: PlaylistScrollerProps) => {
 
   return (
     <div ref={ref} className={css.section}>
-      <h2 className={css.header}>{show.title}</h2>
+      <h2 className={css.header}>
+        {show.title}
+        {show.orTitle && ' eller ' + show.orTitle}
+      </h2>
       <div className={css.wrapper}>
         <ul
           className={css.scroller}
