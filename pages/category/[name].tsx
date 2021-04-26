@@ -12,7 +12,7 @@ const ShowTypePage = ({ shows, featured, categories }): JSX.Element => (
     publisher={process.env.NEXT_PUBLIC_PUBLISHER}
     categories={categories}
   >
-    {featured.length > 0 && <FeaturedVideo show={featured[0]} />}
+    {featured && <FeaturedVideo show={featured} />}
     {shows.map((s) => (
       <PlaylistScroller key={s.id} show={s} />
     ))}
@@ -63,7 +63,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       shows,
-      featured,
+      featured: featured.length > 0 ? featured[0] : null,
       categories: categories.enumValues.map((v) => v.name),
     },
   }
