@@ -9,7 +9,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const { shows, featured, categories } = await graphcms.request(
     gql`
       {
-        shows {
+        shows(orderBy: date_DESC) {
           title
           orTitle
           videos {
