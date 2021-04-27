@@ -1,11 +1,12 @@
 import css from './footer.module.scss'
 
 export interface FooterProps {
+  title: string
   publisher: string
   copyrightFromYear: string | number
 }
 
-const Footer = ({ publisher, copyrightFromYear }: FooterProps) => {
+const Footer = ({ title, publisher, copyrightFromYear }: FooterProps) => {
   const currentYear = new Date().getFullYear()
   const copyrightYears =
     currentYear === copyrightFromYear
@@ -16,13 +17,31 @@ const Footer = ({ publisher, copyrightFromYear }: FooterProps) => {
     <footer className={css.footer}>
       <div>
         <p>
-          YouFlix is made just for fun and is open sourced at{' '}
+          {title} is made just for fun and open sourced on{' '}
+          <a
+            href="https://github.com/isektionen/spexflix"
+            rel="noreferrer"
+            target="_blank"
+          >
+            GitHub
+          </a>
+          . Feel free to contribute to the project.
+          <br />
+          Based on{' '}
           <a
             href="https://github.com/vmorsell/react-youflix"
             rel="noreferrer"
             target="_blank"
           >
-            GitHub
+            YouFlix
+          </a>{' '}
+          by{' '}
+          <a
+            href="https://github.com/vmorsell"
+            rel="noreferrer"
+            target="_blank"
+          >
+            @vmorsell
           </a>
           .
         </p>

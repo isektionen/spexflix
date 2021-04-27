@@ -25,7 +25,11 @@ const Layout = ({
       <main>{children}</main>
     </div>
 
-    <Footer copyrightFromYear={copyrightFromYear} publisher={publisher} />
+    <Footer
+      title={title}
+      copyrightFromYear={copyrightFromYear}
+      publisher={publisher}
+    />
   </div>
 )
 
