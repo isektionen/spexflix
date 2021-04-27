@@ -1,4 +1,5 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
+import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import graphcms, { gql } from '../../lib/graphcms'
 import Icon from '../../components/icon'
@@ -7,6 +8,20 @@ import css from './player.module.scss'
 
 const VideoPage = ({ video }): JSX.Element => {
   const router = useRouter()
+
+  useEffect(() => {
+    async function f() {
+      const { protocol, host } = window.location
+      const res = await fetch(
+        protocol + '//' + host + '/api/incrementViews?slug=' + video.slug
+      )
+      if (res.status !== 200) {
+        const json = await res.json()
+        console.error(json)
+      }
+    }
+    f()
+  }, [video])
 
   const src =
     'https://www.youtube.com/embed/' +
@@ -36,6 +51,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     gql`
       query VideoPageQuery($slug: String!) {
         video(where: { slug: $slug }) {
+          slug
           youtubeVideoID
         }
       }
