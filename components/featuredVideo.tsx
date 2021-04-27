@@ -28,11 +28,16 @@ const FeaturedVideo = ({ show }: FeaturedVideoProps) => (
             <Button type="primary" icon={<Icon.Play />} text="Spela upp" />
           </a>
         </Link>
+        {/*
+        * todo: implement details page for shows
+        * https://github.com/isektionen/spexflix/issues/8
+        * 
         <Button
           type="secondary"
           icon={<Icon.InformationOutline fill="#fff" />}
           text="Mer info"
         />
+        */}
       </div>
     </div>
   </section>
