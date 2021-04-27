@@ -10,6 +10,7 @@ export const getStaticProps: GetStaticProps = async () => {
     gql`
       {
         shows(orderBy: date_DESC) {
+          slug
           title
           orTitle
           videos {
@@ -69,7 +70,7 @@ export const Home = ({
   >
     {featured && <FeaturedVideo show={featured} />}
     {shows.map((s) => (
-      <PlaylistScroller key={s.id} show={s} />
+      <PlaylistScroller key={s.slug} show={s} />
     ))}
   </Layout>
 )

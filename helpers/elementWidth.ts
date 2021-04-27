@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
 const elementWidth = (): {
   width: number
@@ -7,7 +7,7 @@ const elementWidth = (): {
   const [width, setWidth] = useState(0)
   const ref = useRef(null)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const handleResize = () => {
       if (ref.current !== null) {
         setWidth(ref.current.clientWidth)
