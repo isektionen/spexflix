@@ -1,11 +1,13 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
-import Link from 'next/link'
+import { useRouter } from 'next/router'
 import graphcms, { gql } from '../../lib/graphcms'
 import Icon from '../../components/icon'
 
 import css from './player.module.scss'
 
 const VideoPage = ({ video }): JSX.Element => {
+  const router = useRouter()
+
   const src =
     'https://www.youtube.com/embed/' +
     video.youtubeVideoID +
@@ -20,11 +22,9 @@ const VideoPage = ({ video }): JSX.Element => {
         src={src}
       ></iframe>
       <div className={css.overlay}>
-        <Link href="/">
-          <a className={css.backArrow}>
-            <Icon.Arrow direction="left" fill="#fff" />
-          </a>
-        </Link>
+        <span className={css.backArrow} onClick={() => router.back()}>
+          <Icon.Arrow direction="left" fill="#fff" />
+        </span>
       </div>
     </div>
   )
