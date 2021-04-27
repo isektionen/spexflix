@@ -26,6 +26,17 @@
     background-color: $buttonSecondaryBackgroundColor;
   }
 
+  &.round {
+    border-radius: 50%;
+    width: 2.2em;
+    padding: 0;
+    justify-content: center;
+
+    svg {
+      margin: 0;
+    }
+  }
+
   &:hover {
     cursor: pointer;
   }

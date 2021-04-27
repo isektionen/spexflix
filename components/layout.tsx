@@ -1,6 +1,8 @@
 import Header from './header'
 import Footer from './footer'
 
+import css from './layout.module.scss'
+
 export interface LayoutProps {
   title: string
   copyrightFromYear: string | number
@@ -16,7 +18,7 @@ const Layout = ({
   categories,
   children,
 }: LayoutProps): JSX.Element => (
-  <>
+  <div className={css.layout}>
     <Header title={title} categories={categories} />
 
     <div className="container">
@@ -24,7 +26,7 @@ const Layout = ({
     </div>
 
     <Footer copyrightFromYear={copyrightFromYear} publisher={publisher} />
-  </>
+  </div>
 )
 
 export default Layout
