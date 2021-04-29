@@ -12,7 +12,14 @@ export interface PlaylistScrollerItemProps {
 
 const Item = ({ video, width }: PlaylistScrollerItemProps) => (
   <Link href={`/video/${video.slug}`}>
-    <a>
+    <a
+      onClick={() =>
+        window.analytics.track('Playlist item clicked', {
+          title: video.title,
+          slug: video.slug,
+        })
+      }
+    >
       <li className={css.wrapper} style={{ width }}>
         <div className={css.item} style={{ width }}>
           <div

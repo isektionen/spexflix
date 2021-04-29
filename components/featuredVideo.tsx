@@ -24,7 +24,14 @@ const FeaturedVideo = ({ show }: FeaturedVideoProps) => (
       <p className={css.description}>{show.description}</p>
       <div className={css.buttons}>
         <Link href={`/video/${show.videos[0].slug}`}>
-          <a>
+          <a
+            onClick={() =>
+              window.analytics.track('Featured video play button clicked', {
+                title: show.title,
+                slug: show.slug,
+              })
+            }
+          >
             <Button type="primary" icon={<Icon.Play />} text="Spela upp" />
           </a>
         </Link>
