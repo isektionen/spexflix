@@ -42,7 +42,7 @@ const Logotype = ({ text, showOnlyFirstLetter = false }: LogotypeProps) => {
 
   return (
     <Link href="/">
-      <a>
+      <a onClick={() => window.analytics.track('Logotype clicked')}>
         <div className={css.logotype}>
           {letterComponents[0]}
           <div className={notFirstLetterStyles}>

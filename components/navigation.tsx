@@ -14,7 +14,14 @@ const Navigation = ({ categories }: NavigationProps) => {
       <ul className={css.navList}>
         <li className={css.navItem}>
           <Link href="/">
-            <a className={router.pathname === '/' ? css.navLinkActive : null}>
+            <a
+              className={router.pathname === '/' ? css.navLinkActive : null}
+              onClick={() =>
+                window.analytics.track('Top menu link pressed', {
+                  href: '/',
+                })
+              }
+            >
               Hem
             </a>
           </Link>
@@ -25,6 +32,11 @@ const Navigation = ({ categories }: NavigationProps) => {
               <a
                 className={
                   router.query?.slug === c.slug ? css.navLinkActive : null
+                }
+                onClick={() =>
+                  window.analytics.track('Top menu link pressed', {
+                    href: `/category/${c.slug}`,
+                  })
                 }
               >
                 {c.name}

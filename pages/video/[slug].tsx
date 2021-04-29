@@ -10,6 +10,10 @@ const VideoPage = ({ video }): JSX.Element => {
   const router = useRouter()
 
   useEffect(() => {
+    window.analytics.track('Video watched', {
+      slug: video.slug,
+    })
+
     async function f() {
       const { protocol, host } = window.location
       const res = await fetch(
@@ -37,7 +41,15 @@ const VideoPage = ({ video }): JSX.Element => {
         src={src}
       ></iframe>
       <div className={css.overlay}>
-        <span className={css.backArrow} onClick={() => router.back()}>
+        <span
+          className={css.backArrow}
+          onClick={() => {
+            window.analytics.track('Video player back button pressed', {
+              slug: video.slug,
+            })
+            router.back()
+          }}
+        >
           <Icon.Arrow direction="left" fill="#fff" />
         </span>
       </div>

@@ -22,6 +22,11 @@ const Footer = ({ title, publisher, copyrightFromYear }: FooterProps) => {
             href="https://github.com/isektionen/spexflix"
             rel="noreferrer"
             target="_blank"
+            onClick={() =>
+              window.analytics.track('Footer link pressed', {
+                href: 'https://github.com/isektionen/spexflix',
+              })
+            }
           >
             GitHub
           </a>
@@ -32,6 +37,11 @@ const Footer = ({ title, publisher, copyrightFromYear }: FooterProps) => {
             href="https://github.com/vmorsell/react-youflix"
             rel="noreferrer"
             target="_blank"
+            onClick={() =>
+              window.analytics.track('Footer link pressed', {
+                href: 'https://github.com/vmorsell/react-youflix',
+              })
+            }
           >
             YouFlix
           </a>{' '}
@@ -40,6 +50,11 @@ const Footer = ({ title, publisher, copyrightFromYear }: FooterProps) => {
             href="https://github.com/vmorsell"
             rel="noreferrer"
             target="_blank"
+            onClick={() =>
+              window.analytics.track('Footer link pressed', {
+                href: 'https://github.com/vmorsell',
+              })
+            }
           >
             @vmorsell
           </a>
@@ -50,7 +65,14 @@ const Footer = ({ title, publisher, copyrightFromYear }: FooterProps) => {
         </p>
       </div>
       <div>
-        <a href={`https://vercel.com?utm_source=isektionen&utm_campaign=oss`}>
+        <a
+          href={`https://vercel.com?utm_source=isektionen&utm_campaign=oss`}
+          onClick={() =>
+            window.analytics.track('Footer link pressed', {
+              href: 'https://vercel.com?utm_source=isektionen&utm_campaign=oss',
+            })
+          }
+        >
           <img src="/powered-by-vercel.svg" alt="Powered by Vercel" />
         </a>
       </div>
