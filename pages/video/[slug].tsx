@@ -62,7 +62,7 @@ const VideoPage = ({ video }): JSX.Element => {
         onPlay={() => setShowImageOverlay(false)}
         onEnd={() => setShowImageOverlay(true)}
       />
-      <div className={css.overlay}>
+      <div className={`${css.overlay} ${showImageOverlay && css.visible}`}>
         <span
           className={css.backArrow}
           onClick={() => {
