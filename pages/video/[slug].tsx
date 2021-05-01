@@ -43,7 +43,7 @@ const VideoPage = ({ video }): JSX.Element => {
         }}
         onClick={() => player !== null && player.playVideo()}
       >
-        <Button type="secondary" shape="round" icon={<Icon.Play />} />
+        <Button type="primary" shape="round" icon={<Icon.Play />} />
       </div>
       <YouTube
         className={css.player}
