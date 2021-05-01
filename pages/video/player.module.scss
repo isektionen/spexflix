@@ -8,6 +8,32 @@
   bottom: 0;
   overflow: hidden;
 
+  .player {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .imageOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-position: center center;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    opacity: 0;
+    display: none;
+    transition: opacity 1s ease-in-out;
+
+    &.visible {
+      opacity: 1;
+      display: flex;
+    }
+  }
+
   .overlay {
     position: absolute;
     top: 0;

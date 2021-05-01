@@ -1,13 +1,18 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import graphcms, { gql } from '../../lib/graphcms'
 import Icon from '../../components/icon'
+import { youtubeImageURL } from '../../lib/youtube'
+import YouTube from 'react-youtube'
 
 import css from './player.module.scss'
+import Button from '../../components/button'
 
 const VideoPage = ({ video }): JSX.Element => {
   const router = useRouter()
+  const [player, setPlayer] = useState(null)
+  const [showImageOverlay, setShowImageOverlay] = useState(false)
 
   useEffect(() => {
     window.analytics.track('Video watched', {
@@ -27,19 +32,36 @@ const VideoPage = ({ video }): JSX.Element => {
     f()
   }, [video])
 
-  const src =
-    'https://www.youtube.com/embed/' +
-    video.youtubeVideoID +
-    '?autoplay=1&modestbranding=1&rel=0'
-
   return (
     <div className={css.wrapper}>
-      <iframe
-        width="100%"
-        height="100%"
-        allowFullScreen={true}
-        src={src}
-      ></iframe>
+      <div
+        className={`${css.imageOverlay} ${showImageOverlay && css.visible}`}
+        style={{
+          backgroundImage: `linear-gradient(rgba(20, 20, 20, 0.6), rgba(20, 20, 20, 0.4)), url(${youtubeImageURL(
+            video.youtubeVideoID
+          )})`,
+        }}
+        onClick={() => player !== null && player.playVideo()}
+      >
+        <Button type="secondary" shape="round" icon={<Icon.Play />} />
+      </div>
+      <YouTube
+        className={css.player}
+        videoId={video.youtubeVideoID}
+        opts={{
+          playerVars: {
+            modestbranding: 1,
+            autoplay: 1,
+            listType: 'user_uploads',
+          },
+        }}
+        onReady={(e) => {
+          setPlayer(e.target)
+          e.target.playVideo()
+        }}
+        onPlay={() => setShowImageOverlay(false)}
+        onEnd={() => setShowImageOverlay(true)}
+      />
       <div className={css.overlay}>
         <span
           className={css.backArrow}
