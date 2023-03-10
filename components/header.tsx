@@ -1,13 +1,13 @@
-import Head from 'next/head'
+import Head from 'next/head';
 
-import Logotype from './logotype'
-import Navigation from './navigation'
+import Logotype from './logotype';
+import Navigation from './navigation';
 
-import css from './header.module.scss'
+import css from './header.module.scss';
 
 export interface HeaderProps {
-  title: string
-  categories: any[]
+  title: string;
+  categories: any[];
 }
 
 const Header = ({ title, categories }: HeaderProps) => (
@@ -22,6 +22,6 @@ const Header = ({ title, categories }: HeaderProps) => (
       <Navigation categories={categories} />
     </header>
   </>
-)
+);
 
-export default Header
+export default Header;

@@ -1,9 +1,9 @@
-import Router from 'next/router'
+import Router from 'next/router';
 
 Router.events.on('routeChangeComplete', (url: string) => {
-  window.analytics.page(url)
-})
+  window.analytics.page(url);
+});
 
-const Page = ({ children }) => <div>{children}</div>
+const Page = ({ children }) => <div>{children}</div>;
 
-export default Page
+export default Page;

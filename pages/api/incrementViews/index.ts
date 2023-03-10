@@ -1,17 +1,17 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { GraphQLClient, gql } from 'graphql-request'
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { GraphQLClient, gql } from 'graphql-request';
 
 const client = new GraphQLClient(process.env.GRAPHCMS_API_URL, {
   headers: {
     Authorization: `Bearer ${process.env.GRAPHCMS_MUTATION_AUTH_TOKEN}`,
   },
-})
+});
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const slug = req.query.slug
+  const slug = req.query.slug;
   if (!req.query.slug) {
-    res.status(400).json({ error: 'missing slug' })
-    return
+    res.status(400).json({ error: 'missing slug' });
+    return;
   }
 
   const { video } = await client.request(
@@ -25,12 +25,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     {
       slug,
     }
-  )
+  );
 
-  const views = video.views + 1
+  const views = video.views + 1;
   if (!video.views) {
-    res.status(500).json({ error: 'unable to get current views' })
-    return
+    res.status(500).json({ error: 'unable to get current views' });
+    return;
   }
 
   const { updateVideo, publishVideo } = await client.request(
@@ -48,19 +48,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       slug,
       views,
     }
-  )
+  );
 
   if (updateVideo.views !== views) {
-    res.status(500).json({ error: 'error updating views counter' })
-    return
+    res.status(500).json({ error: 'error updating views counter' });
+    return;
   }
 
   if (publishVideo.views !== views) {
-    res.status(500).json({ error: 'error publishing changes' })
-    return
+    res.status(500).json({ error: 'error publishing changes' });
+    return;
   }
 
-  res.status(200).json({ views: video.views })
-}
+  res.status(200).json({ views: video.views });
+};
 
-export default handler
+export default handler;

@@ -1,11 +1,11 @@
-import Link from 'next/link'
-import Button from './button'
-import Icon from './icon'
+import Link from 'next/link';
+import Button from './button';
+import Icon from './icon';
 
-import css from './featuredVideo.module.scss'
+import css from './featuredVideo.module.scss';
 
 export interface FeaturedVideoProps {
-  show: any
+  show: any;
 }
 
 const FeaturedVideo = ({ show }: FeaturedVideoProps) => (
@@ -48,6 +48,6 @@ const FeaturedVideo = ({ show }: FeaturedVideoProps) => (
       </div>
     </div>
   </section>
-)
+);
 
-export default FeaturedVideo
+export default FeaturedVideo;

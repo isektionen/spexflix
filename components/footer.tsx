@@ -1,17 +1,17 @@
-import css from './footer.module.scss'
+import css from './footer.module.scss';
 
 export interface FooterProps {
-  title: string
-  publisher: string
-  copyrightFromYear: string | number
+  title: string;
+  publisher: string;
+  copyrightFromYear: string | number;
 }
 
 const Footer = ({ title, publisher, copyrightFromYear }: FooterProps) => {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
   const copyrightYears =
     currentYear === copyrightFromYear
       ? copyrightFromYear
-      : copyrightFromYear + '-' + currentYear
+      : copyrightFromYear + '-' + currentYear;
 
   return (
     <footer className={css.footer}>
@@ -77,7 +77,7 @@ const Footer = ({ title, publisher, copyrightFromYear }: FooterProps) => {
         </a>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

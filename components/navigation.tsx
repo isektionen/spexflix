@@ -1,14 +1,14 @@
-import Link from 'next/link'
-import { useRouter } from 'next/router'
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-import css from './navigation.module.scss'
+import css from './navigation.module.scss';
 
 export interface NavigationProps {
-  categories: any[]
+  categories: any[];
 }
 
 const Navigation = ({ categories }: NavigationProps) => {
-  const router = useRouter()
+  const router = useRouter();
   return (
     <nav className={css.navigation}>
       <ul className={css.navList}>
@@ -46,6 +46,6 @@ const Navigation = ({ categories }: NavigationProps) => {
         ))}
       </ul>
     </nav>
-  )
-}
-export default Navigation
+  );
+};
+export default Navigation;

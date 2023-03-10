@@ -1,14 +1,14 @@
-import Header from './header'
-import Footer from './footer'
+import Header from './header';
+import Footer from './footer';
 
-import css from './layout.module.scss'
+import css from './layout.module.scss';
 
 export interface LayoutProps {
-  title: string
-  copyrightFromYear: string | number
-  publisher: string
-  categories: any[] | undefined
-  children: React.ReactNode
+  title: string;
+  copyrightFromYear: string | number;
+  publisher: string;
+  categories: any[] | undefined;
+  children: React.ReactNode;
 }
 
 const Layout = ({
@@ -31,6 +31,6 @@ const Layout = ({
       publisher={publisher}
     />
   </div>
-)
+);
 
-export default Layout
+export default Layout;

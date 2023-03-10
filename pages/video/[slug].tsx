@@ -1,36 +1,36 @@
-import { GetStaticProps, GetStaticPaths } from 'next'
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
-import graphcms, { gql } from '../../lib/graphcms'
-import Icon from '../../components/icon'
-import { youtubeImageURL } from '../../lib/youtube'
-import YouTube from 'react-youtube'
+import { GetStaticProps, GetStaticPaths } from 'next';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import graphcms, { gql } from '../../lib/graphcms';
+import Icon from '../../components/icon';
+import { youtubeImageURL } from '../../lib/youtube';
+import YouTube from 'react-youtube';
 
-import css from './player.module.scss'
-import Button from '../../components/button'
+import css from './player.module.scss';
+import Button from '../../components/button';
 
 const VideoPage = ({ video }): JSX.Element => {
-  const router = useRouter()
-  const [player, setPlayer] = useState(null)
-  const [showImageOverlay, setShowImageOverlay] = useState(false)
+  const router = useRouter();
+  const [player, setPlayer] = useState(null);
+  const [showImageOverlay, setShowImageOverlay] = useState(false);
 
   useEffect(() => {
     window.analytics.track('Video watched', {
       slug: video.slug,
-    })
+    });
 
     async function f() {
-      const { protocol, host } = window.location
+      const { protocol, host } = window.location;
       const res = await fetch(
         protocol + '//' + host + '/api/incrementViews?slug=' + video.slug
-      )
+      );
       if (res.status !== 200) {
-        const json = await res.json()
-        console.error(json)
+        const json = await res.json();
+        console.error(json);
       }
     }
-    f()
-  }, [video])
+    f();
+  }, [video]);
 
   return (
     <div className={css.wrapper}>
@@ -56,8 +56,8 @@ const VideoPage = ({ video }): JSX.Element => {
           },
         }}
         onReady={(e) => {
-          setPlayer(e.target)
-          e.target.playVideo()
+          setPlayer(e.target);
+          e.target.playVideo();
         }}
         onPlay={() => setShowImageOverlay(false)}
         onEnd={() => setShowImageOverlay(true)}
@@ -68,17 +68,17 @@ const VideoPage = ({ video }): JSX.Element => {
           onClick={() => {
             window.analytics.track('Video player back button pressed', {
               slug: video.slug,
-            })
-            router.back()
+            });
+            router.back();
           }}
         >
           <Icon.Arrow direction="left" fill="#fff" />
         </span>
       </div>
     </div>
-  )
-}
-export default VideoPage
+  );
+};
+export default VideoPage;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { video } = await graphcms.request(
@@ -93,14 +93,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
     {
       slug: context.params.slug,
     }
-  )
+  );
 
   return {
     props: {
       video,
     },
-  }
-}
+  };
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { videos } = await graphcms.request(
@@ -111,7 +111,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         }
       }
     `
-  )
+  );
 
   return {
     paths: videos.map((v) => ({
@@ -120,5 +120,5 @@ export const getStaticPaths: GetStaticPaths = async () => {
       },
     })),
     fallback: false,
-  }
-}
+  };
+};

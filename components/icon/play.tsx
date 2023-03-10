@@ -1,6 +1,6 @@
 export interface PlayProps {
-  size?: number
-  fill?: string
+  size?: number;
+  fill?: string;
 }
 
 const Play = ({ size = 24, fill = '#000' }: PlayProps) => (
@@ -13,6 +13,6 @@ const Play = ({ size = 24, fill = '#000' }: PlayProps) => (
   >
     <path fill={fill} d="M8,5.14V19.14L19,12.14L8,5.14Z" />
   </svg>
-)
+);
 
-export default Play
+export default Play;

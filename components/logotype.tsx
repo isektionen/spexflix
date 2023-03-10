@@ -1,27 +1,27 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
-import css from './logotype.module.scss'
+import css from './logotype.module.scss';
 
 export interface LogotypeProps {
-  text: string
-  showOnlyFirstLetter?: boolean
+  text: string;
+  showOnlyFirstLetter?: boolean;
 }
 
 const Logotype = ({ text, showOnlyFirstLetter = false }: LogotypeProps) => {
-  const letters = text.toUpperCase().split('')
-  const maxOffset = Math.floor(letters.length / 2)
-  const slope = 10
+  const letters = text.toUpperCase().split('');
+  const maxOffset = Math.floor(letters.length / 2);
+  const slope = 10;
 
-  const evenLength = letters.length % 2 === 0 ? true : false
+  const evenLength = letters.length % 2 === 0 ? true : false;
 
   const letterComponents = letters.map((letter, index) => {
     const offset = evenLength
       ? index <= maxOffset - 1
         ? index - maxOffset
         : index - maxOffset + 1
-      : index + 1 - Math.ceil(letters.length / 2)
-    const angle = (-offset / maxOffset) * slope
-    const scale = 1 + Math.pow(Math.abs(offset), 2) * 0.01
+      : index + 1 - Math.ceil(letters.length / 2);
+    const angle = (-offset / maxOffset) * slope;
+    const scale = 1 + Math.pow(Math.abs(offset), 2) * 0.01;
 
     return (
       <div key={index} className={css.letter}>
@@ -33,12 +33,12 @@ const Logotype = ({ text, showOnlyFirstLetter = false }: LogotypeProps) => {
           {letter}
         </span>
       </div>
-    )
-  })
+    );
+  });
 
   const notFirstLetterStyles = showOnlyFirstLetter
     ? [css.allButFirstLetter, css.hidden].join(' ')
-    : css.allButFirstLetter
+    : css.allButFirstLetter;
 
   return (
     <Link href="/">
@@ -51,7 +51,7 @@ const Logotype = ({ text, showOnlyFirstLetter = false }: LogotypeProps) => {
         </div>
       </a>
     </Link>
-  )
-}
+  );
+};
 
-export default Logotype
+export default Logotype;
