@@ -1,14 +1,14 @@
-import React from 'react'
-import clsx from 'clsx'
+import React from 'react';
+import clsx from 'clsx';
 
-import css from './button.module.scss'
+import css from './button.module.scss';
 
 export interface ButtonProps {
-  type: 'primary' | 'secondary'
-  shape?: 'round'
-  icon?: React.ReactNode
-  text?: string
-  action?(): any
+  type: 'primary' | 'secondary';
+  shape?: 'round';
+  icon?: React.ReactNode;
+  text?: string;
+  action?(): any;
 }
 
 const Button = ({ type, shape, icon, text, action }: ButtonProps) => (
@@ -24,6 +24,6 @@ const Button = ({ type, shape, icon, text, action }: ButtonProps) => (
     {icon}
     {text}
   </button>
-)
+);
 
-export default Button
+export default Button;

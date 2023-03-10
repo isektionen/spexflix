@@ -1,9 +1,9 @@
-import { GetStaticProps } from 'next'
-import graphcms, { gql } from '../lib/graphcms'
+import { GetStaticProps } from 'next';
+import graphcms, { gql } from '../lib/graphcms';
 
-import Layout from '../components/layout'
-import PlaylistScroller from '../components/playlistScroller'
-import FeaturedVideo from '../components/featuredVideo'
+import Layout from '../components/layout';
+import PlaylistScroller from '../components/playlistScroller';
+import FeaturedVideo from '../components/featuredVideo';
 
 export const getStaticProps: GetStaticProps = async () => {
   const { shows, featured, categories } = await graphcms.request(
@@ -42,7 +42,7 @@ export const getStaticProps: GetStaticProps = async () => {
         }
       }
     `
-  )
+  );
 
   return {
     props: {
@@ -50,13 +50,13 @@ export const getStaticProps: GetStaticProps = async () => {
       categories,
       featured: featured.length > 0 ? featured[0] : null,
     },
-  }
-}
+  };
+};
 
 export interface HomeProps {
-  shows: any[]
-  featured: any
-  categories: string[]
+  shows: any[];
+  featured: any;
+  categories: string[];
 }
 export const Home = ({
   shows,
@@ -74,6 +74,6 @@ export const Home = ({
       <PlaylistScroller key={s.slug} show={s} />
     ))}
   </Layout>
-)
+);
 
-export default Home
+export default Home;

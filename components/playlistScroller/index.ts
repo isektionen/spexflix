@@ -1,3 +1,3 @@
-import PlaylistScroller from './playlistScroller'
+import PlaylistScroller from './playlistScroller';
 
-export default PlaylistScroller
+export default PlaylistScroller;

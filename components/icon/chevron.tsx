@@ -1,7 +1,7 @@
 export interface ChevronProps {
-  direction?: 'up' | 'down' | 'left' | 'right'
-  size?: number
-  fill?: string
+  direction?: 'up' | 'down' | 'left' | 'right';
+  size?: number;
+  fill?: string;
 }
 
 const Chevron = ({
@@ -9,17 +9,17 @@ const Chevron = ({
   size = 24,
   fill = '#000',
 }: ChevronProps) => {
-  let rotation = 0
+  let rotation = 0;
   switch (direction) {
     case 'up':
-      rotation = -90
-      break
+      rotation = -90;
+      break;
     case 'down':
-      rotation = 90
-      break
+      rotation = 90;
+      break;
     case 'left':
-      rotation = 180
-      break
+      rotation = 180;
+      break;
   }
 
   return (
@@ -34,7 +34,7 @@ const Chevron = ({
         d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
       />
     </svg>
-  )
-}
+  );
+};
 
-export default Chevron
+export default Chevron;

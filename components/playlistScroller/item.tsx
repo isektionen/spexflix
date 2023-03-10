@@ -1,13 +1,13 @@
-import Link from 'next/link'
-import { youtubeImageURL } from '../../lib/youtube'
-import Button from '../button'
-import Icon from '../icon'
+import Link from 'next/link';
+import { youtubeImageURL } from '../../lib/youtube';
+import Button from '../button';
+import Icon from '../icon';
 
-import css from './item.module.scss'
+import css from './item.module.scss';
 
 export interface PlaylistScrollerItemProps {
-  video: any
-  width: number
+  video: any;
+  width: number;
 }
 
 const Item = ({ video, width }: PlaylistScrollerItemProps) => (
@@ -37,6 +37,6 @@ const Item = ({ video, width }: PlaylistScrollerItemProps) => (
       </li>
     </a>
   </Link>
-)
+);
 
-export default Item
+export default Item;

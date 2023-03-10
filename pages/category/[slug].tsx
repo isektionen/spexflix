@@ -1,9 +1,9 @@
-import { GetStaticProps, GetStaticPaths } from 'next'
-import graphcms, { gql } from '../../lib/graphcms'
+import { GetStaticProps, GetStaticPaths } from 'next';
+import graphcms, { gql } from '../../lib/graphcms';
 
-import Layout from '../../components/layout'
-import PlaylistScroller from '../../components/playlistScroller'
-import FeaturedVideo from '../../components/featuredVideo'
+import Layout from '../../components/layout';
+import PlaylistScroller from '../../components/playlistScroller';
+import FeaturedVideo from '../../components/featuredVideo';
 
 const ShowTypePage = ({ shows, featured, categories }): JSX.Element => (
   <Layout
@@ -17,8 +17,8 @@ const ShowTypePage = ({ shows, featured, categories }): JSX.Element => (
       <PlaylistScroller key={s.id} show={s} />
     ))}
   </Layout>
-)
-export default ShowTypePage
+);
+export default ShowTypePage;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { shows, featured, categories } = await graphcms.request(
@@ -63,7 +63,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     {
       slug: context.params.slug,
     }
-  )
+  );
 
   return {
     props: {
@@ -71,8 +71,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
       categories,
       featured: featured.length > 0 ? featured[0] : null,
     },
-  }
-}
+  };
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { categories } = await graphcms.request(
@@ -84,7 +84,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         }
       }
     `
-  )
+  );
 
   return {
     paths: categories.map((c) => ({
@@ -94,5 +94,5 @@ export const getStaticPaths: GetStaticPaths = async () => {
       },
     })),
     fallback: false,
-  }
-}
+  };
+};

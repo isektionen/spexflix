@@ -1,23 +1,23 @@
-import { useState } from 'react'
-import Item from './item'
-import elementWidth from '../../helpers/elementWidth'
-import Icon from '../icon'
+import { useState } from 'react';
+import Item from './item';
+import elementWidth from '../../helpers/elementWidth';
+import Icon from '../icon';
 
-import css from './playlistScroller.module.scss'
+import css from './playlistScroller.module.scss';
 
 export interface PlaylistScrollerControl {
-  type: 'next' | 'prev'
-  enabled: boolean
-  handle(): void
+  type: 'next' | 'prev';
+  enabled: boolean;
+  handle(): void;
 }
 
 const Control = ({ type, enabled, handle }: PlaylistScrollerControl) => {
-  const direction = type === 'prev' ? 'left' : 'right'
+  const direction = type === 'prev' ? 'left' : 'right';
   const classes = [
     css.control,
     type === 'next' ? css.next : css.prev,
     enabled ? css.enabled : css.disabled,
-  ].join(' ')
+  ].join(' ');
 
   return (
     <div className={classes} onClick={handle}>
@@ -25,42 +25,42 @@ const Control = ({ type, enabled, handle }: PlaylistScrollerControl) => {
         <Icon.Chevron direction={direction} fill="#fff" size={48} />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export interface PlaylistScrollerProps {
-  show: any
+  show: any;
 }
 
 const PlaylistScroller = ({ show }: PlaylistScrollerProps) => {
-  const { width, ref } = elementWidth()
+  const { width, ref } = elementWidth();
 
   const layout = {
     sidePadding: 55,
     itemSpacing: 10,
-  }
+  };
 
-  const padding = 2 * layout.sidePadding
-  const visibleItems = Math.floor((width - padding) / 300)
-  const spacing = (visibleItems - 1) * layout.itemSpacing
-  const itemWidth = (width - padding - spacing) / visibleItems
+  const padding = 2 * layout.sidePadding;
+  const visibleItems = Math.floor((width - padding) / 300);
+  const spacing = (visibleItems - 1) * layout.itemSpacing;
+  const itemWidth = (width - padding - spacing) / visibleItems;
 
-  const [itemIndex, setItemIndex] = useState(0)
-  const hasPrev = itemIndex > 0
-  const hasNext = itemIndex + visibleItems < show.videos.length
+  const [itemIndex, setItemIndex] = useState(0);
+  const hasPrev = itemIndex > 0;
+  const hasNext = itemIndex + visibleItems < show.videos.length;
 
   const handlePrev = () => {
-    const tryIndex = itemIndex - visibleItems
-    const lower = 0
-    setItemIndex(tryIndex >= lower ? tryIndex : lower)
-  }
+    const tryIndex = itemIndex - visibleItems;
+    const lower = 0;
+    setItemIndex(tryIndex >= lower ? tryIndex : lower);
+  };
   const handleNext = () => {
-    const newIndex = itemIndex + visibleItems
-    const upper = show.videos.length - visibleItems
-    setItemIndex(newIndex <= upper ? newIndex : upper)
-  }
+    const newIndex = itemIndex + visibleItems;
+    const upper = show.videos.length - visibleItems;
+    setItemIndex(newIndex <= upper ? newIndex : upper);
+  };
 
-  const offset = -itemIndex * (itemWidth + layout.itemSpacing)
+  const offset = -itemIndex * (itemWidth + layout.itemSpacing);
 
   return (
     <div ref={ref} className={css.section}>
@@ -81,7 +81,7 @@ const PlaylistScroller = ({ show }: PlaylistScrollerProps) => {
         <Control type="next" handle={handleNext} enabled={hasNext} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PlaylistScroller
+export default PlaylistScroller;

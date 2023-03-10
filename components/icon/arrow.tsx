@@ -1,7 +1,7 @@
 export interface ChevronProps {
-  direction?: 'up' | 'down' | 'left' | 'right'
-  size?: number
-  fill?: string
+  direction?: 'up' | 'down' | 'left' | 'right';
+  size?: number;
+  fill?: string;
 }
 
 const Arrow = ({
@@ -9,17 +9,17 @@ const Arrow = ({
   size = 24,
   fill = '#000',
 }: ChevronProps) => {
-  let rotation = 0
+  let rotation = 0;
   switch (direction) {
     case 'right':
-      rotation = 180
-      break
+      rotation = 180;
+      break;
     case 'up':
-      rotation = 90
-      break
+      rotation = 90;
+      break;
     case 'down':
-      rotation = -90
-      break
+      rotation = -90;
+      break;
   }
 
   return (
@@ -34,7 +34,7 @@ const Arrow = ({
         fill={fill}
       />
     </svg>
-  )
-}
+  );
+};
 
-export default Arrow
+export default Arrow;

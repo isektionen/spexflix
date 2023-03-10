@@ -1,30 +1,30 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react';
 
 const elementWidth = (): {
-  width: number
-  ref: React.MutableRefObject<any>
+  width: number;
+  ref: React.MutableRefObject<any>;
 } => {
-  const [width, setWidth] = useState(0)
-  const ref = useRef(null)
+  const [width, setWidth] = useState(0);
+  const ref = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
       if (ref.current !== null) {
-        setWidth(ref.current.clientWidth)
+        setWidth(ref.current.clientWidth);
       }
-    }
-    handleResize()
-    window.addEventListener('resize', handleResize)
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [ref.current])
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [ref.current]);
 
   return {
     width,
     ref,
-  }
-}
+  };
+};
 
-export default elementWidth
+export default elementWidth;

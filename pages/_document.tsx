@@ -1,5 +1,5 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
-import * as snippet from '@segment/snippet'
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import * as snippet from '@segment/snippet';
 
 export default class MyDocument extends Document {
   renderSnippet() {
@@ -8,13 +8,13 @@ export default class MyDocument extends Document {
       // note: the page option only covers SSR tracking.
       // Page.js is used to track other events using `window.analytics.page()`
       page: true,
-    }
+    };
 
     if (process.env.NEXT_PUBLIC_ENV === 'dev') {
-      return snippet.max(opts)
+      return snippet.max(opts);
     }
 
-    return snippet.min(opts)
+    return snippet.min(opts);
   }
 
   render() {
@@ -29,6 +29,6 @@ export default class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }
