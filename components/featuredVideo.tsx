@@ -23,17 +23,17 @@ const FeaturedVideo = ({ show }: FeaturedVideoProps) => (
       </h1>
       <p className={css.description}>{show.description}</p>
       <div className={css.buttons}>
-        <Link href={`/video/${show.videos[0].slug}`}>
-          <a
-            onClick={() =>
-              window.analytics.track('Featured video play button clicked', {
-                title: show.title,
-                slug: show.slug,
-              })
-            }
-          >
-            <Button type="primary" icon={<Icon.Play />} text="Spela upp" />
-          </a>
+        <Link
+          href={`/video/${show.videos[0].slug}`}
+          onClick={() =>
+            window.analytics.track('Featured video play button clicked', {
+              title: show.title,
+              slug: show.slug,
+            })
+          }>
+
+          <Button type="primary" icon={<Icon.Play />} text="Spela upp" />
+
         </Link>
         {/*
         * todo: implement details page for shows

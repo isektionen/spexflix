@@ -11,32 +11,32 @@ export interface PlaylistScrollerItemProps {
 }
 
 const Item = ({ video, width }: PlaylistScrollerItemProps) => (
-  <Link href={`/video/${video.slug}`}>
-    <a
-      onClick={() =>
-        window.analytics.track('Playlist item clicked', {
-          title: video.title,
-          slug: video.slug,
-        })
-      }
-    >
-      <li className={css.wrapper} style={{ width }}>
-        <div className={css.item} style={{ width }}>
-          <div
-            className={css.video}
-            style={{
-              backgroundImage: `url(${youtubeImageURL(video.youtubeVideoID)})`,
-            }}
-          />
-          <div className={css.details}>
-            <Button shape="round" type="primary" icon={<Icon.Play />} />
-            <span className={css.title}>{video.title}</span>
-            <span className={css.views}>{video.views} visningar</span>
-          </div>
+  (<Link
+    href={`/video/${video.slug}`}
+    onClick={() =>
+      window.analytics.track('Playlist item clicked', {
+        title: video.title,
+        slug: video.slug,
+      })
+    }>
+
+    <li className={css.wrapper} style={{ width }}>
+      <div className={css.item} style={{ width }}>
+        <div
+          className={css.video}
+          style={{
+            backgroundImage: `url(${youtubeImageURL(video.youtubeVideoID)})`,
+          }}
+        />
+        <div className={css.details}>
+          <Button shape="round" type="primary" icon={<Icon.Play />} />
+          <span className={css.title}>{video.title}</span>
+          <span className={css.views}>{video.views} visningar</span>
         </div>
-      </li>
-    </a>
-  </Link>
+      </div>
+    </li>
+
+  </Link>)
 );
 
 export default Item;
