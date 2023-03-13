@@ -14,7 +14,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
-  const { video } = await client.request(
+  const { video }: any = await client.request(
+    // todo(vm): response type.
     gql`
       query GetVideo($slug: String!) {
         video(where: { slug: $slug }) {
@@ -33,7 +34,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
-  const { updateVideo, publishVideo } = await client.request(
+  const { updateVideo, publishVideo }: any = await client.request(
+    // todo(vm): response type.
     gql`
       mutation IncrementViews($slug: String!, $views: Int!) {
         updateVideo(where: { slug: $slug }, data: { views: $views }) {

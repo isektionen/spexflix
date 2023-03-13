@@ -21,7 +21,8 @@ const ShowTypePage = ({ shows, featured, categories }): JSX.Element => (
 export default ShowTypePage;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { shows, featured, categories } = await graphcms.request(
+  const { shows, featured, categories }: any = await graphcms.request(
+    // todo(vm): response type.
     gql`
       query CategoryPage($slug: String!) {
         shows(where: { showCategory: { slug: $slug } }, orderBy: date_DESC) {
@@ -75,7 +76,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { categories } = await graphcms.request(
+  const { categories }: any = await graphcms.request(
+    // todo(vm): response type.
     gql`
       {
         categories: showCategories(orderBy: order_ASC) {

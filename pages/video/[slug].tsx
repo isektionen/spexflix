@@ -81,7 +81,8 @@ const VideoPage = ({ video }): JSX.Element => {
 export default VideoPage;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { video } = await graphcms.request(
+  const { video }: any = await graphcms.request(
+    // todo(vm): response type.
     gql`
       query VideoPageQuery($slug: String!) {
         video(where: { slug: $slug }) {
@@ -103,7 +104,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { videos } = await graphcms.request(
+  const { videos }: any = await graphcms.request(
+    // todo(vm): response type.
     gql`
       {
         videos {

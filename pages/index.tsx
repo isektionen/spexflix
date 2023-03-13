@@ -6,7 +6,8 @@ import PlaylistScroller from '../components/playlistScroller';
 import FeaturedVideo from '../components/featuredVideo';
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { shows, featured, categories } = await graphcms.request(
+  const { shows, featured, categories }: any = await graphcms.request(
+    // todo(vm): response type.
     gql`
       {
         shows(orderBy: date_DESC) {
