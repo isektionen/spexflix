@@ -21,6 +21,10 @@ const ShowTypePage = ({ shows, featured, categories }): JSX.Element => (
 export default ShowTypePage;
 
 export const getStaticProps: GetStaticProps = async (context) => {
+  // Avoid hitting hygraph's access limitations.
+  // todo(vm): reduce number of API requests.
+  await new Promise((r) => setTimeout(r, 1000));
+
   const { shows, featured, categories }: any = await graphcms.request(
     // todo(vm): response type.
     gql`
@@ -76,6 +80,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  // Avoid hitting hygraph's access limitations.
+  // todo(vm): reduce number of API requests.
+  await new Promise((r) => setTimeout(r, 1000));
+
   const { categories }: any = await graphcms.request(
     // todo(vm): response type.
     gql`

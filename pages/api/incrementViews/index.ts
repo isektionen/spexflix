@@ -14,6 +14,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
+  // Avoid hitting hygraph's access limitations.
+  // todo(vm): reduce number of API requests.
+  await new Promise((r) => setTimeout(r, 1000));
+
   const { video }: any = await client.request(
     // todo(vm): response type.
     gql`
@@ -33,6 +37,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(500).json({ error: 'unable to get current views' });
     return;
   }
+
+  // Avoid hitting hygraph's access limitations.
+  // todo(vm): reduce number of API requests.
+  await new Promise((r) => setTimeout(r, 1000));
 
   const { updateVideo, publishVideo }: any = await client.request(
     // todo(vm): response type.
