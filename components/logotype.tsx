@@ -41,16 +41,16 @@ const Logotype = ({ text, showOnlyFirstLetter = false }: LogotypeProps) => {
     : css.allButFirstLetter;
 
   return (
-    <Link href="/">
-      <a onClick={() => window.analytics.track('Logotype clicked')}>
-        <div className={css.logotype}>
-          {letterComponents[0]}
-          <div className={notFirstLetterStyles}>
-            {letterComponents.slice(1)}
-          </div>
+    (<Link href="/" onClick={() => window.analytics.track('Logotype clicked')}>
+
+      <div className={css.logotype}>
+        {letterComponents[0]}
+        <div className={notFirstLetterStyles}>
+          {letterComponents.slice(1)}
         </div>
-      </a>
-    </Link>
+      </div>
+
+    </Link>)
   );
 };
 

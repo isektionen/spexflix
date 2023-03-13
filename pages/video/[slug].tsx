@@ -81,7 +81,12 @@ const VideoPage = ({ video }): JSX.Element => {
 export default VideoPage;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { video } = await graphcms.request(
+  // Avoid hitting hygraph's access limitations.
+  // todo(vm): reduce number of API requests.
+  await new Promise((r) => setTimeout(r, 1000));
+
+  const { video }: any = await graphcms.request(
+    // todo(vm): response type.
     gql`
       query VideoPageQuery($slug: String!) {
         video(where: { slug: $slug }) {
@@ -103,7 +108,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { videos } = await graphcms.request(
+  // Avoid hitting hygraph's access limitations.
+  // todo(vm): reduce number of API requests.
+  await new Promise((r) => setTimeout(r, 1000));
+
+  const { videos }: any = await graphcms.request(
+    // todo(vm): response type.
     gql`
       {
         videos {

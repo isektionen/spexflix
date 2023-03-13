@@ -14,7 +14,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
-  const { video } = await client.request(
+  // Avoid hitting hygraph's access limitations.
+  // todo(vm): reduce number of API requests.
+  await new Promise((r) => setTimeout(r, 1000));
+
+  const { video }: any = await client.request(
+    // todo(vm): response type.
     gql`
       query GetVideo($slug: String!) {
         video(where: { slug: $slug }) {
@@ -33,7 +38,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
-  const { updateVideo, publishVideo } = await client.request(
+  // Avoid hitting hygraph's access limitations.
+  // todo(vm): reduce number of API requests.
+  await new Promise((r) => setTimeout(r, 1000));
+
+  const { updateVideo, publishVideo }: any = await client.request(
+    // todo(vm): response type.
     gql`
       mutation IncrementViews($slug: String!, $views: Int!) {
         updateVideo(where: { slug: $slug }, data: { views: $views }) {

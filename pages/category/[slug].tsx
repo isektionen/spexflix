@@ -21,7 +21,12 @@ const ShowTypePage = ({ shows, featured, categories }): JSX.Element => (
 export default ShowTypePage;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { shows, featured, categories } = await graphcms.request(
+  // Avoid hitting hygraph's access limitations.
+  // todo(vm): reduce number of API requests.
+  await new Promise((r) => setTimeout(r, 1000));
+
+  const { shows, featured, categories }: any = await graphcms.request(
+    // todo(vm): response type.
     gql`
       query CategoryPage($slug: String!) {
         shows(where: { showCategory: { slug: $slug } }, orderBy: date_DESC) {
@@ -75,7 +80,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { categories } = await graphcms.request(
+  // Avoid hitting hygraph's access limitations.
+  // todo(vm): reduce number of API requests.
+  await new Promise((r) => setTimeout(r, 1000));
+
+  const { categories }: any = await graphcms.request(
+    // todo(vm): response type.
     gql`
       {
         categories: showCategories(orderBy: order_ASC) {
