@@ -25,5 +25,5 @@ YouTube movie client with a familiar interface configured with:
 | `NEXT_PUBLIC_SITE_DESCRIPTION`    | A short descriptive text of the site. Used in meta description. |
 | `NEXT_PUBLIC_PUBLISHER`           | Name of the content publisher.                                  |
 | `NEXT_PUBLIC_COPYRIGHT_YEAR_FROM` | Starting year for copyright.                                    |
-| `GRAPHCMS_API_URL`                | GraphCMS endpoint URL.                                          |
-| `GRAPHCMS_ACCESS_TOKEN`           | GraphCMS access token.                                          |
+| `GRAPHQL_URL`                     | GraphCMS endpoint URL.                                          |
+| `GRAPHQL_TOKEN`                   | GraphCMS access token.                                          |

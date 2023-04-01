@@ -1,8 +1,8 @@
 import { GraphQLClient, gql } from 'graphql-request';
 
-const client = new GraphQLClient(process.env.GRAPHCMS_API_URL, {
+const client = new GraphQLClient(process.env.GRAPHQL_URL, {
   headers: {
-    Authorization: `Bearer ${process.env.GRAPHCMS_AUTH_TOKEN}`,
+    Authorization: `Bearer ${process.env.GRAPHQL_TOKEN}`,
   },
 });
 
