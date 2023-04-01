@@ -25,7 +25,7 @@ const Item = ({ show, width }: PlaylistScrollerItemProps) => (
         <div
           className={css.video}
           style={{
-            backgroundImage: `url(${show.image?.url || youtubeImageURL(show.videos[0].youtubeVideoID)})`,
+            backgroundImage: `url(${show.poster?.url || youtubeImageURL(show.videos[0].youtubeVideoID)})`,
           }}
         />
         <div className={css.details}>
