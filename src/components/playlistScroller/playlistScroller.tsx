@@ -29,10 +29,10 @@ const Control = ({ type, enabled, handle }: PlaylistScrollerControl) => {
 };
 
 export interface PlaylistScrollerProps {
-  show: any;
+  category: any;
 }
 
-const PlaylistScroller = ({ show }: PlaylistScrollerProps) => {
+const PlaylistScroller = ({ category }: PlaylistScrollerProps) => {
   const { width, ref } = elementWidth();
 
   const layout = {
@@ -47,7 +47,7 @@ const PlaylistScroller = ({ show }: PlaylistScrollerProps) => {
 
   const [itemIndex, setItemIndex] = useState(0);
   const hasPrev = itemIndex > 0;
-  const hasNext = itemIndex + visibleItems < show.videos.length;
+  const hasNext = itemIndex + visibleItems < category.shows.length;
 
   const handlePrev = () => {
     const tryIndex = itemIndex - visibleItems;
@@ -56,7 +56,7 @@ const PlaylistScroller = ({ show }: PlaylistScrollerProps) => {
   };
   const handleNext = () => {
     const newIndex = itemIndex + visibleItems;
-    const upper = show.videos.length - visibleItems;
+    const upper = category.shows.length - visibleItems;
     setItemIndex(newIndex <= upper ? newIndex : upper);
   };
 
@@ -65,16 +65,15 @@ const PlaylistScroller = ({ show }: PlaylistScrollerProps) => {
   return (
     <div ref={ref} className={css.section}>
       <h2 className={css.header}>
-        {show.title}
-        {show.orTitle && ' eller ' + show.orTitle}
+        {category.name}
       </h2>
       <div className={css.wrapper}>
         <ul
           className={css.scroller}
           style={{ transform: `translate3d(${offset}px, 0, 0)` }}
         >
-          {show.videos.map((v) => (
-            <Item key={v.slug} video={v} width={itemWidth} />
+          {category.shows.map((s) => (
+            <Item key={s.slug} show={s} width={itemWidth} />
           ))}
         </ul>
         <Control type="prev" handle={handlePrev} enabled={hasPrev} />

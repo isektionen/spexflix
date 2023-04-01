@@ -10,21 +10,10 @@ export const getStaticProps: GetStaticProps = async () => {
   // todo(vm): reduce number of API requests.
   await new Promise((r) => setTimeout(r, 1000));
 
-  const { shows, featured, categories }: any = await graphcms.request(
+  const { featured, categories }: any = await graphcms.request(
     // todo(vm): response type.
     gql`
       {
-        shows(orderBy: date_DESC) {
-          slug
-          title
-          orTitle
-          videos {
-            slug
-            title
-            youtubeVideoID
-            views
-          }
-        }
         featured: shows(
           where: { description_not: "", image: { id_not: "" } }
           orderBy: date_DESC
@@ -44,6 +33,18 @@ export const getStaticProps: GetStaticProps = async () => {
         categories: showCategories(orderBy: order_ASC) {
           name
           slug
+          shows(orderBy: date_DESC) {
+              slug
+              title
+              orTitle
+              image {url}
+              videos {
+                  slug
+                  title
+                  youtubeVideoID
+                  views
+              }
+          }
         }
       }
     `
@@ -51,7 +52,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      shows,
       categories,
       featured: featured.length > 0 ? featured[0] : null,
     },
@@ -61,10 +61,9 @@ export const getStaticProps: GetStaticProps = async () => {
 export interface HomeProps {
   shows: any[];
   featured: any;
-  categories: string[];
+  categories: any[];
 }
 export const Home = ({
-  shows,
   featured,
   categories,
 }: HomeProps): JSX.Element => (
@@ -75,8 +74,8 @@ export const Home = ({
     categories={categories}
   >
     {featured && <FeaturedVideo show={featured} />}
-    {shows.map((s) => (
-      <PlaylistScroller key={s.slug} show={s} />
+    {categories.map((c) => (
+      <PlaylistScroller key={c.slug} category={c} />
     ))}
   </Layout>
 );

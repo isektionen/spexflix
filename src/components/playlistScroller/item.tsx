@@ -1,22 +1,22 @@
 import Link from 'next/link';
-import { youtubeImageURL } from '../../lib/youtube';
 import Button from '../button';
 import Icon from '../icon';
+import { youtubeImageURL } from '../../lib/youtube';
 
 import css from './item.module.scss';
 
 export interface PlaylistScrollerItemProps {
-  video: any;
+  show: any;
   width: number;
 }
 
-const Item = ({ video, width }: PlaylistScrollerItemProps) => (
+const Item = ({ show, width }: PlaylistScrollerItemProps) => (
   (<Link
-    href={`/video/${video.slug}`}
+    href={`/show/${show.slug}`}
     onClick={() =>
       window.analytics.track('Playlist item clicked', {
-        title: video.title,
-        slug: video.slug,
+        title: show.title,
+        slug: show.slug,
       })
     }>
 
@@ -25,13 +25,11 @@ const Item = ({ video, width }: PlaylistScrollerItemProps) => (
         <div
           className={css.video}
           style={{
-            backgroundImage: `url(${youtubeImageURL(video.youtubeVideoID)})`,
+            backgroundImage: `url(${show.image?.url || youtubeImageURL(show.videos[0].youtubeVideoID)})`,
           }}
         />
         <div className={css.details}>
           <Button shape="round" type="primary" icon={<Icon.Play />} />
-          <span className={css.title}>{video.title}</span>
-          <span className={css.views}>{video.views} visningar</span>
         </div>
       </div>
     </li>
