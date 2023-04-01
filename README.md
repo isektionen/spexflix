@@ -13,9 +13,9 @@ YouTube movie client with a familiar interface configured with:
 ## Get started
 
 1. Clone repo: `git clone https://github.com/vmorsell/react-youflix`
-1. Copy the file `.env.example` to `.env` and fill out the desired settings. Refer to section [Environment variables](#-environment-variables).
-1. Install dependicies: `npm i` or `yarn`
-1. Run local server: `npm start` or `yarn start`
+2. Copy the file `.env.example` to `.env` and fill out the desired settings. Refer to section [Environment variables](#-environment-variables).
+3. Install dependicies: `npm i` or `yarn`
+4. Run local server: `npm start` or `yarn start`
 
 ## Environment variables
 
