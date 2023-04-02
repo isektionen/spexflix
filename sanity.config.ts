@@ -15,7 +15,7 @@ export default defineConfig({
   },
   plugins: [
     deskTool(),
-    // Vision lets you query your content wiht GROQ in the studio.
+    // Vision lets you query your content with GROQ in the studio.
     // // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
   ],
