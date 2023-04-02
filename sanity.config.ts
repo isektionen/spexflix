@@ -1,15 +1,17 @@
 import { visionTool } from '@sanity/vision';
 import { defineConfig } from 'sanity';
 import { deskTool } from 'sanity/desk';
-
 import { apiVersion, dataset, projectId } from './sanity/env';
-import { schema } from './sanity/schema';
+import productionSeriesType from './schemas/productionSeries';
+import productionType from './schemas/production';
 
 export default defineConfig({
   basePath: '/studio',
   projectId,
   dataset,
-  schema,
+  schema: {
+    types: [productionSeriesType, productionType],
+  },
   plugins: [
     deskTool(),
     // Vision lets you query your content wiht GROQ in the studio.
