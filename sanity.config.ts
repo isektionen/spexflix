@@ -1,7 +1,7 @@
 import { visionTool } from '@sanity/vision';
 import { defineConfig } from 'sanity';
 import { deskTool } from 'sanity/desk';
-import { apiVersion, dataset, projectId } from './sanity/env';
+import { title, apiVersion, dataset, projectId } from './sanity/env';
 import productionSeriesType from './schemas/productionSeries';
 import productionType from './schemas/production';
 
@@ -9,6 +9,7 @@ export default defineConfig({
   basePath: '/studio',
   projectId,
   dataset,
+  title,
   schema: {
     types: [productionSeriesType, productionType],
   },
