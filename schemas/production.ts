@@ -48,30 +48,12 @@ export default defineType({
       initialValue: () => new Date().toISOString(),
     }),
     defineField({
-      name: 'videoUrl',
-      title: 'YouTube-adress till inspelning',
-      type: 'string',
-    }),
-    defineField({
       name: 'videos',
       title: 'Inspelningar',
       type: 'array',
       of: [
         {
-          type: 'object',
-          name: 'video',
-          fields: [
-            {
-              name: 'title',
-              title: 'Titel',
-              type: 'string',
-            },
-            {
-              name: 'youtubeUrl',
-              title: 'YouTube-adress',
-              type: 'string',
-            },
-          ],
+          type: 'video',
         },
       ],
     }),
@@ -81,20 +63,7 @@ export default defineType({
       type: 'array',
       of: [
         {
-          type: 'object',
-          name: 'video',
-          fields: [
-            {
-              name: 'title',
-              title: 'Titel',
-              type: 'string',
-            },
-            {
-              name: 'youtubeUrl',
-              title: 'YouTube-adress',
-              type: 'string',
-            },
-          ],
+          type: 'video',
         },
       ],
     }),

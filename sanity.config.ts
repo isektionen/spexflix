@@ -4,6 +4,7 @@ import { deskTool } from 'sanity/desk';
 import { title, apiVersion, dataset, projectId } from './sanity/env';
 import productionSeriesType from './schemas/productionSeries';
 import productionType from './schemas/production';
+import videoType from './schemas/video';
 
 export default defineConfig({
   basePath: '/studio',
@@ -11,7 +12,7 @@ export default defineConfig({
   dataset,
   title,
   schema: {
-    types: [productionSeriesType, productionType],
+    types: [productionSeriesType, productionType, videoType],
   },
   plugins: [
     deskTool(),
