@@ -1,82 +1,68 @@
 import { GetStaticProps } from 'next';
-import graphcms, { gql } from '../lib/graphcms';
+import { groq } from 'next-sanity';
+import { client } from '../lib/sanity/client';
+import { Production } from '../../schema/production';
+import { ProductionSeries } from '../../schema/productionSeries';
 
 import Layout from '../components/layout';
 import PlaylistScroller from '../components/playlistScroller';
 import FeaturedVideo from '../components/featuredVideo';
 
-export const getStaticProps: GetStaticProps = async () => {
-  // Avoid hitting hygraph's access limitations.
-  // todo(vm): reduce number of API requests.
-  await new Promise((r) => setTimeout(r, 1000));
+export interface QueryResult {
+  productionSeries: Pick<ProductionSeries, 'title' | 'slug'>[];
+  productions: Pick<
+    Production,
+    'title' | 'orTitle' | 'description' | 'slug' | 'coverImage'
+  >[];
+}
 
-  const { shows, featured, categories }: any = await graphcms.request(
-    // todo(vm): response type.
-    gql`
-      {
-        shows(orderBy: date_DESC) {
-          slug
-          title
-          orTitle
-          videos {
-            slug
-            title
-            youtubeVideoID
-            views
-          }
-        }
-        featured: shows(
-          where: { description_not: "", image: { id_not: "" } }
-          orderBy: date_DESC
-          first: 1
-        ) {
-          title
-          orTitle
-          description
-          image {
-            url
-          }
-          videos {
-            slug
-            title
-          }
-        }
-        categories: showCategories(orderBy: order_ASC) {
-          name
-          slug
+export const getStaticProps: GetStaticProps = async () => {
+  const query = groq`
+    {
+      "productionSeries": *[_type == "productionSeries"]{
+        title,
+        slug
+      },
+      "productions": *[_type == "production"]{
+        title,
+        orTitle,
+        description,
+        slug,
+        "coverImage": coverImage.asset->,
+        videos[] {
+          title,
+          slug,
+          youtubeUrl,
+          "coverImage": coverImage.asset->
         }
       }
-    `
+    }
+  `;
+  const { productionSeries, productions }: QueryResult = await client.fetch(
+    query
   );
 
   return {
     props: {
-      shows,
-      categories,
-      featured: featured.length > 0 ? featured[0] : null,
+      productionSeries,
+      productions,
     },
   };
 };
 
-export interface HomeProps {
-  shows: any[];
-  featured: any;
-  categories: string[];
-}
 export const Home = ({
-  shows,
-  featured,
-  categories,
-}: HomeProps): JSX.Element => (
+  productionSeries,
+  productions,
+}: QueryResult): JSX.Element => (
   <Layout
     title={process.env.NEXT_PUBLIC_SITE_TITLE}
     copyrightFromYear={process.env.NEXT_PUBLIC_COPYRIGHT_FROM_YEAR}
     publisher={process.env.NEXT_PUBLIC_PUBLISHER}
-    categories={categories}
+    productionSeries={productionSeries}
   >
-    {featured && <FeaturedVideo show={featured} />}
-    {shows.map((s) => (
-      <PlaylistScroller key={s.slug} show={s} />
+    {productions.length > 0 && <FeaturedVideo production={productions[0]} />}
+    {productions.map((p) => (
+      <PlaylistScroller key={p.slug.current} production={p} />
     ))}
   </Layout>
 );

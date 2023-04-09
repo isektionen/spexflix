@@ -2,6 +2,8 @@ import { useState } from 'react';
 import Item from './item';
 import elementWidth from '../../helpers/elementWidth';
 import Icon from '../icon';
+import { Production } from '../../../schema/production';
+import { Video } from '../../../schema/video';
 
 import css from './playlistScroller.module.scss';
 
@@ -29,10 +31,10 @@ const Control = ({ type, enabled, handle }: PlaylistScrollerControl) => {
 };
 
 export interface PlaylistScrollerProps {
-  show: any;
+  production: Pick<Production, 'title' | 'orTitle' | 'videos'>;
 }
 
-const PlaylistScroller = ({ show }: PlaylistScrollerProps) => {
+const PlaylistScroller = ({ production }: PlaylistScrollerProps) => {
   const { width, ref } = elementWidth();
 
   const layout = {
@@ -47,7 +49,7 @@ const PlaylistScroller = ({ show }: PlaylistScrollerProps) => {
 
   const [itemIndex, setItemIndex] = useState(0);
   const hasPrev = itemIndex > 0;
-  const hasNext = itemIndex + visibleItems < show.videos.length;
+  const hasNext = itemIndex + visibleItems < production.videos.length;
 
   const handlePrev = () => {
     const tryIndex = itemIndex - visibleItems;
@@ -56,7 +58,7 @@ const PlaylistScroller = ({ show }: PlaylistScrollerProps) => {
   };
   const handleNext = () => {
     const newIndex = itemIndex + visibleItems;
-    const upper = show.videos.length - visibleItems;
+    const upper = production.videos.length - visibleItems;
     setItemIndex(newIndex <= upper ? newIndex : upper);
   };
 
@@ -65,16 +67,16 @@ const PlaylistScroller = ({ show }: PlaylistScrollerProps) => {
   return (
     <div ref={ref} className={css.section}>
       <h2 className={css.header}>
-        {show.title}
-        {show.orTitle && ' eller ' + show.orTitle}
+        {production.title}
+        {production.orTitle && ' eller ' + production.orTitle}
       </h2>
       <div className={css.wrapper}>
         <ul
           className={css.scroller}
           style={{ transform: `translate3d(${offset}px, 0, 0)` }}
         >
-          {show.videos.map((v) => (
-            <Item key={v.slug} video={v} width={itemWidth} />
+          {production.videos.map((v: Video) => (
+            <Item key={v.slug.current} video={v} width={itemWidth} />
           ))}
         </ul>
         <Control type="prev" handle={handlePrev} enabled={hasPrev} />

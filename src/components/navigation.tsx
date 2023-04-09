@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { ProductionSeries } from '../../schema/productionSeries';
 
 import css from './navigation.module.scss';
 
 export interface NavigationProps {
-  categories: any[];
+  productionSeries: ProductionSeries[];
 }
 
-const Navigation = ({ categories }: NavigationProps) => {
+const Navigation = ({ productionSeries }: NavigationProps) => {
   const router = useRouter();
   return (
     <nav className={css.navigation}>
@@ -20,27 +21,25 @@ const Navigation = ({ categories }: NavigationProps) => {
               window.analytics.track('Top menu link pressed', {
                 href: '/',
               })
-            }>
-            
-              Hem
-            
+            }
+          >
+            Hem
           </Link>
         </li>
-        {categories.map((c) => (
-          <li className={css.navItem} key={c.slug}>
+        {productionSeries.map((c: ProductionSeries) => (
+          <li className={css.navItem} key={c.slug.current}>
             <Link
-              href={`/category/${c.slug}`}
+              href={`/category/${c.slug.current}`}
               className={
-                router.query?.slug === c.slug ? css.navLinkActive : null
+                router.query?.slug === c.slug.current ? css.navLinkActive : null
               }
               onClick={() =>
                 window.analytics.track('Top menu link pressed', {
-                  href: `/category/${c.slug}`,
+                  href: `/category/${c.slug.current}`,
                 })
-              }>
-
-              {c.name}
-
+              }
+            >
+              {c.title}
             </Link>
           </li>
         ))}
