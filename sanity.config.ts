@@ -2,9 +2,9 @@ import { visionTool } from '@sanity/vision';
 import { defineConfig } from 'sanity';
 import { deskTool } from 'sanity/desk';
 import { title, apiVersion, dataset, projectId } from './sanity/env';
-import productionSeriesType from './schemas/productionSeries';
-import productionType from './schemas/production';
-import videoType from './schemas/video';
+import productionSeriesType from './schema/productionSeries';
+import productionType from './schema/production';
+import videoType from './schema/video';
 
 export default defineConfig({
   basePath: '/studio',
