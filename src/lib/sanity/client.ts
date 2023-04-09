@@ -7,4 +7,5 @@ export const client = createClient({
   dataset,
   projectId,
   useCdn,
+  token: process.env.SANITY_API_READ_TOKEN,
 });
