@@ -1,4 +1,11 @@
-import { defineField, defineType } from 'sanity';
+import { defineField, defineType, Slug, Asset } from 'sanity';
+
+export interface Video {
+  title: string;
+  slug: Slug;
+  youtubeUrl: string;
+  coverImage?: Asset;
+}
 
 export default defineType({
   name: 'video',
@@ -44,10 +51,3 @@ export default defineType({
     },
   },
 });
-
-export interface Video {
-  title: string;
-  slug: string;
-  youtubeUrl: string;
-  coverImage: any;
-}

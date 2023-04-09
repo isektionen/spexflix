@@ -1,4 +1,9 @@
-import { defineField, defineType } from 'sanity';
+import { defineField, defineType, Slug } from 'sanity';
+
+export interface ProductionSeries {
+  title: string;
+  slug: Slug;
+}
 
 export default defineType({
   name: 'productionSeries',

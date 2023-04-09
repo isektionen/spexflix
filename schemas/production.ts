@@ -1,6 +1,20 @@
-import { defineField, defineType } from 'sanity';
+import { defineField, defineType, Slug, Asset } from 'sanity';
 import { format, parseISO } from 'date-fns';
-import productionSeriesType from './productionSeries';
+import productionSeriesType, { ProductionSeries } from './productionSeries';
+import { Video } from './video';
+
+export interface Production {
+  title: string;
+  slug: Slug;
+  orTitle?: string;
+  description?: string;
+  productionSeries: ProductionSeries;
+  premiereDate?: string;
+  videos?: Video[];
+  trailers?: Video[];
+  posterImage?: Asset;
+  coverImage?: Asset;
+}
 
 export default defineType({
   name: 'production',
