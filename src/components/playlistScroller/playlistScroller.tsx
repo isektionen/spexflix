@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Item from './item';
 import elementWidth from '../../helpers/elementWidth';
 import Icon from '../icon';
-import { Production } from '../../../schema/production';
-import { Video } from '../../../schema/video';
+import type { Production } from '../../../schema/production';
+import type { Video } from '../../../schema/video';
 
 import css from './playlistScroller.module.scss';
 

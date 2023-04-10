@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 import Logotype from './logotype';
 import Navigation from './navigation';
-import { ProductionSeries } from '../../schema/productionSeries';
+import type { ProductionSeries } from '../../schema/productionSeries';
 
 import css from './header.module.scss';
 

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ProductionSeries } from '../../schema/productionSeries';
+import type { ProductionSeries } from '../../schema/productionSeries';
 
 import css from './navigation.module.scss';
 

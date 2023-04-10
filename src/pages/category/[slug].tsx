@@ -1,8 +1,8 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { groq } from 'next-sanity';
 import { client } from '../../lib/sanity/client';
-import { Production } from '../../../schema/production';
-import { ProductionSeries } from '../../../schema/productionSeries';
+import type { Production } from '../../../schema/production';
+import type { ProductionSeries } from '../../../schema/productionSeries';
 
 import Layout from '../../components/layout';
 import PlaylistScroller from '../../components/playlistScroller';

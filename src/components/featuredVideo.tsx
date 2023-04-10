@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Button from './button';
 import Icon from './icon';
-import { Production } from '../../schema/production';
+import type { Production } from '../../schema/production';
 
 import css from './featuredVideo.module.scss';
 

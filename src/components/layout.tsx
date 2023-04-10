@@ -1,6 +1,6 @@
 import Header from './header';
 import Footer from './footer';
-import { ProductionSeries } from '../../schema/productionSeries';
+import type { ProductionSeries } from '../../schema/productionSeries';
 
 import css from './layout.module.scss';
 

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { youtubeImageURLFromVideoURL } from '../../lib/youtube';
 import Button from '../button';
 import Icon from '../icon';
-import { Video } from '../../../schema/video';
+import type { Video } from '../../../schema/video';
 
 import css from './item.module.scss';
 
