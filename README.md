@@ -25,11 +25,14 @@ YouTube movie client with a familiar design. Configured with:
 
 ## Environment variables
 
-| Name                              | Description                                                     |
-| --------------------------------- | --------------------------------------------------------------- |
-| `NEXT_PUBLIC_SITE_TITLE`          | Title of site.                                                  |
-| `NEXT_PUBLIC_SITE_DESCRIPTION`    | A short descriptive text of the site. Used in meta description. |
-| `NEXT_PUBLIC_PUBLISHER`           | Name of the content publisher.                                  |
-| `NEXT_PUBLIC_COPYRIGHT_YEAR_FROM` | Starting year for copyright.                                    |
-| `GRAPHQL_URL`                     | GraphCMS endpoint URL.                                          |
-| `GRAPHQL_TOKEN`                   | GraphCMS access token.                                          |
+| Name                              | Description                                                                                                                                                                                                   |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_TITLE`          | Title of site.                                                                                                                                                                                                |
+| `NEXT_PUBLIC_SITE_DESCRIPTION`    | A short descriptive text of the site. Used in meta description.                                                                                                                                               |
+| `NEXT_PUBLIC_PUBLISHER`           | Name of the content publisher.                                                                                                                                                                                |
+| `NEXT_PUBLIC_COPYRIGHT_YEAR_FROM` | Starting year for copyright.                                                                                                                                                                                  |
+|                                   |                                                                                                                                                                                                               |
+| `SANITY_API_READ_TOKEN`           | Sanity API token with read access to your dataset.                                                                                                                                                            |
+| `NEXT_PUBLIC_SANITY_PROJECT_ID`   | Sanity project ID.                                                                                                                                                                                            |
+| `NEXT_PUBLIC_SANITY_DATASET`      | Sanity dataset name.                                                                                                                                                                                          |
+| `NEXT_PUBLIC_SANITY_API_VERSION`  | Version of the Sanity API to use. Sanity uses ISO 8601-formatted UTC dates, such as 2023-04-11. Any past or present date is valid. Read more in the [Sanity docs](https://www.sanity.io/docs/api-versioning). |
