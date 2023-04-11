@@ -1,18 +1,17 @@
-# YouFlix
+# Spexflix
 
 [![Powered by Vercel](./public/powered-by-vercel.svg)](https://vercel.com/?utm_source=isektionen&utm_campaign=oss)
 
-YouTube movie client with a familiar interface configured with:
+YouTube movie client with a familiar design. Configured with:
 
 - [Typescript](https://www.typescriptlang.org/)
 - Linting with [ESLint](https://eslint.org/)
 - Formatting with [Prettier](https://prettier.io/)
 - Linting, typechecking and formatting on by default using [`husky`](https://github.com/typicode/husky) for commit hooks
-- Testing with [Jest](https://jestjs.io/) and [`react-testing-library`](https://testing-library.com/docs/react-testing-library/intro)
 
 ## Get started
 
-1. Clone repo: `git clone https://github.com/vmorsell/react-youflix`
+1. Clone repo: `git clone https://github.com/isektionen/spexflix`
 2. Copy the file `.env.example` to `.env` and fill out the desired settings. Refer to section [Environment variables](#-environment-variables).
 3. Install dependicies: `npm i` or `yarn`
 4. Run local server: `npm start` or `yarn start`
