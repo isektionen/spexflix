@@ -9,7 +9,15 @@ YouTube movie client with a familiar design. Configured with:
 - Formatting with [Prettier](https://prettier.io/)
 - Linting, typechecking and formatting on by default using [`husky`](https://github.com/typicode/husky) for commit hooks
 
-## Get started
+## Getting started
+
+### Requirements
+
+- [Node.js 14.6.0](https://nodejs.org/) or newer
+- [Yarn package manager](https://yarnpkg.com/)
+- [Git command-line tool](https://git-scm.com/) (optional)
+
+### Let's go!
 
 1. Clone repo: `git clone https://github.com/isektionen/spexflix`
 2. Copy the file `.env.example` to `.env` and fill out the desired settings. Refer to section [Environment variables](#-environment-variables).
