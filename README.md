@@ -13,8 +13,8 @@ YouTube movie client with a familiar design. Configured with:
 
 1. Clone repo: `git clone https://github.com/isektionen/spexflix`
 2. Copy the file `.env.example` to `.env` and fill out the desired settings. Refer to section [Environment variables](#-environment-variables).
-3. Install dependicies: `npm i` or `yarn`
-4. Run local server: `npm start` or `yarn start`
+3. Install dependicies: `yarn` or `npm i`
+4. Run local server: `yarn dev` or `npm run dev`
 
 ## Environment variables
 
