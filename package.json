@@ -12,17 +12,8 @@
     "test": "jest",
     "test-all": "yarn lint && yarn type-check && yarn test"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn run type-check"
-    }
-  },
   "lint-staged": {
-    "*.@(ts|tsx)": [
-      "yarn lint",
-      "yarn format"
-    ]
+    "*.@(ts|tsx)": ["yarn lint", "yarn format"]
   },
   "dependencies": {
     "@segment/snippet": "^4.15.3",
@@ -50,7 +41,6 @@
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-react": "^7.32.2",
-    "husky": "^8.0.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.5.0",
     "jest-watch-typeahead": "^2.2.2",
