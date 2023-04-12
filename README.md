@@ -22,6 +22,8 @@ YouTube movie client with a familiar design. Configured with:
 2. Copy the file `.env.example` to `.env` and fill out the desired settings. Refer to section [Environment variables](#-environment-variables).
 3. Install dependicies: `yarn` or `npm i`
 4. Run local server: `yarn dev` or `npm run dev`
+5. Visit http://localhost:3000 to view the local site (your port might not be 3000)
+6. Visit http://localhost:3000/studio to view the CMS tool, Sanity Studio (same port as for the site)
 
 ## Environment variables
 
