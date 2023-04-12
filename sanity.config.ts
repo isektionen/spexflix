@@ -1,7 +1,7 @@
 import { visionTool } from '@sanity/vision';
 import { defineConfig } from 'sanity';
 import { deskTool } from 'sanity/desk';
-import { title, apiVersion, dataset, projectId } from './sanity/env';
+import { title, apiVersion, dataset, projectId } from './src/lib/sanity/env';
 import productionSeriesType from './schema/productionSeries';
 import productionType from './schema/production';
 import videoType from './schema/video';
