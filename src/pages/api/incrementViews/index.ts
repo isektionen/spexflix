@@ -2,13 +2,11 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { projectId, dataset, apiVersion } from '../../../lib/sanity/env';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const productionSlug = req.query.productionSlug;
+  const { productionSlug, videoSlug } = req.query;
   if (!productionSlug) {
     res.status(400).json({ error: 'missing production slug' });
     return;
   }
-
-  const videoSlug = req.query.videoSlug;
   if (!videoSlug) {
     res.status(400).json({ error: 'missing video slug' });
     return;

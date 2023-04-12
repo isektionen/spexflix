@@ -13,7 +13,10 @@
     "test-all": "yarn lint && yarn type-check && yarn test"
   },
   "lint-staged": {
-    "*.@(ts|tsx)": ["yarn lint", "yarn format"]
+    "*.@(ts|tsx)": [
+      "yarn lint",
+      "yarn format"
+    ]
   },
   "dependencies": {
     "@portabletext/react": "^2.0.2",
