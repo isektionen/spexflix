@@ -23,7 +23,7 @@ export const getStaticProps: GetStaticProps = async () => {
         title,
         slug
       },
-      "productions": *[_type == "production"]{
+      "productions": *[_type == "production"] | order(premiereDate desc) {
         title,
         orTitle,
         description,
