@@ -1,70 +1,47 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
-import graphcms, { gql } from '../../lib/graphcms';
+import { groq } from 'next-sanity';
+import { client } from '../../lib/sanity/client';
+import type { Production } from '../../../schema/production';
+import type { ProductionSeries } from '../../../schema/productionSeries';
 
 import Layout from '../../components/layout';
 import PlaylistScroller from '../../components/playlistScroller';
 import FeaturedVideo from '../../components/featuredVideo';
 
-const ShowTypePage = ({ shows, featured, categories }): JSX.Element => (
-  <Layout
-    title={process.env.NEXT_PUBLIC_SITE_TITLE}
-    copyrightFromYear={process.env.NEXT_PUBLIC_COPYRIGHT_FROM_YEAR}
-    publisher={process.env.NEXT_PUBLIC_PUBLISHER}
-    categories={categories}
-  >
-    {featured && <FeaturedVideo show={featured} />}
-    {shows.map((s) => (
-      <PlaylistScroller key={s.id} show={s} />
-    ))}
-  </Layout>
-);
-export default ShowTypePage;
+export interface QueryResult {
+  productionSeries: Pick<ProductionSeries, 'title' | 'slug'>[];
+  productions: Pick<
+    Production,
+    'title' | 'orTitle' | 'description' | 'slug' | 'coverImage'
+  >[];
+}
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  // Avoid hitting hygraph's access limitations.
-  // todo(vm): reduce number of API requests.
-  await new Promise((r) => setTimeout(r, 1000));
-
-  const { shows, featured, categories }: any = await graphcms.request(
-    // todo(vm): response type.
-    gql`
-      query CategoryPage($slug: String!) {
-        shows(where: { showCategory: { slug: $slug } }, orderBy: date_DESC) {
-          title
-          orTitle
-          videos {
-            slug
-            title
-            youtubeVideoID
-            views
-          }
-        }
-        featured: shows(
-          where: {
-            showCategory: { slug: $slug }
-            description_not: ""
-            image: { id_not: "" }
-          }
-          orderBy: date_DESC
-          first: 1
-        ) {
-          title
-          orTitle
-          description
-          image {
-            url
-          }
-          videos {
-            slug
-            title
-          }
-        }
-        categories: showCategories(orderBy: order_ASC) {
-          name
+  const query = groq`
+        {
+        "productionSeries": *[_type == "productionSeries"]{
+          title,
           slug
+        },
+        "productions": *[_type == "production" && productionSeries->slug.current == $slug]{
+          title,
+          orTitle,
+          description,
+          slug,
+          productionSeries->,
+          "coverImage": coverImage.asset->,
+          videos[] {
+            title,
+            slug,
+            youtubeUrl,
+            "coverImage": coverImage.asset->
+          }
         }
       }
-    `,
+    `;
+
+  const { productionSeries, productions }: QueryResult = await client.fetch(
+    query,
     {
       slug: context.params.slug,
     }
@@ -72,37 +49,50 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      shows,
-      categories,
-      featured: featured.length > 0 ? featured[0] : null,
+      productionSeries,
+      productions,
     },
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // Avoid hitting hygraph's access limitations.
-  // todo(vm): reduce number of API requests.
-  await new Promise((r) => setTimeout(r, 1000));
-
-  const { categories }: any = await graphcms.request(
-    // todo(vm): response type.
-    gql`
-      {
-        categories: showCategories(orderBy: order_ASC) {
-          name
-          slug
-        }
+  const query = groq`
+{
+      "productionSeries": *[_type == "productionSeries"]{
+        title,
+        slug
       }
-    `
-  );
+}
+      `;
+
+  const { productionSeries }: { productionSeries: ProductionSeries[] } =
+    await client.fetch(query);
 
   return {
-    paths: categories.map((c) => ({
+    paths: productionSeries.map((ps) => ({
       params: {
-        name: c.name,
-        slug: c.slug,
+        name: ps.title,
+        slug: ps.slug.current,
       },
     })),
     fallback: false,
   };
 };
+
+const CategoryPage = ({
+  productionSeries,
+  productions,
+}: QueryResult): JSX.Element => (
+  <Layout
+    title={process.env.NEXT_PUBLIC_SITE_TITLE}
+    copyrightFromYear={process.env.NEXT_PUBLIC_COPYRIGHT_FROM_YEAR}
+    publisher={process.env.NEXT_PUBLIC_PUBLISHER}
+    productionSeries={productionSeries}
+  >
+    {productions.length > 0 && <FeaturedVideo production={productions[0]} />}
+    {productions.map((p) => (
+      <PlaylistScroller key={p.slug.current} production={p} />
+    ))}
+  </Layout>
+);
+export default CategoryPage;

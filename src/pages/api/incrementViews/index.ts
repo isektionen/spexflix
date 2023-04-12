@@ -1,76 +1,58 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { GraphQLClient, gql } from 'graphql-request';
-
-const client = new GraphQLClient(process.env.GRAPHQL_URL, {
-  headers: {
-    Authorization: `Bearer ${process.env.GRAPHQL_TOKEN}`,
-  },
-});
+import { projectId, dataset, apiVersion } from '../../../lib/sanity/env';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const slug = req.query.slug;
-  if (!req.query.slug) {
-    res.status(400).json({ error: 'missing slug' });
+  const { productionSlug, videoSlug } = req.query;
+  if (!productionSlug) {
+    res.status(400).json({ error: 'missing production slug' });
+    return;
+  }
+  if (!videoSlug) {
+    res.status(400).json({ error: 'missing video slug' });
     return;
   }
 
-  // Avoid hitting hygraph's access limitations.
-  // todo(vm): reduce number of API requests.
-  await new Promise((r) => setTimeout(r, 1000));
-
-  const { video }: any = await client.request(
-    // todo(vm): response type.
-    gql`
-      query GetVideo($slug: String!) {
-        video(where: { slug: $slug }) {
-          views
-        }
-      }
-    `,
-    {
-      slug,
-    }
-  );
-
-  const views = video.views + 1;
-  if (!video.views) {
-    res.status(500).json({ error: 'unable to get current views' });
+  let videoArray: string;
+  switch (req.query.videoType) {
+    case 'video':
+      videoArray = 'videos';
+      break;
+    case 'trailer':
+      videoArray = 'trailers';
+      break;
+  }
+  if (!videoArray) {
+    res.status(400).json({ error: 'unknown or missing video type' });
     return;
   }
 
-  // Avoid hitting hygraph's access limitations.
-  // todo(vm): reduce number of API requests.
-  await new Promise((r) => setTimeout(r, 1000));
+  const data = {
+    mutations: [
+      {
+        patch: {
+          query: `*[_type == "production" && slug.current == $productionSlug]`,
+          params: {
+            productionSlug,
+          },
+          inc: {
+            [`${videoArray}[slug.current == "${req.query.videoSlug}"].views`]: 1,
+          },
+        },
+      },
+    ],
+  };
 
-  const { updateVideo, publishVideo }: any = await client.request(
-    // todo(vm): response type.
-    gql`
-      mutation IncrementViews($slug: String!, $views: Int!) {
-        updateVideo(where: { slug: $slug }, data: { views: $views }) {
-          views
-        }
-        publishVideo(where: { slug: $slug }, to: PUBLISHED) {
-          views
-        }
-      }
-    `,
-    {
-      slug,
-      views,
-    }
-  );
+  const url = `https://${projectId}.api.sanity.io/v${apiVersion}/data/mutate/${dataset}`;
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${process.env.SANITY_API_TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
 
-  if (updateVideo.views !== views) {
-    res.status(500).json({ error: 'error updating views counter' });
-    return;
-  }
-
-  if (publishVideo.views !== views) {
-    res.status(500).json({ error: 'error publishing changes' });
-    return;
-  }
-
-  res.status(200).json({ views: video.views });
+  res.status(response.status).json(await response.json());
 };
 
 export default handler;
