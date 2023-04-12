@@ -19,6 +19,8 @@ interface QueryResult {
   productions: Pick<Production, 'videos'>;
 }
 
+// todo(vm): rethink URL's to support viewing trailers.
+
 export const getStaticProps: GetStaticProps = async (context) => {
   const query = groq`
     {
@@ -39,6 +41,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
+      productionSlug: context.params.productionSlug,
       video: productions[0].videos[0],
     },
   };
@@ -88,8 +91,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const VideoPage = ({
+  productionSlug,
   video,
 }: {
+  productionSlug: string;
   video: Pick<Video, 'slug' | 'youtubeUrl' | 'coverImage'>;
 }): JSX.Element => {
   const router = useRouter();
@@ -104,7 +109,7 @@ const VideoPage = ({
     async function f() {
       const { protocol, host } = window.location;
       const res = await fetch(
-        protocol + '//' + host + '/api/incrementViews?slug=' + video.slug
+        `${protocol}//${host}/api/incrementViews?productionSlug=${productionSlug}&videoSlug=${video.slug.current}&videoType=video`
       );
       if (res.status !== 200) {
         const json = await res.json();

@@ -5,6 +5,7 @@ export interface Video {
   slug: Slug;
   youtubeUrl: string;
   coverImage?: Asset;
+  views: number;
 }
 
 export default defineType({
@@ -39,6 +40,13 @@ export default defineType({
       name: 'coverImage',
       title: 'Omslagsbild',
       type: 'image',
+    }),
+    defineField({
+      name: 'views',
+      title: 'Visningar',
+      type: 'number',
+      initialValue: 0,
+      readOnly: true,
     }),
   ],
   preview: {
