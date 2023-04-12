@@ -31,7 +31,7 @@ const Control = ({ type, enabled, handle }: PlaylistScrollerControl) => {
 };
 
 export interface PlaylistScrollerProps {
-  production: Pick<Production, 'title' | 'orTitle' | 'videos'>;
+  production: Pick<Production, 'title' | 'slug' | 'orTitle' | 'videos'>;
 }
 
 const PlaylistScroller = ({ production }: PlaylistScrollerProps) => {
@@ -76,7 +76,12 @@ const PlaylistScroller = ({ production }: PlaylistScrollerProps) => {
           style={{ transform: `translate3d(${offset}px, 0, 0)` }}
         >
           {production.videos.map((v: Video) => (
-            <Item key={v.slug.current} video={v} width={itemWidth} />
+            <Item
+              key={v.slug.current}
+              productionSlug={production.slug.current}
+              video={v}
+              width={itemWidth}
+            />
           ))}
         </ul>
         <Control type="prev" handle={handlePrev} enabled={hasPrev} />

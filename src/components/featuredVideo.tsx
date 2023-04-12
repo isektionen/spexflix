@@ -29,7 +29,7 @@ const FeaturedVideo = ({ production }: FeaturedVideoProps) => (
       <div className={css.buttons}>
         {production.videos.length > 0 && (
           <Link
-            href={`/video/${production.videos[0].slug}`}
+            href={`/video/${production.slug.current}/${production.videos[0].slug.current}`}
             onClick={() =>
               window.analytics.track('Featured video play button clicked', {
                 title: production.title,

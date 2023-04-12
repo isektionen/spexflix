@@ -7,13 +7,14 @@ import type { Video } from '../../../schema/video';
 import css from './item.module.scss';
 
 export interface PlaylistScrollerItemProps {
+  productionSlug: string;
   video: Pick<Video, 'title' | 'slug' | 'coverImage' | 'youtubeUrl'>;
   width: number;
 }
 
-const Item = ({ video, width }: PlaylistScrollerItemProps) => (
+const Item = ({ productionSlug, video, width }: PlaylistScrollerItemProps) => (
   <Link
-    href={`/video/${video.slug.current}`}
+    href={`/video/${productionSlug}/${video.slug.current}`}
     onClick={() =>
       window.analytics.track('Playlist item clicked', {
         title: video.title,
